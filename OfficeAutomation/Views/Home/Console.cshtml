@@ -1,0 +1,69 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Console</title>
+    <style>
+
+        .heading-mi {
+            margin-top: 3rem;
+        }
+
+            .heading-mi a {
+                float: right;
+                font-size: 14px;
+            }
+    </style>
+
+    <link href="~/css/s.css" rel="stylesheet" />
+    <link href="~/css/extend.css" rel="stylesheet" />
+
+</head>
+<body style="background-color:#F4F6F9">
+    <h1 class="heading-mi"></h1>
+    <div class="layui-container">
+        <div class="layui-row layui-col-space25">
+            <div class="layui-col-md3">
+                <a class="widget2" >
+                    <div class="widget2-trending text-grey ">
+                        <i class="layui-icon layui-icon-rate"></i>
+                    </div>
+                    <div class="widget2-value">@ViewBag.enter</div>
+                    <div class="widget2-label">企业数量</div>
+                </a>
+            </div>
+
+            <div class="layui-col-md3">
+                <a class="widget2" >
+                    <div class="widget2-trending  text-orange">
+                        <i class="layui-icon layui-icon-group"></i>
+                    </div>
+                    <div class="widget2-value">@ViewBag.users</div>
+                    <div class="widget2-label">用户总数</div>
+                </a>
+            </div>
+
+            <div class="layui-col-md3">
+                <a class="widget2" >
+                    <div class="widget2-trending text-green">
+                        <i class="layui-icon layui-icon-user"></i>
+                    </div>
+                    <div class="widget2-value">@ViewBag.job</div>
+                    <div class="widget2-label">入职人数</div>
+                </a>
+            </div>
+
+            <div class="layui-col-md3">
+                <a class="widget2" >
+                    <div class="widget2-trending text-cyan ">
+                        <i class="layui-icon layui-icon-username"></i>
+                    </div>
+                    <div class="widget2-value">@ViewBag.usershr</div>
+                    <div class="widget2-label">HR人数</div>
+                </a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

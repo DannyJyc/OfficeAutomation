@@ -1,0 +1,9 @@
+C:\Users\DannyJiang\source\repos\OfficeAutomation\OfficeAutomation.Models\bin\Debug\netcoreapp2.1\OfficeAutomation.Models.deps.json
+C:\Users\DannyJiang\source\repos\OfficeAutomation\OfficeAutomation.Models\bin\Debug\netcoreapp2.1\OfficeAutomation.Models.dll
+C:\Users\DannyJiang\source\repos\OfficeAutomation\OfficeAutomation.Models\obj\Debug\netcoreapp2.1\OfficeAutomation.Models.csproj.CoreCompileInputs.cache
+C:\Users\DannyJiang\source\repos\OfficeAutomation\OfficeAutomation.Models\obj\Debug\netcoreapp2.1\OfficeAutomation.Models.AssemblyInfoInputs.cache
+C:\Users\DannyJiang\source\repos\OfficeAutomation\OfficeAutomation.Models\obj\Debug\netcoreapp2.1\OfficeAutomation.Models.AssemblyInfo.cs
+C:\Users\DannyJiang\source\repos\OfficeAutomation\OfficeAutomation.Models\bin\Debug\netcoreapp2.1\OfficeAutomation.Models.pdb
+C:\Users\DannyJiang\source\repos\OfficeAutomation\OfficeAutomation.Models\obj\Debug\netcoreapp2.1\OfficeAutomation.Models.dll
+C:\Users\DannyJiang\source\repos\OfficeAutomation\OfficeAutomation.Models\obj\Debug\netcoreapp2.1\OfficeAutomation.Models.pdb
+C:\Users\DannyJiang\source\repos\OfficeAutomation\OfficeAutomation.Models\obj\Debug\netcoreapp2.1\OfficeAutomation.Models.csprojAssemblyReference.cache

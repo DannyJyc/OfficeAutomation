@@ -1,0 +1,95 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>自动化办公系统 </title>
+    <link href="~/css/s.css" rel="stylesheet" />
+    <script src="~/plus/layui/layui.js"></script>
+</head>
+<body>
+
+    <link href="~/css/login.css" rel="stylesheet" />
+
+    <div class="layui-container">
+        <div class="layui-row">
+            <div class="layui-col-md3 layui-col-md-offset9">
+                <div class="loginbox">
+                    <div class="loginbox-header">
+                        <h3>自动化办公系统登陆</h3>
+                    </div>
+                    <form action="" class="layui-form" method="post">
+                        <div class="layui-row layui-form-item">
+                            <div class="layui-col-md12">
+                                <div class="layui-input-block no-label">
+                                    <label class="input-icon layui-icon layui-icon-username" for="username"></label>
+                                    <input type="text" name="username" id="username" lay-verify="required"
+                                           placeholder="用户名" class="layui-input">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="layui-row  layui-form-item">
+                            <div class="layui-col-md12">
+                                <div class="layui-input-block no-label">
+                                    <label class="input-icon layui-icon layui-icon-password" for="password"></label>
+                                    <input type="password" name="password" id="password" lay-verify="required"
+                                           placeholder="密码" class="layui-input">
+                                </div>
+                            </div>
+                        </div>
+
+
+
+                        <div class="layui-form-item">
+                            <button class="layui-btn layui-btn-fluid" id="forlogin" lay-submit lay-filter="forlogin">登 入</button>
+                        </div>
+
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        layui.use(['element', 'code', 'form', 'jquery'], function () {
+
+            var form = layui.form;
+            var $ = layui.jquery;
+            var layer = layui.layer;
+
+
+            //监听提交
+            form.on('submit(forlogin)', function (data) {
+                var username = $('#username').val();
+                var password = $('#password').val();
+
+                $.ajax({
+                    type: "post",
+                    url: "../Login/Validate",
+                    data: { username: username, password: password },
+                    dataType: "json",
+                    success: function(data) {
+                        if (data.code == 0) {
+                            layer.alert('登录成功', { icon: 6 });
+                            location.href = "../Home/";
+                        } else {
+                            layer.msg(data.msg, { icon: 5 });
+                            return;
+                        }
+                    },
+                    error: function() {
+                        layer.msg('操作失败', { icon: 5 });
+                        return;
+                    }
+                });
+                return false;
+            });
+
+        });
+    </script>
+</body>
+</html>
