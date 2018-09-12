@@ -1,0 +1,42 @@
+﻿@charset "UTF-8";
+
+body {
+    background-image: url("../images/3.svg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+}
+
+.loginbox {
+    padding: 2.5rem 2rem 1.5rem;
+    background-color: #fff;
+    margin-top: 230px;
+    box-shadow: 0 10px 60px 0 rgba(29, 29, 31, 0.09);
+    border-radius: 2px;
+}
+
+    .loginbox .layui-icon-login-qq {
+        color: #3492ED;
+    }
+
+    .loginbox .layui-icon-login-wechat {
+        color: #4DAF29;
+    }
+
+    .loginbox .layui-icon-login-weibo {
+        color: #CF1900;
+    }
+
+    .loginbox .loginbox-header h3 {
+        font-size: 16px;
+        font-weight: bold;
+        margin-bottom: 2rem;
+        color: #252629;
+    }
+
+    .loginbox .loginbox-other a i {
+        position: relative;
+        top: 2px;
+        font-size: 23px;
+        margin-left: 10px;
+    }

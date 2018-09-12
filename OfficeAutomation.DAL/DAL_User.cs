@@ -82,7 +82,8 @@ namespace OfficeAutomation.DAL
                 username = users.username,
                 password = users.password,
                 dicvalue = users.dicvalue,
-                collegeid = users.collegeid
+                collegeid = users.collegeid,
+                state = 1
             });
         }
         /// <summary>

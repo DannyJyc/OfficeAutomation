@@ -13327,23 +13327,23 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Administrator\\.nuget\\packages\\": {},
+    "C:\\Users\\DannyJiang\\.nuget\\packages\\": {},
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\OfficeAutomation\\OfficeAutomation\\OfficeAutomation.csproj",
+      "projectUniqueName": "C:\\Users\\DannyJiang\\Desktop\\OfficeAutomation\\OfficeAutomation\\OfficeAutomation.csproj",
       "projectName": "OfficeAutomation",
-      "projectPath": "D:\\OfficeAutomation\\OfficeAutomation\\OfficeAutomation.csproj",
-      "packagesPath": "C:\\Users\\Administrator\\.nuget\\packages\\",
-      "outputPath": "D:\\OfficeAutomation\\OfficeAutomation\\obj\\",
+      "projectPath": "C:\\Users\\DannyJiang\\Desktop\\OfficeAutomation\\OfficeAutomation\\OfficeAutomation.csproj",
+      "packagesPath": "C:\\Users\\DannyJiang\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\DannyJiang\\Desktop\\OfficeAutomation\\OfficeAutomation\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
       ],
       "configFilePaths": [
-        "C:\\Users\\Administrator\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\DannyJiang\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -13356,11 +13356,11 @@
       "frameworks": {
         "netcoreapp2.1": {
           "projectReferences": {
-            "D:\\OfficeAutomation\\OfficeAutomation.DAL\\OfficeAutomation.DAL.csproj": {
-              "projectPath": "D:\\OfficeAutomation\\OfficeAutomation.DAL\\OfficeAutomation.DAL.csproj"
+            "C:\\Users\\DannyJiang\\Desktop\\OfficeAutomation\\OfficeAutomation.DAL\\OfficeAutomation.DAL.csproj": {
+              "projectPath": "C:\\Users\\DannyJiang\\Desktop\\OfficeAutomation\\OfficeAutomation.DAL\\OfficeAutomation.DAL.csproj"
             },
-            "D:\\OfficeAutomation\\OfficeAutomation.Models\\OfficeAutomation.Models.csproj": {
-              "projectPath": "D:\\OfficeAutomation\\OfficeAutomation.Models\\OfficeAutomation.Models.csproj"
+            "C:\\Users\\DannyJiang\\Desktop\\OfficeAutomation\\OfficeAutomation.Models\\OfficeAutomation.Models.csproj": {
+              "projectPath": "C:\\Users\\DannyJiang\\Desktop\\OfficeAutomation\\OfficeAutomation.Models\\OfficeAutomation.Models.csproj"
             }
           }
         }

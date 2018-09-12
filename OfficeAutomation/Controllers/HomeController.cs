@@ -1,13 +1,14 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using OfficeAutomation.Authorize;
 
 namespace OfficeAutomation.Controllers
 {
-    public class HomeController : Controller
+    [Author(IsCheck = true)]
+    public class HomeController : AuthorizeController
     {
         public IActionResult Index()
         {
-            var user = HttpContext.Session.GetString("users");
             return View();
         }
 

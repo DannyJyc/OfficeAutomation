@@ -49,12 +49,11 @@
             //方法级渲染
             table.render({
                 elem: '#LAY_table_user',
-                url: '../User/GetAllEffect',
+                url: '../Users/GetAllEffect',
                 cols: [
                     [
                         { field: 'name', title: '功能名称', sort: true, fixed: true },
-                        { field: 'controllers', title: '控制器', sort: true, fixed: true },
-                        { field: 'action', title: '动作', sort: true, fixed: true },
+                        { field: 'controller', title: '控制器', sort: true, fixed: true },
                         { field: 'type', title: '操作', toolbar: '#barDemo', align: 'center' }
                     ]
                 ],
@@ -71,7 +70,7 @@
                         anim: 3,
                         maxmin: true,
                         type: 2,
-                        content: "../User/AddEffect",
+                        content: "../Users/AddEffect",
                         area: ["999px", "663px"]
                     });
                 }
@@ -84,7 +83,7 @@
                             function (index) {
                                 $.ajax({
                                     type: "post",
-                                    url: "../User/DelEffect",
+                                    url: "../Users/DelEffect",
                                     data: { id: data.id },
                                     dataType: "json",
                                     success: function (data) {
@@ -109,7 +108,7 @@
                             anim: 3,
                             maxmin: true,
                             type: 2,
-                            content: "../User/AddEffect?id=" + data.id,
+                            content: "../Users/AddEffect?id=" + data.id,
                             area: ["999px", "663px"]
                         });
                     }

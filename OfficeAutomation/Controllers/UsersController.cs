@@ -1,17 +1,22 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using OfficeAutomation.Authorize;
 using OfficeAutomation.BLL;
 using OfficeAutomation.DAL;
 using OfficeAutomation.Models;
 
 namespace OfficeAutomation.Controllers
 {
-    public class UsersController : Controller
+    public class UsersController : AuthorizeController
     {
         private BLL.BLL_Users bllUsers = new BLL_Users();
         private BLL.BLL_College bllCollege = new BLL_College();
+        private BLL.BLL_Effect bllEffect = new BLL_Effect();
+        private BLL.BLL_Dictionary bllDictionary = new BLL_Dictionary();
         private DAL.DAL_User dalUser = new DAL_User();
         private DAL.DAL_College dalCollege = new DAL_College();
         private DAL.DAL_Dictionary dalDictionary = new DAL_Dictionary();
+        private DAL.DAL_Effect dalEffect = new DAL_Effect();
+      
        
         /// <summary>
         /// 用户管理
@@ -60,14 +65,34 @@ namespace OfficeAutomation.Controllers
             return View();
         }
 
-        public IActionResult AddRole()
-        {
-            return View();
-        }
-
-        public JsonResult GetRole()
+        public JsonResult ListRole()
         {
             return Json(dalDictionary.List());
+        }
+        public IActionResult AddRole(int id = 0)
+        {
+            ViewData["id"] = id;
+            
+            if (id > 0)
+            {
+                ViewData["value"] = dalDictionary.Single(id).value;
+                return View(dalEffect.List());
+            }
+            return View(dalEffect.List());
+        }
+
+        public JsonResult UpdateRole(related related)
+        {
+            return Json(bllDictionary.Update(related));
+        }
+        public JsonResult GetRole(int page,int limit)
+        {
+            return Json(bllDictionary.List(page,limit));
+        }
+        [HttpPost]
+        public JsonResult DelRole(int id)
+        {
+            return Json(bllDictionary.Del(id));
         }
         ///*******************************************************************************************************
         ///*******************************************************************************************************
@@ -80,9 +105,28 @@ namespace OfficeAutomation.Controllers
             return View();
         }
 
-        public IActionResult AddEffect()
+        public JsonResult GetAllEffect(int page,int limit)
         {
+            return Json(bllEffect.List(page,limit));
+        }
+        public IActionResult AddEffect(int id = 0)
+        {
+            ViewData["id"] = id;
+            if (id > 0)
+            {
+                return View(dalEffect.Single(id));
+            }
             return View();
+        }
+
+        public JsonResult UpdateEffect(effect effect)
+        {
+            return Json(bllEffect.Update(effect));
+        }
+        [HttpPost]
+        public JsonResult DelEffect(int id)
+        {
+            return Json(bllEffect.Del(id));
         }
         ///*******************************************************************************************************
         ///*******************************************************************************************************
@@ -105,7 +149,7 @@ namespace OfficeAutomation.Controllers
             return View();
         }
 
-        public JsonResult AddCollege(college college)
+        public JsonResult UpdateCollege(college college)
         {
             return Json(bllCollege.UpdateCollege(college));
         }

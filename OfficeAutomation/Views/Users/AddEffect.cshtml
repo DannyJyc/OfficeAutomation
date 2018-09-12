@@ -1,4 +1,4 @@
-﻿@*@model EnterpriseRecruitment.Entity.effect*@
+﻿@model OfficeAutomation.Models.effect
 
 <!DOCTYPE html>
 <html>
@@ -45,7 +45,7 @@
                                 @{
                                     if (Model != null)
                                     {
-                                        <input type="text" name="controllers" required lay-verify="required" placeholder="请输入控制器" autocomplete="off" class="layui-input" value="@Model.controllers">
+                                        <input type="text" name="controllers" required lay-verify="required" placeholder="请输入控制器" autocomplete="off" class="layui-input" value="@Model.controller">
                                     }
                                     else
                                     {
@@ -54,22 +54,7 @@
                                 }
                             </div>
                         </div>
-                        <div class="layui-form-item">
-                            <label class="layui-form-label"><span class="text-red">*</span>动作：</label>
-                            <div class="layui-input-block">
-
-                                @{
-                                    if (Model != null)
-                                    {
-                                        <input type="text" name="action" required lay-verify="required" placeholder="请输入动作" autocomplete="off" class="layui-input" value="@Model.action">
-                                    }
-                                    else
-                                    {
-                                        <input type="text" name="action" required lay-verify="required" placeholder="请输入动作" autocomplete="off" class="layui-input">
-                                    }
-                                }
-                            </div>
-                        </div>
+                        
                         <div class="layui-form-item">
                             <div class="layui-input-block">
                                 <button class="layui-btn" lay-submit lay-filter="formDemo">立即提交</button>
@@ -91,10 +76,6 @@
         var $ = layui.jquery;
         var layer = layui.layer;
 
-        $("#fanhui").click(function() {
-            location.href = "../User/Effect";
-            return false;
-        });
 
         form.on('submit(formDemo)', function (data) {
             var index = layer.msg('数据提交中，请稍候', { icon: 16, shade: 0.01, time: 10 });
@@ -102,12 +83,11 @@
 
             $.ajax({
                 type: "post",
-                url: "../User/UpdateEffect",
+                url: "../Users/UpdateEffect",
                 data: {
                     id:@ViewData["id"],
                     name: upData.name,
-                    controllers: upData.controllers,
-                    action: upData.action,
+                    controller: upData.controllers
                 },
                 dataType: "json",
                 success: function(data) {

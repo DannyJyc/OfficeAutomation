@@ -1,6 +1,5 @@
-﻿@*@using EnterpriseRecruitment.Data
-@model List<EnterpriseRecruitment.Entity.effect>*@
-
+﻿@using OfficeAutomation.DAL
+@model List<OfficeAutomation.Models.effect>
 <!DOCTYPE html>
 <html>
 <head>
@@ -43,22 +42,22 @@
                         <div class="layui-form-item">
                             <label class="layui-form-label"><span class="text-red">*</span>功能：</label>
                             <div class="layui-input-block">
-                                @*@foreach (var item in Model)
+                                @foreach (var item in Model)
                                 {
-                                    @*if ((int)ViewData["id"] == 0)
+                                    if ((int)ViewData["id"] == 0)
                                         {
                                             <input type="checkbox" name="effect" value="@item.id" title="@item.name">
                                             continue;
-                                        }*@
-                                    Dal_users dalUsers = new Dal_users();
-                                    int count = dalUsers.IfRelevanceByRole(ViewData["value"].ToString(), item.id.ToString());
+                                        }
+                                    DAL_Dictionary dalDictionary = new DAL_Dictionary();
+                                    int count = dalDictionary.IfRelatedByRole(ViewData["value"].ToString(), item.id);
                                     if (count > 0)
                                     {
-                                        @*<input type="checkbox" name="effect" value="@item.id" title="@item.name" checked>*@
+                                        <input type="checkbox" name="effect" value="@item.id" title="@item.name" checked>
                                     }
                                     else
                                     {
-                                        @*<input type="checkbox" name="effect" value="@item.id" title="@item.name">*@
+                                        <input type="checkbox" name="effect" value="@item.id" title="@item.name">
                                     }
 
                                 }
@@ -101,11 +100,11 @@
 
             $.ajax({
                 type: "post",
-                url: "../User/UpdateRole",
+                url: "../Users/UpdateRole",
                 data: {
                     id:@ViewData["id"],
                     dicvalue : upData.dicvalue,
-                    effectid: effectid,
+                    reserve1: effectid,
                     NotMapped:once
                 },
                 dataType: "json",

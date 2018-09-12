@@ -108,7 +108,7 @@
         var layer = layui.layer;
 
         $("select[name='role']").empty();
-        $.get("../Users/GetRole", function (result) {
+        $.get("../Users/ListRole", function (result) {
 
             console.log(result);
             var role = $("#role").val();
@@ -134,7 +134,7 @@
             console.log(result);
             var college = $("#college").val();
             for (var i = 0; i < result.length; i++) {
-                if (college == result[i].value) {
+                if (college == result[i].name) {
                     $("select[name='college']").append('<option selected = "selected" value="' + result[i].id + '">' + result[i].name + '</option>');
                     continue;
                 }

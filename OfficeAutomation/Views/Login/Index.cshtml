@@ -75,7 +75,7 @@
                     success: function(data) {
                         if (data.code == 0) {
                             layer.alert('登录成功', { icon: 6 });
-                            location.href = "../Home/";
+                            location.href = "../Home";
                         } else {
                             layer.msg(data.msg, { icon: 5 });
                             return;

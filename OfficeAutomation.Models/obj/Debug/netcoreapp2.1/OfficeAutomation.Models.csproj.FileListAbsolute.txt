@@ -16,3 +16,12 @@ D:\OfficeAutomation\OfficeAutomation.Models\obj\Debug\netcoreapp2.1\OfficeAutoma
 D:\OfficeAutomation\OfficeAutomation.Models\obj\Debug\netcoreapp2.1\OfficeAutomation.Models.AssemblyInfo.cs
 D:\OfficeAutomation\OfficeAutomation.Models\obj\Debug\netcoreapp2.1\OfficeAutomation.Models.dll
 D:\OfficeAutomation\OfficeAutomation.Models\obj\Debug\netcoreapp2.1\OfficeAutomation.Models.pdb
+C:\Users\DannyJiang\Desktop\OfficeAutomation\OfficeAutomation.Models\bin\Debug\netcoreapp2.1\OfficeAutomation.Models.deps.json
+C:\Users\DannyJiang\Desktop\OfficeAutomation\OfficeAutomation.Models\bin\Debug\netcoreapp2.1\OfficeAutomation.Models.dll
+C:\Users\DannyJiang\Desktop\OfficeAutomation\OfficeAutomation.Models\bin\Debug\netcoreapp2.1\OfficeAutomation.Models.pdb
+C:\Users\DannyJiang\Desktop\OfficeAutomation\OfficeAutomation.Models\obj\Debug\netcoreapp2.1\OfficeAutomation.Models.csprojAssemblyReference.cache
+C:\Users\DannyJiang\Desktop\OfficeAutomation\OfficeAutomation.Models\obj\Debug\netcoreapp2.1\OfficeAutomation.Models.csproj.CoreCompileInputs.cache
+C:\Users\DannyJiang\Desktop\OfficeAutomation\OfficeAutomation.Models\obj\Debug\netcoreapp2.1\OfficeAutomation.Models.AssemblyInfoInputs.cache
+C:\Users\DannyJiang\Desktop\OfficeAutomation\OfficeAutomation.Models\obj\Debug\netcoreapp2.1\OfficeAutomation.Models.AssemblyInfo.cs
+C:\Users\DannyJiang\Desktop\OfficeAutomation\OfficeAutomation.Models\obj\Debug\netcoreapp2.1\OfficeAutomation.Models.dll
+C:\Users\DannyJiang\Desktop\OfficeAutomation\OfficeAutomation.Models\obj\Debug\netcoreapp2.1\OfficeAutomation.Models.pdb

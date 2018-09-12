@@ -48,7 +48,7 @@
             //方法级渲染
             table.render({
                 elem: '#LAY_table_user',
-                url: '../User/GetRole',
+                url: '../Users/GetRole',
                 cols: [
                     [
                         { field: 'value', title: '角色名', sort: true, fixed: true },
@@ -68,7 +68,7 @@
                         anim: 3,
                         maxmin: true,
                         type: 2,
-                        content: "../User/AddRole",
+                        content: "../Users/AddRole",
                         area: ["999px", "663px"]
                     });
                 }
@@ -81,7 +81,7 @@
                             function (index) {
                                 $.ajax({
                                     type: "post",
-                                    url: "../User/DelRole",
+                                    url: "../Users/DelRole",
                                     data: { id: data.id },
                                     dataType: "json",
                                     success: function (data) {
@@ -106,7 +106,7 @@
                             anim: 3,
                             maxmin: true,
                             type: 2,
-                            content: "../User/AddRole?id=" + data.id,
+                            content: "../Users/AddRole?id=" + data.id,
                             area: ["999px", "663px"]
                         });
                     }
