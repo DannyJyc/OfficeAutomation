@@ -1,0 +1,188 @@
+﻿@model OfficeAutomation.Models.view_users_college
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>添加用户</title>
+    <link href="~/css/s.css" rel="stylesheet" />
+    <link href="~/css/extend.css" rel="stylesheet" />
+
+    <script src="~/plus/layui/layui.js"></script>
+</head>
+<body style="background-color: white">
+    <div class="layui-container">
+        <div class="layui-row ">
+
+            <div class="layui-col-md12">
+
+                <div style="margin-top: 3.5em; ">
+
+                    <form class="layui-form">
+
+
+                        <div class="layui-form-item">
+                            <label class="layui-form-label"><span class="text-red">*</span>用户姓名：</label>
+                            <div class="layui-input-block">
+
+                                @{
+                                    if (Model != null)
+                                    {
+                                        <input type="text" name="name" required lay-verify="required" placeholder="请输入姓名" autocomplete="off" class="layui-input" value="@Model.name">
+                                    }
+                                    else
+                                    {
+                                        <input type="text" name="name" required lay-verify="required" placeholder="请输入姓名" autocomplete="off" class="layui-input">
+                                    }
+                                }
+                            </div>
+                        </div>
+
+                        <div class="layui-form-item">
+                            <label class="layui-form-label"><span class="text-red">*</span>用户名：</label>
+                            <div class="layui-input-block">
+
+                                @{
+                                    if (Model != null)
+                                    {
+                                        <input type="text" name="username" required lay-verify="required" placeholder="请输入用户名" autocomplete="off" class="layui-input" value="@Model.username">
+                                        <input type="hidden" id="role" value="@Model.dicvalue" />
+                                        <input type="hidden" id="college" value="@Model.college_name"/>
+                                    }
+                                    else
+                                    {
+                                        <input type="text" name="username" required lay-verify="required" placeholder="请输入用户名" autocomplete="off" class="layui-input">
+                                    }
+                                }
+                            </div>
+                        </div>
+                        <div class="layui-form-item">
+                            <label class="layui-form-label"><span class="text-red">*</span>密码：</label>
+                            <div class="layui-input-block">
+
+                                @{
+                                    if (Model != null)
+                                    {
+                                        <input type="text" name="password" required lay-verify="required" placeholder="请输入密码" autocomplete="off" class="layui-input" value="@Model.password">
+                                    }
+                                    else
+                                    {
+                                        <input type="text" name="password" required lay-verify="required" placeholder="请输入密码" autocomplete="off" class="layui-input">
+                                    }
+                                }
+                            </div>
+                        </div>
+                        <div class="layui-form-item">
+                            <label class="layui-form-label"><span class="text-red">*</span>选择学院：</label>
+                            <div class="layui-input-block">
+                                <select name="college" lay-filter="province" lay-search="" lay-verify="required"></select>
+                            </div>
+                        </div>
+                        <div class="layui-form-item">
+                            <label class="layui-form-label"><span class="text-red">*</span>选择角色：</label>
+                            <div class="layui-input-block">
+                                <select name="role" lay-filter="province" lay-search="" lay-verify="required"></select>
+                            </div>
+                        </div>
+
+                        <div class="layui-form-item">
+                            <div class="layui-input-block">
+                                <button class="layui-btn" lay-submit lay-filter="formDemo">立即提交</button>
+                                <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+
+    var layui = layui.config({
+        base: '/plus/' //静态资源所在路径
+    }).use(['layer', 'form', 'jquery','upload'], function () {
+        var form = layui.form;
+        var $ = layui.jquery;
+        var layer = layui.layer;
+
+        $("select[name='role']").empty();
+        $.get("../Users/GetRole", function (result) {
+
+            console.log(result);
+            var role = $("#role").val();
+            if (role == 0) {
+                $("select[name='role']").append('<option selected = "selected" value="0">超级管理员</option>');
+            } else {
+                $("select[name='role']").append('<option value="0">超级管理员</option>');
+
+            }
+            for (var i = 0; i < result.length; i++) {
+                if (role == result[i].value) {
+                    $("select[name='role']").append('<option selected = "selected" value="' + result[i].value + '">' + result[i].value + '</option>');
+                    continue;
+                }
+                $("select[name='role']").append('<option value="' + result[i].value + '">' + result[i].value+'</option>');
+            }
+
+            form.render('select'); //刷新select选择框渲染
+        });
+        $("select[name='college']").empty();
+        $.get("../Users/GetCollege", function (result) {
+
+            console.log(result);
+            var college = $("#college").val();
+            for (var i = 0; i < result.length; i++) {
+                if (college == result[i].value) {
+                    $("select[name='college']").append('<option selected = "selected" value="' + result[i].id + '">' + result[i].name + '</option>');
+                    continue;
+                }
+                $("select[name='college']").append('<option value="' + result[i].id + '">' + result[i].name + '</option>');
+            }
+
+            form.render('select'); //刷新select选择框渲染
+        });
+        form.on('submit(formDemo)', function (data) {
+            var index = layer.msg('数据提交中，请稍候', { icon: 16, shade: 0.01, time: 10 });
+            var upData = data.field;
+
+            $.ajax({
+                type: "post",
+                url: "../Users/AddUser",
+                data: {
+                    id:@ViewData["id"],
+                    name: upData.name,
+                    username: upData.username,
+                    password: upData.password,
+                    dicvalue: upData.role,
+                    collegeid: upData.college
+                },
+                dataType: "json",
+                success: function(data) {
+                    layer.close(index);
+                    if (data.code == "0" || data.code == 0) {
+                        layer.alert("操作成功", { icon: 6 },
+                            function (index) {
+                                var index = parent.layer.getFrameIndex(window.name); //先得到当前iframe层的索引
+                                parent.layer.close(index); //再执行关闭
+                                parent.location.reload(); // 刷新父级
+                        });
+
+                        //location.reload();
+                        return false;
+                    } else {
+                        layer.alert(data.msg, { icon: 5 });
+                    }
+                    console.log(data);
+
+                }
+            });
+
+            return false;
+        });
+
+    });
+    </script>
+</body>
+</html>

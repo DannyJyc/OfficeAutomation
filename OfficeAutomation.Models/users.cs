@@ -12,10 +12,11 @@ namespace OfficeAutomation.Models
         {
 
             name = "";
-            college = "";
+            collegeid = 0;
             username = "";
             password = "";
             dicvalue = "";
+            state = 1;
             reserve1 = "";
             reserve2 = "";
         }
@@ -32,9 +33,9 @@ namespace OfficeAutomation.Models
         /// </summary>
         public string name { get; set; }
         /// <summary>
-        /// 学院
+        /// 学院id
         /// </summary>
-        public string college { get; set; }
+        public int collegeid { get; set; }
         /// <summary>
         /// 用户名
         /// </summary>
@@ -43,6 +44,10 @@ namespace OfficeAutomation.Models
         /// 密码
         /// </summary>
         public string password { get; set; }
+        /// <summary>
+        /// 状态1可用
+        /// </summary>
+        public int state { get; set; }
         /// <summary>
         /// 角色
         /// </summary>

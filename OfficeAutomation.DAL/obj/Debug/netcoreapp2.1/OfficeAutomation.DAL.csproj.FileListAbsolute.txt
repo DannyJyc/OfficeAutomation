@@ -10,3 +10,15 @@ C:\Users\DannyJiang\source\repos\OfficeAutomation\OfficeAutomation.DAL\bin\Debug
 C:\Users\DannyJiang\source\repos\OfficeAutomation\OfficeAutomation.DAL\obj\Debug\netcoreapp2.1\OfficeAutomation.DAL.csproj.CopyComplete
 C:\Users\DannyJiang\source\repos\OfficeAutomation\OfficeAutomation.DAL\obj\Debug\netcoreapp2.1\OfficeAutomation.DAL.dll
 C:\Users\DannyJiang\source\repos\OfficeAutomation\OfficeAutomation.DAL\obj\Debug\netcoreapp2.1\OfficeAutomation.DAL.pdb
+D:\OfficeAutomation\OfficeAutomation.DAL\bin\Debug\netcoreapp2.1\OfficeAutomation.DAL.deps.json
+D:\OfficeAutomation\OfficeAutomation.DAL\bin\Debug\netcoreapp2.1\OfficeAutomation.DAL.dll
+D:\OfficeAutomation\OfficeAutomation.DAL\bin\Debug\netcoreapp2.1\OfficeAutomation.DAL.pdb
+D:\OfficeAutomation\OfficeAutomation.DAL\bin\Debug\netcoreapp2.1\OfficeAutomation.Models.dll
+D:\OfficeAutomation\OfficeAutomation.DAL\bin\Debug\netcoreapp2.1\OfficeAutomation.Models.pdb
+D:\OfficeAutomation\OfficeAutomation.DAL\obj\Debug\netcoreapp2.1\OfficeAutomation.DAL.csprojAssemblyReference.cache
+D:\OfficeAutomation\OfficeAutomation.DAL\obj\Debug\netcoreapp2.1\OfficeAutomation.DAL.csproj.CoreCompileInputs.cache
+D:\OfficeAutomation\OfficeAutomation.DAL\obj\Debug\netcoreapp2.1\OfficeAutomation.DAL.AssemblyInfoInputs.cache
+D:\OfficeAutomation\OfficeAutomation.DAL\obj\Debug\netcoreapp2.1\OfficeAutomation.DAL.AssemblyInfo.cs
+D:\OfficeAutomation\OfficeAutomation.DAL\obj\Debug\netcoreapp2.1\OfficeAutomation.DAL.csproj.CopyComplete
+D:\OfficeAutomation\OfficeAutomation.DAL\obj\Debug\netcoreapp2.1\OfficeAutomation.DAL.dll
+D:\OfficeAutomation\OfficeAutomation.DAL\obj\Debug\netcoreapp2.1\OfficeAutomation.DAL.pdb

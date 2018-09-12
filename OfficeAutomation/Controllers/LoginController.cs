@@ -1,14 +1,15 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using log4net.Util;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 using OfficeAutomation.BLL;
+using OfficeAutomation.DAL.Helper;
 
 namespace OfficeAutomation.Controllers
 {
     public class LoginController : Controller
     {
         private BLL.BLL_Users bllUsers = new BLL_Users();
-
         /// <summary>
         /// 返回登录页
         /// </summary>
