@@ -125,3 +125,10 @@ C:\Users\DannyJiang\Desktop\OfficeAutomation\OfficeAutomation\obj\Debug\netcorea
 C:\Users\DannyJiang\Desktop\OfficeAutomation\OfficeAutomation\obj\Debug\netcoreapp2.1\OfficeAutomation.csproj.CopyComplete
 C:\Users\DannyJiang\Desktop\OfficeAutomation\OfficeAutomation\obj\Debug\netcoreapp2.1\OfficeAutomation.dll
 C:\Users\DannyJiang\Desktop\OfficeAutomation\OfficeAutomation\obj\Debug\netcoreapp2.1\OfficeAutomation.pdb
+C:\Users\DannyJiang\Desktop\OfficeAutomation\OfficeAutomation\obj\Debug\netcoreapp2.1\Razor\Views\Basedata\Classes.g.cshtml.cs
+C:\Users\DannyJiang\Desktop\OfficeAutomation\OfficeAutomation\obj\Debug\netcoreapp2.1\Razor\Views\Basedata\AddClasses.g.cshtml.cs
+C:\Users\DannyJiang\Desktop\OfficeAutomation\OfficeAutomation\obj\Debug\netcoreapp2.1\Razor\Views\Basedata\Teachers.g.cshtml.cs
+C:\Users\DannyJiang\Desktop\OfficeAutomation\OfficeAutomation\obj\Debug\netcoreapp2.1\Razor\Views\Basedata\AddTeachers.g.cshtml.cs
+C:\Users\DannyJiang\Desktop\OfficeAutomation\OfficeAutomation\obj\Debug\netcoreapp2.1\Razor\Views\Basedata\Courses.g.cshtml.cs
+C:\Users\DannyJiang\Desktop\OfficeAutomation\OfficeAutomation\obj\Debug\netcoreapp2.1\Razor\Views\Basedata\AddCourses.g.cshtml.cs
+C:\Users\DannyJiang\Desktop\OfficeAutomation\OfficeAutomation\obj\Debug\netcoreapp2.1\Razor\Views\Login\Logout.g.cshtml.cs

@@ -1,0 +1,25 @@
+﻿@{
+    /**/
+
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <script src="~/plus/layui/layui.js"></script>
+</head>
+<body>
+    <script>
+        layui.use(['element', 'code', 'form', 'jquery'], function () {
+
+            var layer = layui.layer;
+            layer.msg('登出成功');
+            parent.location.reload(); // 刷新父级
+
+        });
+    </script>
+</body>
+</html>

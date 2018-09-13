@@ -18,7 +18,15 @@ namespace OfficeAutomation.Controllers
         {
             return View();
         }
-
+        /// <summary>
+        /// 退出登录
+        /// </summary>
+        /// <returns></returns>
+        public IActionResult Logout()
+        {
+            HttpContext.Session.SetString("users", "");
+            return View();
+        }
         /// <summary>
         /// 登录验证
         /// </summary>

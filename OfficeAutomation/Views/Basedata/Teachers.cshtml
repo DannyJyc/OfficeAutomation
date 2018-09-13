@@ -1,0 +1,125 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>教师管理</title>
+    <link href="~/css/s.css" rel="stylesheet" />
+    <link href="~/css/extend.css" rel="stylesheet" />
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/plus/layui/layui.js"></script>
+    <style type="text/css">
+        #demo1 {
+            text-align: center;
+            margin-top: 60px;
+            /*position: fixed;*/
+            /*bottom: 0;*/
+        }
+
+        .layui-layer-shade {
+            z-index: 49 !important;
+        }
+
+        .layui-layer-page {
+            z-index: 50 !important;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="layui-form">
+        <div class="demoTable">
+            <br> &nbsp;&nbsp;&nbsp;
+            <button class="layui-btn" data-type="add"><i class="layui-icon">&#xe608;</i> 添加教师</button>
+        </div>
+    </div>
+    <table class="layui-hide" id="LAY_table_user" lay-filter="user"></table>
+
+
+    <script type="text/html" id="barDemo">
+        <a class="layui-btn layui-btn-sm" lay-event="edit">编辑</a>
+        <a class="layui-btn layui-btn-danger layui-btn-sm" lay-event="del">删除</a>
+    </script>
+    <script>
+    var $;
+    layui.use(['table', 'layer', 'form'],
+        function() {
+            var layer = layui.layer,
+                table = layui.table,
+                form = layui.form;
+            //方法级渲染
+            table.render({
+                elem: '#LAY_table_user',
+                url: '../Basedata/GetAllTeachers',
+                cols: [
+                    [
+                        { field: 'name', title: '教师姓名', sort: true, fixed: true },
+                        { field: 'college_name', title: '所属', sort: true, fixed: true },
+                        { field: 'type', title: '操作', toolbar: '#barDemo', align: 'center' }
+                    ]
+                ],
+                id: 'testReload',
+                page: true,
+                height: 'full-100',
+                limit: 20,
+                limits: [20, 50, 100, 200, 300, 400, 500]
+            });
+            var active = {
+                add: function () {
+                    var index = layui.layer.open({
+                        title: "添加教师",
+                        anim: 3,
+                        maxmin: true,
+                        type: 2,
+                        content: "../Basedata/AddTeachers",
+                        area: ["999px", "663px"]
+                    });
+                }
+            };
+            table.on('tool(user)',
+                function (obj) {
+                    var data = obj.data;
+                    if (obj.event === 'del') {
+                        layer.confirm('您确认删除么',
+                            function (index) {
+                                $.ajax({
+                                    type: "post",
+                                    url: "../Basedata/DelTeachers",
+                                    data: { id: data.id },
+                                    dataType: "json",
+                                    success: function (data) {
+                                        if (data.code== 0) {
+                                            layer.alert('删除成功', { icon: 6 });
+                                            obj.del();
+                                            layer.close(index);
+                                        } else {
+                                            layer.msg(data.msg, { icon: 5 });
+                                            layer.close(index);
+                                            return;
+                                        }
+                                    }, error: function () {
+                                        layer.msg('您无权限操作', { icon: 5 });
+                                        return;
+                                    }
+                                });
+                            });
+                    } else if (obj.event === 'edit') {
+                        var index = layui.layer.open({
+                            title: "修改教师",
+                            anim: 3,
+                            maxmin: true,
+                            type: 2,
+                            content: "../Basedata/AddTeachers?id=" + data.id,
+                            area: ["999px", "663px"]
+                        });
+                    }
+
+                });
+            $('.demoTable .layui-btn').on('click',
+                function() {
+                    var type = $(this).data('type');
+                    active[type] ? active[type].call(this) : '';
+                });
+        });
+    </script>
+</body>
+</html>

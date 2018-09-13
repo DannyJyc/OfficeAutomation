@@ -43,14 +43,11 @@
                     </li>
                     <li class="layui-nav-item" lay-unselect>
                         <a href="javascript:;">
-                            <cite>***</cite>
+                            <cite>@ViewData["username"]</cite>
                         </a>
                         <dl class="layui-nav-child">
                             <dd>
-                                <a lay-href="set/user/password.html">退出登录</a>
-                            </dd>
-                            <dd layadmin-event="logout" style="text-align: center;">
-                                <a>退出</a>
+                                <a lay-href="../Login/Logout">退出登录</a>
                             </dd>
                         </dl>
                     </li>
@@ -88,16 +85,34 @@
                                 </dd>
                             </dl>
                         </li>
-                        
+
+                        <li data-name="database" class="layui-nav-item">
+                            <a href="javascript:;" lay-tips="基础数据" lay-direction="2">
+                                <i class="layui-icon layui-icon-app"></i>
+                                <cite>&nbsp;基&nbsp;础&nbsp;数&nbsp;据&nbsp;</cite>
+                            </a>
+                            <dl class="layui-nav-child">
+                                <dd>
+                                    <a lay-href="../Users/College">学院管理</a>
+                                </dd>
+                                <dd>
+                                    <a lay-href="../Basedata/Teachers">教师管理</a>
+                                </dd>
+                                <dd>
+                                    <a lay-href="../Basedata/Courses">课程管理</a>
+                                </dd>
+                                <dd>
+                                    <a lay-href="../Basedata/Classes">专业管理</a>
+                                </dd>
+                            </dl>
+                        </li>
+
                         <li data-name="user" class="layui-nav-item">
                             <a href="javascript:;" lay-tips="用户管理" lay-direction="2">
                                 <i class="layui-icon layui-icon-user"></i>
                                 <cite>&nbsp;后&nbsp;台&nbsp;管&nbsp;理&nbsp;</cite>
                             </a>
                             <dl class="layui-nav-child">
-                                <dd>
-                                    <a lay-href="../Users/College">学院管理</a>
-                                </dd>
                                 <dd>
                                     <a lay-href="../Users/">用户管理</a>
                                 </dd>
@@ -157,7 +172,7 @@
             base: 'plus/' //静态资源所在路径
         }).extend({
             index: 'lib/index' //主入口模块
-        }).use('index');
+            }).use('index');
     </script>
 </body>
 </html>
