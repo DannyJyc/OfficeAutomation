@@ -22,7 +22,10 @@ namespace OfficeAutomation.Controllers
         {
             return View();
         }
-
+        public JsonResult AllClasses(int id=0)
+        {
+            return Json(dalcaClasses.List());
+        }
         public JsonResult GetAllClasses(int page, int limit)
         {
             return Json(bllClasses.List(page, limit));
@@ -95,7 +98,15 @@ namespace OfficeAutomation.Controllers
         {
             return View();
         }
-
+        public JsonResult AllCourses(int id=0)
+        {
+            if (id != 0)
+            {
+                var i = dalCourses.List(id);
+                return Json(dalCourses.List(id));
+            }
+            return Json(dalCourses.List());
+        }
         public JsonResult GetAllCourses(int page, int limit)
         {
             return Json(bllCourses.List(page, limit));
@@ -118,6 +129,26 @@ namespace OfficeAutomation.Controllers
         public JsonResult DelCourses(int id)
         {
             return Json(bllCourses.Del(id));
+        }
+        ///*******************************************************************************************************
+        ///*******************************************************************************************************
+        /// <summary>
+        /// 课表
+        /// </summary>
+        /// <returns></returns>
+        public IActionResult Classtime()
+        {
+            return View();
+        }
+
+        public IActionResult AddClasstime(int id = 0)
+        {
+            ViewData["id"] = id;
+            if (id > 0)
+            {
+                return View(dalCourses.Single(id));
+            }
+            return View();
         }
     }
 }

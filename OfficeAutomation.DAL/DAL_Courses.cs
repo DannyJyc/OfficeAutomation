@@ -26,6 +26,11 @@ namespace OfficeAutomation.DAL
         {
             return dbContext.Query<view_courses_teachers>().Where(p => p.id > 0).ToList();
         }
+
+        public List<view_courses_teachers> List(int id)
+        {
+            return dbContext.Query<view_courses_teachers>().Where(p => p.collegeid == id).ToList();
+        }
         /// <summary>
         /// 所有课程
         /// </summary>
@@ -55,7 +60,9 @@ namespace OfficeAutomation.DAL
             return dbContext.Update<courses>(p => p.id == courses.id, p => new courses()
             {
                 name = courses.name,
-                teachersid = courses.teachersid
+                teachersid = courses.teachersid,
+                startweek = courses.startweek,
+                endweek = courses.endweek
 
             });
         }
@@ -69,7 +76,9 @@ namespace OfficeAutomation.DAL
             return (int)dbContext.Insert<courses>(() => new courses()
             {
                 name = courses.name,
-                teachersid = courses.teachersid
+                teachersid = courses.teachersid,
+                startweek = courses.startweek,
+                endweek = courses.endweek
             });
         }
     }

@@ -52,7 +52,9 @@
                 url: '../Basedata/GetAllCourses',
                 cols: [
                     [
-                        { field: 'name', title: '课程名称', sort: true, fixed: true },
+                        { field: 'college_name', title: '所属', sort: true, fixed: true },
+                        { field: 'classes_name', title: '专业', sort: true, fixed: true },
+                        { field: 'courses_name', title: '课程名称', sort: true, fixed: true },
                         { field: 'teachers_name', title: '讲师', sort: true, fixed: true },
                         { field: 'startweek', title: '开始周', sort: true, fixed: true },
                         { field: 'endweek', title: '结束周', sort: true, fixed: true },
@@ -74,7 +76,7 @@
                         anim: 3,
                         maxmin: true,
                         type: 2,
-                        content: "../Basedata/AddCourses",
+                        content: "../Basedata/AddClasstime",
                         area: ["999px", "663px"]
                     });
                 }

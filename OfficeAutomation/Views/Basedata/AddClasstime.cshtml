@@ -1,0 +1,209 @@
+﻿@model OfficeAutomation.Models.view_classtime_all
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>添加课表信息</title>
+    <link href="~/css/s.css" rel="stylesheet" />
+    <link href="~/css/extend.css" rel="stylesheet" />
+
+    <script src="~/plus/layui/layui.js"></script>
+</head>
+<body style="background-color: white">
+    <div class="layui-container">
+        <div class="layui-row ">
+
+            <div class="layui-col-md12">
+                <div style="margin-top: 3.5em; ">
+
+                    <form class="layui-form">
+                        @if (Model != null)
+                        {
+                            <input type="hidden" id="week" value="@Model.week" />
+                            <input type="hidden" id="lesson" value="@Model.lesson" />
+                            <input type="hidden" id="courses" value="@Model.coursesid" />
+                            <input type="hidden" id="classes" value="@Model.classesid" />
+                            <input type="hidden" id="college" value="@Model.collegeid" />
+                        }
+                        <div class="layui-form-item">
+                            <label class="layui-form-label"><span class="text-red">*</span>选择学院：</label>
+                            <div class="layui-input-block">
+                                <select name="college" lay-filter="college" lay-search="" lay-verify="required"></select>
+                            </div>
+                        </div>
+                        <div class="layui-form-item">
+                            <label class="layui-form-label"><span class="text-red">*</span>选择专业：</label>
+                            <div class="layui-input-block">
+                                <select name="classes" lay-filter="classes" lay-search="" lay-verify="required"></select>
+                            </div>
+                        </div>
+                        <div class="layui-form-item">
+                            <label class="layui-form-label"><span class="text-red">*</span>选择课程：</label>
+                            <div class="layui-input-block">
+                                <select name="courses" lay-filter="courses" lay-search="" lay-verify="required"></select>
+                            </div>
+                        </div>
+
+                        <div class="layui-form-item">
+                            <label class="layui-form-label"><span class="text-red">*</span>星期：</label>
+                            <div class="layui-input-block">
+                                <select name="week" lay-filter="province" lay-search="" lay-verify="required">
+                                    <option value="1">星期一</option>
+                                    <option value="2">星期二</option>
+                                    <option value="3">星期三</option>
+                                    <option value="4">星期四</option>
+                                    <option value="5">星期五</option>
+                                    <option value="6">星期六</option>
+                                    <option value="7">星期日</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="layui-form-item">
+                            <label class="layui-form-label"><span class="text-red">*</span>课节：</label>
+                            <div class="layui-input-block">
+                                <select name="lesson" lay-filter="province" lay-search="" lay-verify="required">
+                                    <option value="1">第一节课(上午1、2）</option>
+                                    <option value="2">第二节课(上午3、4）</option>
+                                    <option value="3">第三节课(下午1、2）</option>
+                                    <option value="4">第四节课(下午3、4）</option>
+                                    <option value="5">第五节课(下午5、6）</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="layui-form-item">
+                            <div class="layui-input-block">
+                                <button class="layui-btn" lay-submit lay-filter="formDemo">立即提交</button>
+                                <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+
+    var layui = layui.config({
+        base: '/plus/' //静态资源所在路径
+    }).use(['layer', 'form', 'jquery','upload'], function () {
+        var form = layui.form;
+        var $ = layui.jquery;
+        var layer = layui.layer;
+
+        var week = $("#week").val();
+        var lesson = $("#lesson").val();
+        $("select[name='week']").val(week);
+        $("select[name='lesson']").val(lesson);
+        //***********************************************************************************************************************************
+        $("select[name='college']").empty();
+        $.get("../Users/GetCollege", function (result) {
+
+            console.log(result);
+            var college = $("#college").val();
+            for (var i = 0; i < result.length; i++) {
+                if (college == result[i].id) {
+                    $("select[name='college']").append('<option selected = "selected" value="' + result[i].id + '">' + result[i].name + '</option>');
+                    continue;
+                }
+                $("select[name='college']").append('<option value="' + result[i].id + '">' + result[i].name + '</option>');
+            }
+
+            form.render('select'); //刷新select选择框渲染
+        });
+
+        $("select[name='classes']").empty();
+        $.get("../Basedata/AllClasses", function (result) {
+
+            console.log(result);
+            var classes = $("#classes").val();
+            for (var i = 0; i < result.length; i++) {
+                if (classes == result[i].id) {
+                    $("select[name='classes']").append('<option selected = "selected" value="' + result[i].id + '">' + result[i].name + '</option>');
+                    continue;
+                }
+                $("select[name='classes']").append('<option value="' + result[i].id + '">' + result[i].name + '</option>');
+            }
+
+            form.render('select'); //刷新select选择框渲染
+        });
+
+        $("select[name='courses']").empty();
+        $.get("../Basedata/AllCourses", function (result) {
+            console.log(result);
+            var courses = $("#courses").val();
+            for (var i = 0; i < result.length; i++) {
+                if (courses == result[i].id) {
+                    $("select[name='courses']").append('<option selected = "selected" value="' + result[i].id + '">' + result[i].name +'('+result[i].teachers_name+')</option>');
+                    continue;
+                }
+                $("select[name='courses']").append('<option value="' + result[i].id + '">' + result[i].name + '(' + result[i].teachers_name +')</option>');
+            }
+
+            form.render('select'); //刷新select选择框渲染
+        });
+        //***********************************************************************************************************************************
+        form.on('select(college)', function (data) {
+            $.ajax({
+                type: "get",
+                url: "../Basedata/AllCourses",
+                data: { id: data.value },
+                dataType: "json",
+                success: function (data) {
+                    var op = "<option></option>";
+                    for (var a = 0; a < data.length; a++) {
+                        op = op + '<option value="' + data[a].id + '">' + data[a].name + '(' + data[a].teachers_name +')</option>'
+                    }
+                    $("select[name=courses]").children().remove();
+                    $("select[name=courses]").append(op);
+                    form.render('select');
+                }
+            });
+        });
+        //***********************************************************************************************************************************
+        form.on('submit(formDemo)', function (data) {
+            var index = layer.msg('数据提交中，请稍候', { icon: 16, shade: 0.01, time: 10 });
+            var upData = data.field;
+
+            $.ajax({
+                type: "post",
+                url: "../Basedata/UpdateCourses",
+                data: {
+                    id:@ViewData["id"],
+                    name: upData.name,
+                    teachersid: upData.teachers,
+                    startweek: upData.startweek,
+                    endweek: upData.endweek,
+                    week: upData.week,
+                    option:upData.option
+                },
+                dataType: "json",
+                success: function(data) {
+                    layer.close(index);
+                    if (data.code == "0" || data.code == 0) {
+                        layer.alert("操作成功", { icon: 6 },
+                        function(index) {
+                            var index = parent.layer.getFrameIndex(window.name); //先得到当前iframe层的索引
+                            parent.layer.close(index); //再执行关闭
+                            parent.location.reload(); // 刷新父级
+                        });
+
+                        //location.reload();
+                        return false;
+                    } else {
+                        layer.alert(data.msg, { icon: 5 });
+                    }
+                    console.log(data);
+
+                }
+            });
+
+            return false;
+        });
+
+    });
+    </script>
+</body>
+</html>
+

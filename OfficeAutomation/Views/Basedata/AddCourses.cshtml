@@ -28,6 +28,7 @@
                                     if (Model != null)
                                     {
                                         <input type="text" name="name" required lay-verify="required" placeholder="请输入名称" autocomplete="off" class="layui-input" value="@Model.name">
+
                                         <input type="hidden" id="teachers" value="@Model.teachers_id" />
                                     }
                                     else
@@ -37,6 +38,37 @@
                                 }
                             </div>
                         </div>
+                        <div class="layui-form-item">
+                            <label class="layui-form-label"><span class="text-red">*</span>开始/结束周：</label>
+                            <div class="layui-input-block">
+
+                                @{
+                                    if (Model != null)
+                                    {
+                                        <div class="layui-input-inline" style="width: 100px;">
+                                            <input type="text" name="startweek" placeholder="开始周" autocomplete="off" class="layui-input" value="@Model.startweek">
+                                        </div>
+                                        <div class="layui-form-mid">-</div>
+                                        <div class="layui-input-inline" style="width: 100px;">
+                                            <input type="text" name="endweek" placeholder="结束周" autocomplete="off" class="layui-input" value="@Model.endweek">
+                                        </div>
+                                        <div class="layui-form-mid layui-word-aux">空白，默认为1-18</div>
+                                    }
+                                    else
+                                    {
+                                        <div class="layui-input-inline" style="width: 100px;">
+                                            <input type="text" name="startweek" placeholder="开始周" autocomplete="off" class="layui-input">
+                                        </div>
+                                        <div class="layui-form-mid">-</div>
+                                        <div class="layui-input-inline" style="width: 100px;">
+                                            <input type="text" name="endweek" placeholder="结束周" autocomplete="off" class="layui-input">
+                                        </div>
+                                        <div class="layui-form-mid layui-word-aux">空白，默认为1-18</div>
+                                    }
+                                }
+                            </div>
+                        </div>
+
                         <div class="layui-form-item">
                             <label class="layui-form-label"><span class="text-red">*</span>选择教师：</label>
                             <div class="layui-input-block">
@@ -64,6 +96,7 @@
         var $ = layui.jquery;
         var layer = layui.layer;
 
+
         $("select[name='teachers']").empty();
         $.get("../Basedata/GetTeachers", function (result) {
 
@@ -89,7 +122,11 @@
                 data: {
                     id:@ViewData["id"],
                     name: upData.name,
-                    teachersid:upData.teachers
+                    teachersid: upData.teachers,
+                    startweek: upData.startweek,
+                    endweek: upData.endweek,
+                    week: upData.week,
+                    option:upData.option
                 },
                 dataType: "json",
                 success: function(data) {
