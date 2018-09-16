@@ -18,14 +18,7 @@
                 <div style="margin-top: 3.5em; ">
 
                     <form class="layui-form">
-                        @if (Model != null)
-                        {
-                            <input type="hidden" id="week" value="@Model.week" />
-                            <input type="hidden" id="lesson" value="@Model.lesson" />
-                            <input type="hidden" id="courses" value="@Model.coursesid" />
-                            <input type="hidden" id="classes" value="@Model.classesid" />
-                            <input type="hidden" id="college" value="@Model.collegeid" />
-                        }
+            
                         <div class="layui-form-item">
                             <label class="layui-form-label"><span class="text-red">*</span>选择学院：</label>
                             <div class="layui-input-block">
@@ -44,7 +37,27 @@
                                 <select name="courses" lay-filter="courses" lay-search="" lay-verify="required"></select>
                             </div>
                         </div>
+                        <div class="layui-form-item">
+                            <label class="layui-form-label"><span class="text-red">*</span>教室：</label>
+                            <div class="layui-input-block">
 
+                                @{
+                                    if (Model != null)
+                                    {
+                                        <input type="text" name="classroom" required lay-verify="required" placeholder="请输入教室" autocomplete="off" class="layui-input" value="@Model.classroom">
+                                        <input type="hidden" id="week" value="@Model.week" />
+                                        <input type="hidden" id="lesson" value="@Model.lesson" />
+                                        <input type="hidden" id="courses" value="@Model.coursesid" />
+                                        <input type="hidden" id="classes" value="@Model.classesid" />
+                                        <input type="hidden" id="college" value="@Model.collegeid" />
+                                    }
+                                    else
+                                    {
+                                        <input type="text" name="classroom" required lay-verify="required" placeholder="请输入教室" autocomplete="off" class="layui-input">
+                                    }
+                                }
+                            </div>
+                        </div>
                         <div class="layui-form-item">
                             <label class="layui-form-label"><span class="text-red">*</span>星期：</label>
                             <div class="layui-input-block">
@@ -165,18 +178,17 @@
         form.on('submit(formDemo)', function (data) {
             var index = layer.msg('数据提交中，请稍候', { icon: 16, shade: 0.01, time: 10 });
             var upData = data.field;
-
             $.ajax({
                 type: "post",
-                url: "../Basedata/UpdateCourses",
+                url: "../Basedata/UpdateClasstime",
                 data: {
                     id:@ViewData["id"],
-                    name: upData.name,
-                    teachersid: upData.teachers,
-                    startweek: upData.startweek,
-                    endweek: upData.endweek,
+                    collegeid: upData.college,
+                    classesid: upData.classes,
+                    coursesid: upData.courses,
+                    classroom:upData.classroom,
                     week: upData.week,
-                    option:upData.option
+                    lesson:upData.lesson
                 },
                 dataType: "json",
                 success: function(data) {

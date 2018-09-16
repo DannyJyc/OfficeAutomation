@@ -15,10 +15,10 @@ namespace OfficeAutomation.Models
             basedataid = 0;
             week = 0;
             lesson = 0;
+            classroom = "";
             collegeid = 0;
             classesid = 0;
             coursesid = 0;
-            classroom = "";
             college_name = "";
             classes_name = "";
             courses_name = "";
@@ -47,21 +47,21 @@ namespace OfficeAutomation.Models
         /// </summary>
         public int? lesson { get; set; }
         /// <summary>
-        /// 学院（校区）
-        /// </summary>
-        public int? collegeid { get; set; }
-        /// <summary>
-        /// 专业名称
-        /// </summary>
-        public int? classesid { get; set; }
-        /// <summary>
-        /// 课程-讲师
-        /// </summary>
-        public int? coursesid { get; set; }
-        /// <summary>
         /// 教室
         /// </summary>
         public string classroom { get; set; }
+        /// <summary>
+        /// 学院（校区）
+        /// </summary>
+        public int collegeid { get; set; }
+        /// <summary>
+        /// 专业名称
+        /// </summary>
+        public int classesid { get; set; }
+        /// <summary>
+        /// 课程-讲师
+        /// </summary>
+        public int coursesid { get; set; }
         /// <summary>
         /// 学院名称
         /// </summary>

@@ -13333,11 +13333,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\DannyJiang\\Desktop\\OfficeAutomation\\OfficeAutomation\\OfficeAutomation.csproj",
+      "projectUniqueName": "D:\\项目\\OfficeAutomation\\OfficeAutomation\\OfficeAutomation.csproj",
       "projectName": "OfficeAutomation",
-      "projectPath": "C:\\Users\\DannyJiang\\Desktop\\OfficeAutomation\\OfficeAutomation\\OfficeAutomation.csproj",
+      "projectPath": "D:\\项目\\OfficeAutomation\\OfficeAutomation\\OfficeAutomation.csproj",
       "packagesPath": "C:\\Users\\DannyJiang\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\DannyJiang\\Desktop\\OfficeAutomation\\OfficeAutomation\\obj\\",
+      "outputPath": "D:\\项目\\OfficeAutomation\\OfficeAutomation\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
@@ -13356,11 +13356,11 @@
       "frameworks": {
         "netcoreapp2.1": {
           "projectReferences": {
-            "C:\\Users\\DannyJiang\\Desktop\\OfficeAutomation\\OfficeAutomation.DAL\\OfficeAutomation.DAL.csproj": {
-              "projectPath": "C:\\Users\\DannyJiang\\Desktop\\OfficeAutomation\\OfficeAutomation.DAL\\OfficeAutomation.DAL.csproj"
+            "D:\\项目\\OfficeAutomation\\OfficeAutomation.DAL\\OfficeAutomation.DAL.csproj": {
+              "projectPath": "D:\\项目\\OfficeAutomation\\OfficeAutomation.DAL\\OfficeAutomation.DAL.csproj"
             },
-            "C:\\Users\\DannyJiang\\Desktop\\OfficeAutomation\\OfficeAutomation.Models\\OfficeAutomation.Models.csproj": {
-              "projectPath": "C:\\Users\\DannyJiang\\Desktop\\OfficeAutomation\\OfficeAutomation.Models\\OfficeAutomation.Models.csproj"
+            "D:\\项目\\OfficeAutomation\\OfficeAutomation.Models\\OfficeAutomation.Models.csproj": {
+              "projectPath": "D:\\项目\\OfficeAutomation\\OfficeAutomation.Models\\OfficeAutomation.Models.csproj"
             }
           }
         }

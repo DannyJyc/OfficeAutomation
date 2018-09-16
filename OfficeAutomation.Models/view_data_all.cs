@@ -15,7 +15,6 @@ namespace OfficeAutomation.Models
             collegeid = 0;
             classesid = 0;
             coursesid = 0;
-            classroom = "";
             classes_name = "";
             college_name = "";
             courses_name = "";
@@ -43,10 +42,6 @@ namespace OfficeAutomation.Models
         /// 课程-讲师
         /// </summary>
         public int? coursesid { get; set; }
-        /// <summary>
-        /// 教室
-        /// </summary>
-        public string classroom { get; set; }
         /// <summary>
         /// 班级名称
         /// </summary>

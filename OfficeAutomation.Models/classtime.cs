@@ -15,6 +15,7 @@ namespace OfficeAutomation.Models
             basedataid = 0;
             week = 0;
             lesson = 0;
+            classroom = "";
         }
         #endregion
 
@@ -36,6 +37,10 @@ namespace OfficeAutomation.Models
         /// 课节
         /// </summary>
         public int? lesson { get; set; }
+        /// <summary>
+        /// 教室
+        /// </summary>
+        public string classroom { get; set; }
 
         /// <summary>
         /// 非SQL映射字段 

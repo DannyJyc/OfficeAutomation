@@ -1,19 +1,24 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
 using OfficeAutomation.BLL;
 using OfficeAutomation.DAL;
+using OfficeAutomation.DAL.Helper;
 using OfficeAutomation.Models;
 
 namespace OfficeAutomation.Controllers
 {
     public class BasedataController : Controller
     {
+        private DAL.Helper.JsonUserConvert jsonUserConvert = new JsonUserConvert();
         private BLL.BLL_Classes bllClasses = new BLL_Classes();
         private BLL.BLL_Teachers bllTeachers = new BLL_Teachers();
         private BLL.BLL_Courses bllCourses = new BLL_Courses();
+        private BLL.BLL_Classtime_All bllClasstimeAll = new BLL_Classtime_All();
         private DAL.DAL_Classes dalcaClasses = new DAL_Classes();
         private DAL.DAL_Teachers dalTeachers = new DAL_Teachers();
         private DAL.DAL_Courses dalCourses = new DAL_Courses();
         private DAL.DAL_College dalCollege = new DAL_College();
+        private DAL.DAL_Classtime_All dalClasstimeAll = new DAL_Classtime_All();
         /// <summary>
         /// 专业
         /// </summary>
@@ -146,9 +151,26 @@ namespace OfficeAutomation.Controllers
             ViewData["id"] = id;
             if (id > 0)
             {
-                return View(dalCourses.Single(id));
+                return View(dalClasstimeAll.Single(id));
             }
             return View();
+        }
+
+        public JsonResult GetClasstime(int page,int limit)
+        {
+            return Json(bllClasstimeAll.List(jsonUserConvert.StringToObject(HttpContext.Session.GetString("users")),page,limit));
+        }
+
+
+        public JsonResult DelClasstime(int id)
+        {
+            return Json(bllClasstimeAll.Del(id));
+        }
+
+        public JsonResult UpdateClasstime(view_classtime_all classtime)
+        {
+            return Json(bllClasstimeAll.Update(jsonUserConvert.StringToObject(HttpContext.Session.GetString("users")),
+                classtime));
         }
     }
 }

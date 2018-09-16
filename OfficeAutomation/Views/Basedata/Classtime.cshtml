@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>课程管理</title>
+    <title>课表管理</title>
     <link href="~/css/s.css" rel="stylesheet" />
     <link href="~/css/extend.css" rel="stylesheet" />
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
@@ -49,7 +49,7 @@
             //方法级渲染
             table.render({
                 elem: '#LAY_table_user',
-                url: '../Basedata/GetAllCourses',
+                url: '../Basedata/GetClasstime',
                 cols: [
                     [
                         { field: 'college_name', title: '所属', sort: true, fixed: true },
@@ -58,6 +58,7 @@
                         { field: 'teachers_name', title: '讲师', sort: true, fixed: true },
                         { field: 'startweek', title: '开始周', sort: true, fixed: true },
                         { field: 'endweek', title: '结束周', sort: true, fixed: true },
+                        { field: 'classroom', title: '教室', sort: true, fixed: true },
                         { field: 'week', title: '周', sort: true, fixed: true },
                         { field: 'lesson', title: '节', sort: true, fixed: true },
                         { field: 'type', title: '操作', toolbar: '#barDemo', align: 'center' }
@@ -89,7 +90,7 @@
                             function (index) {
                                 $.ajax({
                                     type: "post",
-                                    url: "../Basedata/DelCourses",
+                                    url: "../Basedata/DelClasstime",
                                     data: { id: data.id },
                                     dataType: "json",
                                     success: function (data) {
@@ -114,7 +115,7 @@
                             anim: 3,
                             maxmin: true,
                             type: 2,
-                            content: "../Basedata/AddCourses?id=" + data.id,
+                            content: "../Basedata/AddClasstime?id=" + data.id,
                             area: ["999px", "663px"]
                         });
                     }
