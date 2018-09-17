@@ -17,6 +17,85 @@ namespace OfficeAutomation.BLL
         private DAL.DAL_Courses dalCourses = new DAL_Courses();
         BaseResult result = new BaseResult();
         /// <summary>
+        /// 获取课表
+        /// </summary>
+        /// <param name="collegeid"></param>
+        /// <param name="classesid"></param>
+        /// <param name="week"></param>
+        /// <returns></returns>
+        public BaseResult GetAllClasstime(int collegeid,int classesid,int week)
+        {
+            List<Classtime> list = new List<Classtime>();
+            for (int i = 1; i <= 5; i++)
+            {
+                Classtime classtime = new Classtime();
+
+                switch (i)
+                {
+                    case 1:
+                        classtime.Lesson = "第一节课(上午1、2)";
+                        break;
+                    case 2:
+                        classtime.Lesson = "第二节课(上午3、4)";
+                        break;
+                    case 3:
+                        classtime.Lesson = "第三节课(下午1、2)";
+                        break;
+                    case 4:
+                        classtime.Lesson = "第四节课(下午3、4)";
+                        break;
+                    case 5:
+                        classtime.Lesson = "第五节课(下午5、6)";
+                        break;
+                }
+                list.Add(classtime);
+            }
+            if (collegeid == 0 && classesid == 0 && week == 0)
+            {
+                result.code = 0;
+                result.data = list;
+                return result;
+            }
+
+            for (var a = 1; a <= 5; a++)
+            {
+                for (var b = 1; b <= 7; b++)
+                {
+                    var temp = dalClasstimeAll.ListByWhere(collegeid, classesid, week, b, a);
+                    if (temp != null)
+                    {
+                        switch (b)
+                        {
+                            case 1:
+                                list[a-1].Mon= temp.courses_name+temp.teachers_name+"("+temp.startweek+"-"+temp.endweek+")";
+                                break;
+                            case 2:
+                                list[a-1].Tues= temp.courses_name + temp.teachers_name + "(" + temp.startweek + "-" + temp.endweek + ")";
+                                break;
+                            case 3:
+                                list[a-1].Wednes= temp.courses_name + temp.teachers_name + "(" + temp.startweek + "-" + temp.endweek + ")";
+                                break;
+                            case 4:
+                                list[a-1].Thurs= temp.courses_name + temp.teachers_name + "(" + temp.startweek + "-" + temp.endweek + ")";
+                                break;
+                            case 5:
+                                list[a-1].Fri= temp.courses_name + temp.teachers_name + "(" + temp.startweek + "-" + temp.endweek + ")";
+                                break;
+                            case 6:
+                                list[a-1].Sat= temp.courses_name + temp.teachers_name + "(" + temp.startweek + "-" + temp.endweek + ")";
+                                break;
+                            case 7:
+                                list[a-1].Sun= temp.courses_name + temp.teachers_name + "(" + temp.startweek + "-" + temp.endweek + ")";
+                                break;
+                        }
+                    }
+                }
+            }
+            result.code = 0;
+            result.data = list;
+            return result;
+        }
+        /// <summary>
         /// 所有数据
         /// </summary>
         /// <param name="page"></param>

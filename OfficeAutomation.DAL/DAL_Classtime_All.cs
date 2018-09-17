@@ -96,6 +96,33 @@ namespace OfficeAutomation.DAL
                 classroom = classtime.classroom
             });
         }
+        /// <summary>
+        /// 条件查询
+        /// </summary>
+        /// <param name="collegeid"></param>
+        /// <param name="classesid"></param>
+        /// <param name="week"></param>
+        /// <returns></returns>
+        public view_classtime_all ListByWhere(int collegeid, int classesid, int week,int w,int l)
+        {
+            if (week == 0)
+            {
+                return dbContext.Query<view_classtime_all>().Where(p =>
+                    p.collegeid == collegeid && p.classesid == classesid && p.week == w && p.lesson == l).FirstOrDefault();
+
+            }
+            return dbContext.Query<view_classtime_all>().Where(p =>
+                p.collegeid == collegeid && p.classesid == classesid && p.startweek <= week && p.endweek >= week&&p.week==w&&p.lesson==l).FirstOrDefault();
+        }
+        /// <summary>
+        /// 列出指定学院的专业
+        /// </summary>
+        /// <param name="collegeid"></param>
+        /// <returns></returns>
+        public List<view_data_all_group> ListDesignatedClass(int collegeid)
+        {
+            return dbContext.Query<view_data_all_group>().Where(p => p.collegeid == collegeid).ToList();
+        }
     }
 }
 

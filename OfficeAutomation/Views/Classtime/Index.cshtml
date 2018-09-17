@@ -1,0 +1,170 @@
+﻿@model List<OfficeAutomation.Models.college>
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>课表管理</title>
+    <link href="~/css/s.css" rel="stylesheet" />
+    <link href="~/css/extend.css" rel="stylesheet" />
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/plus/layui/layui.js"></script>
+    <style type="text/css">
+        #demo1 {
+            text-align: center;
+            margin-top: 60px;
+            /*position: fixed;*/
+            /*bottom: 0;*/
+        }
+
+        .layui-layer-shade {
+            z-index: 49 !important;
+        }
+
+        .layui-layer-page {
+            z-index: 50 !important;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="demoTable">
+        <br> &nbsp;&nbsp;&nbsp;
+        学院：
+        <div class="layui-inline layui-form">
+            <select name="demoReload" lay-filter="test">
+                <option></option>
+            @{
+                foreach (var item in Model)
+                {
+                    <option value="@item.id">@item.name</option>
+                }
+            }
+            </select>
+        </div>
+        专业：
+        <div class="layui-inline layui-form">
+            <select name="demoReload1"></select>
+        </div>
+        选择周：
+        <div class="layui-inline layui-form">
+            <select name="demoReload2">
+                <option value="0"></option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="6">6</option>
+                <option value="7">7</option>
+                <option value="8">8</option>
+                <option value="9">9</option>
+                <option value="10">10</option>
+                <option value="11">11</option>
+                <option value="12">12</option>
+                <option value="13">13</option>
+                <option value="14">14</option>
+                <option value="15">15</option>
+                <option value="16">16</option>
+                <option value="17">17</option>
+                <option value="18">18</option>
+            </select>
+        </div>
+        <button class="layui-btn" data-type="query"><i class="layui-icon">&#xe615;</i> 查询</button> <button class="layui-btn" data-type="reload"><i class="layui-icon">&#x1002;</i> 复位</button>
+    </div>
+    <table class="layui-hide" id="LAY_table_user" lay-filter="user"></table>
+
+
+    <script>
+        var $;
+        layui.use(['table', 'layer', 'form'],
+            function () {
+                var layer = layui.layer,
+                    table = layui.table,
+                    form = layui.form;
+                //方法级渲染
+                table.render({
+                    elem: '#LAY_table_user',
+                    url: '../Classtime/Get',
+                    cols: [
+                        [
+                            { field: 'lesson', width: 160, title: '--', fixed: 'left' },
+                            { field: 'mon', title: '星期一', sort: true, fixed: true },
+                            { field: 'tues', title: '星期二', sort: true, fixed: true },
+                            { field: 'wednes', title: '星期三', sort: true, fixed: true },
+                            { field: 'thurs', title: '星期四', sort: true, fixed: true },
+                            { field: 'fri', title: '星期五', sort: true, fixed: true },
+                            { field: 'sat', title: '星期六', sort: true, fixed: true },
+                            { field: 'sun', title: '星期日', sort: true, fixed: true }
+                        ]
+                    ],
+                    id: 'testReload',
+                    page: false,
+                    height: 'full-100',
+                    limit: 20,
+                    limits: [20, 50, 100, 200, 300, 400, 500]
+                });
+                var active = {
+                    query: function () {
+                        var college = $("select[name=demoReload]");
+                        var classes = $("select[name=demoReload1]");
+                        var week = $("select[name=demoReload2]");
+                        //执行重载
+                        table.reload('testReload', {
+                            page: {
+                                curr: 1 //重新从第 1 页开始
+                            }
+                            , where: {
+                                collegeid: college.val(),
+                                classesid: classes.val(),
+                                week: week.val()
+                            }
+                        });
+                    }
+                    ,
+                    reload: function () {
+                        var classical = $("select[name=demoReload]");
+                        var num = $("select[name=demoReload1]");
+                        $("select[name=demoReload1]").children().remove();
+                        classical.val("");
+                        num.val("");
+                        form.render('select')
+                        //执行重载
+                        table.reload('testReload', {
+                            page: {
+                                curr: 1 //重新从第 1 页开始
+                            }, where: {
+                                collegeid: "",
+                                classesid: "",
+                                week: ""
+                            }
+                        });
+                    }
+                };
+                form.on('select(test)', function (data) {
+                    $.ajax({
+                        type: "get",
+                        url: "../Classtime/GetClassesByCollege",
+                        data: { collegeid: data.value },
+                        dataType: "json",
+                        success: function (data) {
+                            var op = "<option></option>";
+                            for (var a = 0; a < data.length; a++) {
+                                op = op + '<option value="' + data[a].classesid + '">' + data[a].classes_name + '</option>'
+                            }
+                            $("select[name=demoReload1]").children().remove();
+                            $("select[name=demoReload1]").append(op);
+                            form.render('select');
+                        }
+                    });
+                });
+                $('.demoTable .layui-btn').on('click',
+                    function () {
+                        var type = $(this).data('type');
+                        active[type] ? active[type].call(this) : '';
+                    });
+            });
+    </script>
+</body>
+</html>
