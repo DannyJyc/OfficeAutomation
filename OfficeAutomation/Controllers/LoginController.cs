@@ -28,6 +28,14 @@ namespace OfficeAutomation.Controllers
             return View();
         }
         /// <summary>
+        /// 权限不足
+        /// </summary>
+        /// <returns></returns>
+        public IActionResult Insufficient()
+        {
+            return View();
+        }
+        /// <summary>
         /// 登录验证
         /// </summary>
         /// <param name="username"></param>

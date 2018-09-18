@@ -10,6 +10,7 @@ namespace OfficeAutomation.BLL
     {
         private static readonly ILog log = LogManager.GetLogger(SDKProperties.LogRepository.Name, typeof(Base));
         private DAL.DAL_Dictionary dalDictionary = new DAL_Dictionary();
+        private DAL.DAL_User dalUser = new DAL_User();
         BaseResult result = new BaseResult();
         /// <summary>
         /// 获取所有数据
@@ -59,8 +60,14 @@ namespace OfficeAutomation.BLL
             }
             else
             {
-                dalDictionary.UpdateDictionary(related.dicvalue, related.NotMapped);
-                dalDictionary.UpdateRelated(related.dicvalue, related.NotMapped);
+                if (dalDictionary.UpdateDictionary(related.dicvalue, related.NotMapped) == 0 ||
+                    dalDictionary.UpdateRelated(related.dicvalue, related.NotMapped) == 0 ||
+                    dalUser.UpdateByDicvalue(related.dicvalue, related.NotMapped) == 0)
+                {
+                    result.code = -2;
+                    result.msg = "修改失败";
+                    return result;
+                }
             }
 
             dalDictionary.DelRelated(related.dicvalue);

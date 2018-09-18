@@ -12,14 +12,15 @@
     <script src="~/plus/layui/layui.js"></script>
 </head>
 <body>
-    <script>
-        layui.use(['element', 'code', 'form', 'jquery'], function () {
+<script>
+    if (window != top) { top.location.href = location.href; }
+    layui.use(['element', 'code', 'form', 'jquery'], function () {
 
-            var layer = layui.layer;
-            layer.msg('登出成功');
-            parent.location.reload(); // 刷新父级
+        var layer = layui.layer;
+        layer.msg('登出成功');
+        window.location.href = "../Login";
 
-        });
-    </script>
+    });
+</script>
 </body>
 </html>

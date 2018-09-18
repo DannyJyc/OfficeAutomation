@@ -23,7 +23,7 @@ namespace OfficeAutomation.BLL
         /// <param name="classesid"></param>
         /// <param name="week"></param>
         /// <returns></returns>
-        public BaseResult GetAllClasstime(int collegeid,int classesid,int week)
+        public BaseResult GetAllClasstime(int teachersid,int collegeid,int classesid,int week)
         {
             List<Classtime> list = new List<Classtime>();
             for (int i = 1; i <= 5; i++)
@@ -50,7 +50,7 @@ namespace OfficeAutomation.BLL
                 }
                 list.Add(classtime);
             }
-            if (collegeid == 0 && classesid == 0 && week == 0)
+            if (teachersid==0&&collegeid == 0 && classesid == 0 && week == 0)
             {
                 result.code = 0;
                 result.data = list;
@@ -61,7 +61,14 @@ namespace OfficeAutomation.BLL
             {
                 for (var b = 1; b <= 7; b++)
                 {
-                    var temp = dalClasstimeAll.ListByWhere(collegeid, classesid, week, b, a);
+                    view_classtime_all temp;
+                    if (teachersid == 0) { 
+                        temp = dalClasstimeAll.ListByWhere(collegeid, classesid, week, b, a);
+                    }
+                    else
+                    {
+                        temp = dalClasstimeAll.ListByWhere(teachersid,b,a);
+                    }
                     if (temp != null)
                     {
                         switch (b)

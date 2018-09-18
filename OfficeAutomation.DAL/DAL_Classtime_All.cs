@@ -114,6 +114,12 @@ namespace OfficeAutomation.DAL
             return dbContext.Query<view_classtime_all>().Where(p =>
                 p.collegeid == collegeid && p.classesid == classesid && p.startweek <= week && p.endweek >= week&&p.week==w&&p.lesson==l).FirstOrDefault();
         }
+
+        public view_classtime_all ListByWhere(int teachersid, int w, int l)
+        {
+            return dbContext.Query<view_classtime_all>().Where(p =>
+                p.teachersid == teachersid && p.week == w && p.lesson == l).FirstOrDefault();
+        }
         /// <summary>
         /// 列出指定学院的专业
         /// </summary>

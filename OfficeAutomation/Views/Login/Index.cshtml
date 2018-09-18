@@ -54,42 +54,44 @@
         </div>
     </div>
 
-    <script>
-        layui.use(['element', 'code', 'form', 'jquery'], function () {
+<script>
+    if (window != top) { top.location.href = location.href; }
 
-            var form = layui.form;
-            var $ = layui.jquery;
-            var layer = layui.layer;
+    layui.use(['element', 'code', 'form', 'jquery'], function () {
+
+        var form = layui.form;
+        var $ = layui.jquery;
+        var layer = layui.layer;
 
 
-            //监听提交
-            form.on('submit(forlogin)', function (data) {
-                var username = $('#username').val();
-                var password = $('#password').val();
+        //监听提交
+        form.on('submit(forlogin)', function (data) {
+            var username = $('#username').val();
+            var password = $('#password').val();
 
-                $.ajax({
-                    type: "post",
-                    url: "../Login/Validate",
-                    data: { username: username, password: password },
-                    dataType: "json",
-                    success: function(data) {
-                        if (data.code == 0) {
-                            layer.alert('登录成功', { icon: 6 });
-                            location.href = "../Home";
-                        } else {
-                            layer.msg(data.msg, { icon: 5 });
-                            return;
-                        }
-                    },
-                    error: function() {
-                        layer.msg('操作失败', { icon: 5 });
+            $.ajax({
+                type: "post",
+                url: "../Login/Validate",
+                data: { username: username, password: password },
+                dataType: "json",
+                success: function(data) {
+                    if (data.code == 0) {
+                        layer.alert('登录成功', { icon: 6 });
+                        location.href = "../Home";
+                    } else {
+                        layer.msg(data.msg, { icon: 5 });
                         return;
                     }
-                });
-                return false;
+                },
+                error: function() {
+                    layer.msg('操作失败', { icon: 5 });
+                    return;
+                }
             });
-
+            return false;
         });
-    </script>
+
+    });
+</script>
 </body>
 </html>

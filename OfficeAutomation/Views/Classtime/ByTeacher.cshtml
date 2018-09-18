@@ -1,4 +1,4 @@
-﻿@model List<OfficeAutomation.Models.college>
+﻿@model List<OfficeAutomation.Models.view_teachers_college>
 
 <!DOCTYPE html>
 <html>
@@ -30,51 +30,25 @@
 <body>
     <div class="demoTable">
         <br> &nbsp;&nbsp;&nbsp;
-        <button class="layui-btn layui-btn-disabled">学院</button>
+        <button class="layui-btn layui-btn-normal" onclick="location.href = '../Classtime/Index'">学院</button>
 
-        <button class="layui-btn layui-btn-normal" onclick="location.href = '../Classtime/ByTeacher'">老师</button>
+        <button class="layui-btn layui-btn-disabled">老师</button>
+
         <br>
         <br> &nbsp;&nbsp;&nbsp;
-        学院：
+        老师：
         <div class="layui-inline layui-form">
             <select name="demoReload" lay-filter="test">
                 <option></option>
                 @{
                     foreach (var item in Model)
                     {
-                        <option value="@item.id">@item.name</option>
+                        <option value="@item.id">@item.name (@item.college_name)</option>
                     }
                 }
             </select>
         </div>
-        专业：
-        <div class="layui-inline layui-form">
-            <select name="demoReload1"></select>
-        </div>
-        选择周：
-        <div class="layui-inline layui-form">
-            <select name="demoReload2">
-                <option value="0"></option>
-                <option value="1">1</option>
-                <option value="2">2</option>
-                <option value="3">3</option>
-                <option value="4">4</option>
-                <option value="5">5</option>
-                <option value="6">6</option>
-                <option value="7">7</option>
-                <option value="8">8</option>
-                <option value="9">9</option>
-                <option value="10">10</option>
-                <option value="11">11</option>
-                <option value="12">12</option>
-                <option value="13">13</option>
-                <option value="14">14</option>
-                <option value="15">15</option>
-                <option value="16">16</option>
-                <option value="17">17</option>
-                <option value="18">18</option>
-            </select>
-        </div>
+        
         <button class="layui-btn" data-type="query"><i class="layui-icon">&#xe615;</i> 查询</button> <button class="layui-btn" data-type="reload"><i class="layui-icon">&#x1002;</i> 复位</button>
     </div>
     <table class="layui-hide" id="LAY_table_user" lay-filter="user"></table>
@@ -111,58 +85,34 @@
                 });
                 var active = {
                     query: function () {
-                        var college = $("select[name=demoReload]");
-                        var classes = $("select[name=demoReload1]");
-                        var week = $("select[name=demoReload2]");
+                        var teachers = $("select[name=demoReload]");
+
                         //执行重载
                         table.reload('testReload', {
                             page: {
                                 curr: 1 //重新从第 1 页开始
                             }
                             , where: {
-                                collegeid: college.val(),
-                                classesid: classes.val(),
-                                week: week.val()
+                                teachersid: teachers.val()
                             }
                         });
                     }
                     ,
                     reload: function () {
-                        var classical = $("select[name=demoReload]");
-                        var num = $("select[name=demoReload1]");
-                        $("select[name=demoReload1]").children().remove();
-                        classical.val("");
-                        num.val("");
+                        var teachers = $("select[name=demoReload]");
+                        teachers.val("");
                         form.render('select')
                         //执行重载
                         table.reload('testReload', {
                             page: {
                                 curr: 1 //重新从第 1 页开始
                             }, where: {
-                                collegeid: "",
-                                classesid: "",
-                                week: ""
+                                teachersid: ""
                             }
                         });
                     }
                 };
-                form.on('select(test)', function (data) {
-                    $.ajax({
-                        type: "get",
-                        url: "../Classtime/GetClassesByCollege",
-                        data: { collegeid: data.value },
-                        dataType: "json",
-                        success: function (data) {
-                            var op = "<option></option>";
-                            for (var a = 0; a < data.length; a++) {
-                                op = op + '<option value="' + data[a].classesid + '">' + data[a].classes_name + '</option>'
-                            }
-                            $("select[name=demoReload1]").children().remove();
-                            $("select[name=demoReload1]").append(op);
-                            form.render('select');
-                        }
-                    });
-                });
+
                 $('.demoTable .layui-btn').on('click',
                     function () {
                         var type = $(this).data('type');

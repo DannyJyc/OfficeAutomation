@@ -201,3 +201,5 @@ D:\项目\OfficeAutomation\OfficeAutomation\obj\Debug\netcoreapp2.1\OfficeAutoma
 D:\项目\OfficeAutomation\OfficeAutomation\obj\Debug\netcoreapp2.1\OfficeAutomation.csproj.CopyComplete
 D:\项目\OfficeAutomation\OfficeAutomation\obj\Debug\netcoreapp2.1\Razor\Views\Classtime\Index.g.cshtml.cs
 D:\OfficeAutomation\OfficeAutomation\obj\Debug\netcoreapp2.1\Razor\Views\Classtime\Index.g.cshtml.cs
+D:\项目\OfficeAutomation\OfficeAutomation\obj\Debug\netcoreapp2.1\Razor\Views\Classtime\ByTeacher.g.cshtml.cs
+D:\项目\OfficeAutomation\OfficeAutomation\obj\Debug\netcoreapp2.1\Razor\Views\Login\Insufficient.g.cshtml.cs

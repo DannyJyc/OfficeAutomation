@@ -11,7 +11,36 @@ namespace OfficeAutomation.DAL
     public class DAL_User
     {
         private IDbContext dbContext = DbContextFactory.CreateDbContext();
+        /// <summary>
+        /// 对应id用户是否有对应控制器权限
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="controller"></param>
+        /// <returns></returns>
+        public bool IsHaveEffect(int id, string controller)
+        {
+            var single = dbContext.Query<view_users_effect>().Where(p => p.id == id && p.controller == controller)
+                .FirstOrDefault();
+            if (single == null)
+            {
+                return false;
+            }
 
+            return true;
+        } 
+        /// <summary>
+        /// 修改用户的角色名
+        /// </summary>
+        /// <param name="value"></param>
+        /// <param name="once"></param>
+        /// <returns></returns>
+        public int UpdateByDicvalue(string value, string once)
+        {
+            return dbContext.Update<users>(p => p.dicvalue == once, p => new users()
+            {
+                dicvalue = value
+            });
+        }
         /// <summary>
         /// 返回对应id的用户信息
         /// </summary>

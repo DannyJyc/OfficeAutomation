@@ -12,6 +12,7 @@ namespace OfficeAutomation.Controllers
     {
         private BLL.BLL_Classtime_All bllClasstimeAll = new BLL_Classtime_All();
         private DAL.DAL_Classtime_All dalClasstimeAll = new DAL_Classtime_All();
+        private DAL.DAL_Teachers dalTeachers = new DAL_Teachers();
         private DAL.DAL_College dalCollege = new DAL_College();
         public IActionResult Index()
         {
@@ -20,11 +21,11 @@ namespace OfficeAutomation.Controllers
 
         public IActionResult ByTeacher()
         {
-            return View();
+            return View(dalTeachers.List());
         }
-        public JsonResult Get(int collegeid, int classesid, int week)
+        public JsonResult Get(int teachersid,int collegeid, int classesid, int week)
         {
-            return Json(bllClasstimeAll.GetAllClasstime(collegeid,classesid,week));
+            return Json(bllClasstimeAll.GetAllClasstime(teachersid,collegeid,classesid,week));
         }
 
         public JsonResult GetClassesByCollege(int collegeid)
