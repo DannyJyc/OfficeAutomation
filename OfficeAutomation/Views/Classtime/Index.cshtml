@@ -28,19 +28,23 @@
 </head>
 
 <body>
-
     <div class="demoTable">
+        <br> &nbsp;&nbsp;&nbsp;
+        <button class="layui-btn layui-btn-disabled">学院</button>
+
+        <button class="layui-btn layui-btn-normal" onclick="location.href = '../StairDataStatistics/RateStatistics'">老师</button>
+        <br>
         <br> &nbsp;&nbsp;&nbsp;
         学院：
         <div class="layui-inline layui-form">
             <select name="demoReload" lay-filter="test">
                 <option></option>
-            @{
-                foreach (var item in Model)
-                {
-                    <option value="@item.id">@item.name</option>
+                @{
+                    foreach (var item in Model)
+                    {
+                        <option value="@item.id">@item.name</option>
+                    }
                 }
-            }
             </select>
         </div>
         专业：
@@ -123,7 +127,7 @@
                         });
                     }
                     ,
-                    reload: function () {
+                    reload: function () {layui
                         var classical = $("select[name=demoReload]");
                         var num = $("select[name=demoReload1]");
                         $("select[name=demoReload1]").children().remove();

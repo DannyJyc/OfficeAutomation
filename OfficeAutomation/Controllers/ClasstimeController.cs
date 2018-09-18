@@ -18,6 +18,10 @@ namespace OfficeAutomation.Controllers
             return View(dalCollege.List());
         }
 
+        public IActionResult ByTeacher()
+        {
+            return View();
+        }
         public JsonResult Get(int collegeid, int classesid, int week)
         {
             return Json(bllClasstimeAll.GetAllClasstime(collegeid,classesid,week));
