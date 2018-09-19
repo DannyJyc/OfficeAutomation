@@ -27,9 +27,9 @@ namespace OfficeAutomation.Controllers
         {
             return View();
         }
-        public JsonResult AllClasses(int id=0)
+        public JsonResult AllClasses()
         {
-            return Json(dalcaClasses.List());
+            return Json(dalcaClasses.NewList());
         }
         public JsonResult GetAllClasses(int page, int limit)
         {
@@ -48,6 +48,10 @@ namespace OfficeAutomation.Controllers
         public JsonResult UpdateClasses(classes classes)
         {
             return Json(bllClasses.Update(classes));
+        }
+        public JsonResult GetSubClassesBycollegeid(int collegeid)
+        {
+            return Json(dalClasstimeAll.GetSubByClassesId(collegeid));
         }
         [HttpPost]
         public JsonResult DelClasses(int id)

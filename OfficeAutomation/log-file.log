@@ -45,3 +45,10 @@
 2018-09-18 21:50:02,555 [7] INFO  OfficeAutomation.DAL.Helper.Base [(null)] - 用户:	test	登陆成功
 2018-09-18 21:50:06,275 [7] INFO  OfficeAutomation.DAL.Helper.Base [(null)] - 用户:	test	登陆成功
 2018-09-18 21:54:34,083 [28] INFO  OfficeAutomation.DAL.Helper.Base [(null)] - 用户:	jyc	登陆成功
+2018-09-19 21:14:27,044 [6] INFO  OfficeAutomation.DAL.Helper.Base [(null)] - 用户:	admin	登陆成功
+2018-09-19 21:28:15,171 [6] INFO  OfficeAutomation.DAL.Helper.Base [(null)] - 用户:	admin	登陆成功
+2018-09-19 21:37:25,859 [7] INFO  OfficeAutomation.DAL.Helper.Base [(null)] - 用户:	admin	登陆成功
+2018-09-19 21:56:11,468 [6] INFO  OfficeAutomation.DAL.Helper.Base [(null)] - 用户:	admin	登陆成功
+2018-09-19 22:02:32,297 [7] INFO  OfficeAutomation.DAL.Helper.Base [(null)] - 用户:	admin	登陆成功
+2018-09-19 22:03:48,969 [6] INFO  OfficeAutomation.DAL.Helper.Base [(null)] - 用户:	admin	登陆成功
+2018-09-19 22:14:34,430 [6] INFO  OfficeAutomation.DAL.Helper.Base [(null)] - 用户:	admin	登陆成功

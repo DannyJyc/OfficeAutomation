@@ -128,6 +128,7 @@ namespace OfficeAutomation.BLL
         /// <param name="users"></param>
         /// <param name="classtime"></param>
         /// <returns></returns>
+        /// 修改时间 2018-9-19 22:10:16
         public BaseResult Update(users users,view_classtime_all classtime)
         {
             classtime classtimeTemp = new classtime();
@@ -152,24 +153,28 @@ namespace OfficeAutomation.BLL
                 return result;
             }
 
-            if (dalCourses.Single(classtime.coursesid).collegeid != classtime.collegeid)
+            if (classtime.coursesid != null && dalCourses.Single((int)classtime.coursesid).collegeid != classtime.collegeid)
             {
                 result.code = -2;
                 result.msg = "该学院无此课程！请检查讲师所属学院！";
                 return result;
             }
 
-            int ishave = dalBasedata.IsHave(classtime.collegeid, classtime.classesid, classtime.coursesid);
-            if (ishave == 0)
+            if (classtime.collegeid != null&& classtime.subclassesid !=null&& classtime.coursesid!=null)
             {
-                basedata basedata = new basedata();
-                basedata.collegeid = classtime.collegeid;
-                basedata.classesid = classtime.classesid;
-                basedata.coursesid = classtime.coursesid;
-                ishave = dalBasedata.Add(basedata);
+                int ishave = dalBasedata.IsHave((int)classtime.collegeid, (int)classtime.subclassesid, (int)classtime.coursesid);
+                if (ishave == 0)
+                {
+                    basedata basedata = new basedata();
+                    basedata.collegeid = classtime.collegeid;
+                    basedata.subclassesid = classtime.subclassesid;
+                    basedata.coursesid = classtime.coursesid;
+                    ishave = dalBasedata.Add(basedata);
+                }
+
+                classtimeTemp.basedataid = ishave;
             }
 
-            classtimeTemp.basedataid = ishave;
             classtimeTemp.week = classtime.week;
             classtimeTemp.lesson = classtime.lesson;
             classtimeTemp.classroom = classtime.classroom;

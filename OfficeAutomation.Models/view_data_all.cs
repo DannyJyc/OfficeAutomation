@@ -13,15 +13,17 @@ namespace OfficeAutomation.Models
         {
             id = 0;
             collegeid = 0;
-            classesid = 0;
             coursesid = 0;
-            classes_name = "";
             college_name = "";
             courses_name = "";
             startweek = 0;
             endweek = 0;
             teachersid = 0;
             teachers_name = "";
+            subclassesid = 0;
+            classesid = 0;
+            subclasses_name = "";
+            classes_name = "";
         }
         #endregion
 
@@ -35,17 +37,9 @@ namespace OfficeAutomation.Models
         /// </summary>
         public int? collegeid { get; set; }
         /// <summary>
-        /// 专业名称
-        /// </summary>
-        public int? classesid { get; set; }
-        /// <summary>
         /// 课程-讲师
         /// </summary>
         public int? coursesid { get; set; }
-        /// <summary>
-        /// 班级名称
-        /// </summary>
-        public string classes_name { get; set; }
         /// <summary>
         /// 学院名称
         /// </summary>
@@ -70,6 +64,22 @@ namespace OfficeAutomation.Models
         /// 老师名称
         /// </summary>
         public string teachers_name { get; set; }
+        /// <summary>
+        /// 班级名称
+        /// </summary>
+        public int? subclassesid { get; set; }
+        /// <summary>
+        /// 专业id
+        /// </summary>
+        public int? classesid { get; set; }
+        /// <summary>
+        /// 班级名称
+        /// </summary>
+        public string subclasses_name { get; set; }
+        /// <summary>
+        /// 班级名称
+        /// </summary>
+        public string classes_name { get; set; }
 
         /// <summary>
         /// 非SQL映射字段 

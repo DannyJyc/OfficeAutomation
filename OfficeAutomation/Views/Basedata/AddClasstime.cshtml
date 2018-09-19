@@ -48,7 +48,7 @@
                                         <input type="hidden" id="week" value="@Model.week" />
                                         <input type="hidden" id="lesson" value="@Model.lesson" />
                                         <input type="hidden" id="courses" value="@Model.coursesid" />
-                                        <input type="hidden" id="classes" value="@Model.classesid" />
+                                        <input type="hidden" id="classes" value="@Model.subclassesid" />
                                         <input type="hidden" id="college" value="@Model.collegeid" />
                                     }
                                     else
@@ -110,6 +110,7 @@
         $("select[name='week']").val(week);
         $("select[name='lesson']").val(lesson);
         //***********************************************************************************************************************************
+        //修改时间 2018-9-19 22:10:34
         $("select[name='college']").empty();
         $.get("../Users/GetCollege", function (result) {
 
@@ -133,10 +134,10 @@
             var classes = $("#classes").val();
             for (var i = 0; i < result.length; i++) {
                 if (classes == result[i].id) {
-                    $("select[name='classes']").append('<option selected = "selected" value="' + result[i].id + '">' + result[i].name + '</option>');
+                    $("select[name='classes']").append('<option selected = "selected" value="' + result[i].id + '">' + result[i].classes_name + '(' + result[i].name + ')</option>');
                     continue;
                 }
-                $("select[name='classes']").append('<option value="' + result[i].id + '">' + result[i].name + '</option>');
+                $("select[name='classes']").append('<option value="' + result[i].id + '">' + result[i].classes_name + '(' + result[i].name+')</option>');
             }
 
             form.render('select'); //刷新select选择框渲染
@@ -173,6 +174,21 @@
                     form.render('select');
                 }
             });
+            $.ajax({
+                type: "get",
+                url: "../Basedata/GetSubClassesBycollegeid",
+                data: { collegeid: data.value },
+                dataType: "json",
+                success: function (data) {
+                    var op = "<option></option>";
+                    for (var a = 0; a < data.length; a++) {
+                        op = op + '<option value="' + data[a].id + '">' + data[a].classes_name + '(' + data[a].name +')</option>'
+                    }
+                    $("select[name=classes]").children().remove();
+                    $("select[name=classes]").append(op);
+                    form.render('select');
+                }
+            });
         });
         //***********************************************************************************************************************************
         form.on('submit(formDemo)', function (data) {
@@ -184,7 +200,7 @@
                 data: {
                     id:@ViewData["id"],
                     collegeid: upData.college,
-                    classesid: upData.classes,
+                    subclassesid: upData.classes,
                     coursesid: upData.courses,
                     classroom:upData.classroom,
                     week: upData.week,

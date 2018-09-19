@@ -5,16 +5,18 @@ namespace OfficeAutomation.Models
     /// <summary>
     /// 实体类。(属性说明自动提取数据库字段的描述信息)
     /// </summary>
-    [Table("basedata")]
-    public partial class basedata
+    [Table("view_sub_classes_college")]
+    public partial class view_sub_classes_college
     {
         #region 默认值
-        public basedata()
+        public view_sub_classes_college()
         {
-
-            collegeid = 0;
-            subclassesid = 0;
-            coursesid = 0;
+            id = 0;
+            classesid = 0;
+            name = "";
+            classes_name = "";
+            college_name = "";
+            college_id = 0;
         }
         #endregion
 
@@ -22,20 +24,27 @@ namespace OfficeAutomation.Models
         /// <summary>
         /// id
         /// </summary>
-        [Column(IsPrimaryKey = true)]
         public int id { get; set; }
         /// <summary>
-        /// 学院（校区）
+        /// 专业id
         /// </summary>
-        public int? collegeid { get; set; }
+        public int? classesid { get; set; }
         /// <summary>
         /// 班级名称
         /// </summary>
-        public int? subclassesid { get; set; }
+        public string name { get; set; }
         /// <summary>
-        /// 课程-讲师
+        /// 班级名称
         /// </summary>
-        public int? coursesid { get; set; }
+        public string classes_name { get; set; }
+        /// <summary>
+        /// 学院名称
+        /// </summary>
+        public string college_name { get; set; }
+        /// <summary>
+        /// college_id
+        /// </summary>
+        public int college_id { get; set; }
 
         /// <summary>
         /// 非SQL映射字段 

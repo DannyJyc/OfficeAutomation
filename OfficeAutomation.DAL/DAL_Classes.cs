@@ -27,6 +27,14 @@ namespace OfficeAutomation.DAL
             return dbContext.Query<classes>().Where(p => p.id > 0).ToList();
         }
         /// <summary>
+        /// 新 获取所有专业 2018-9-19 20:49:13
+        /// </summary>
+        /// <returns></returns>
+        public List<view_sub_classes_college> NewList()
+        {
+            return dbContext.Query<view_sub_classes_college>().Where(p => p.id > 0).ToList();
+        }
+        /// <summary>
         /// 所有专业
         /// </summary>
         /// <param name="page"></param>

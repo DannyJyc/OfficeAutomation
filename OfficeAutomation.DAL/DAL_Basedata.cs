@@ -14,10 +14,10 @@ namespace OfficeAutomation.DAL
         /// <param name="classesid"></param>
         /// <param name="coursesid"></param>
         /// <returns></returns>
-        public int IsHave(int collegeid,int classesid,int coursesid)
+        public int IsHave(int collegeid,int subclassesid,int coursesid)
         {
             var single = dbContext.Query<basedata>()
-                .Where(p => p.collegeid == collegeid && p.classesid == classesid && p.coursesid == coursesid)
+                .Where(p => p.collegeid == collegeid && p.subclassesid == subclassesid && p.coursesid == coursesid)
                 .FirstOrDefault();
             if (single == null)
             {
@@ -36,7 +36,7 @@ namespace OfficeAutomation.DAL
             return (int) dbContext.Insert<basedata>(() => new basedata()
             {
                 collegeid = basedata.collegeid,
-                classesid = basedata.classesid,
+                subclassesid = basedata.subclassesid,
                 coursesid = basedata.coursesid
             });
         }

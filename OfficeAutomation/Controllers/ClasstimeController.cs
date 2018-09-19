@@ -30,8 +30,12 @@ namespace OfficeAutomation.Controllers
 
         public JsonResult GetClassesByCollege(int collegeid)
         {
-            var i = dalClasstimeAll.ListDesignatedClass(collegeid);
             return Json(dalClasstimeAll.ListDesignatedClass(collegeid));
+        }
+
+        public JsonResult GetSubClassesByClassesId(int collegeid,int classesid)
+        {
+            return Json(dalClasstimeAll.GetSubByClassesId(collegeid,classesid));
         }
     }
 }

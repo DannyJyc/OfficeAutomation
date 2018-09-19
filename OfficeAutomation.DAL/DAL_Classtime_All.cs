@@ -9,6 +9,20 @@ namespace OfficeAutomation.DAL
     {
         private IDbContext dbContext = DbContextFactory.CreateDbContext();
         /// <summary>
+        /// 根据班级id和学院id返回对应所有班级
+        /// </summary>
+        /// <param name="classesid"></param>
+        /// <returns></returns>
+        public List<view_sub_classes_college> GetSubByClassesId(int collegeid)
+        {
+            return dbContext.Query<view_sub_classes_college>().Where(p => p.college_id == collegeid).ToList();
+        }
+        public List<view_sub_classes_college> GetSubByClassesId(int collegeid,int classesid)
+        {
+            return dbContext.Query<view_sub_classes_college>().Where(p => p.classesid == classesid&&p.college_id== collegeid).ToList();
+        }
+
+        /// <summary>
         /// 所有课表
         /// </summary>
         /// <returns></returns>
@@ -103,16 +117,17 @@ namespace OfficeAutomation.DAL
         /// <param name="classesid"></param>
         /// <param name="week"></param>
         /// <returns></returns>
+        /// 修改时间 2018-9-19 21:12:10 新增专业下的班级实体
         public view_classtime_all ListByWhere(int collegeid, int classesid, int week,int w,int l)
         {
             if (week == 0)
             {
                 return dbContext.Query<view_classtime_all>().Where(p =>
-                    p.collegeid == collegeid && p.classesid == classesid && p.week == w && p.lesson == l).FirstOrDefault();
+                    p.collegeid == collegeid && p.subclassesid == classesid && p.week == w && p.lesson == l).FirstOrDefault();
 
             }
             return dbContext.Query<view_classtime_all>().Where(p =>
-                p.collegeid == collegeid && p.classesid == classesid && p.startweek <= week && p.endweek >= week&&p.week==w&&p.lesson==l).FirstOrDefault();
+                p.collegeid == collegeid && p.subclassesid == classesid && p.startweek <= week && p.endweek >= week&&p.week==w&&p.lesson==l).FirstOrDefault();
         }
 
         public view_classtime_all ListByWhere(int teachersid, int w, int l)

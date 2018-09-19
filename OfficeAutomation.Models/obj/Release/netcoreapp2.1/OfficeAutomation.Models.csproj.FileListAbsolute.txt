@@ -7,3 +7,12 @@ C:\Users\DannyJiang\Desktop\OfficeAutomation\OfficeAutomation.Models\obj\Release
 C:\Users\DannyJiang\Desktop\OfficeAutomation\OfficeAutomation.Models\obj\Release\netcoreapp2.1\OfficeAutomation.Models.AssemblyInfo.cs
 C:\Users\DannyJiang\Desktop\OfficeAutomation\OfficeAutomation.Models\obj\Release\netcoreapp2.1\OfficeAutomation.Models.dll
 C:\Users\DannyJiang\Desktop\OfficeAutomation\OfficeAutomation.Models\obj\Release\netcoreapp2.1\OfficeAutomation.Models.pdb
+D:\项目\OfficeAutomation\OfficeAutomation.Models\bin\Release\netcoreapp2.1\OfficeAutomation.Models.deps.json
+D:\项目\OfficeAutomation\OfficeAutomation.Models\bin\Release\netcoreapp2.1\OfficeAutomation.Models.dll
+D:\项目\OfficeAutomation\OfficeAutomation.Models\bin\Release\netcoreapp2.1\OfficeAutomation.Models.pdb
+D:\项目\OfficeAutomation\OfficeAutomation.Models\obj\Release\netcoreapp2.1\OfficeAutomation.Models.csprojAssemblyReference.cache
+D:\项目\OfficeAutomation\OfficeAutomation.Models\obj\Release\netcoreapp2.1\OfficeAutomation.Models.csproj.CoreCompileInputs.cache
+D:\项目\OfficeAutomation\OfficeAutomation.Models\obj\Release\netcoreapp2.1\OfficeAutomation.Models.AssemblyInfoInputs.cache
+D:\项目\OfficeAutomation\OfficeAutomation.Models\obj\Release\netcoreapp2.1\OfficeAutomation.Models.AssemblyInfo.cs
+D:\项目\OfficeAutomation\OfficeAutomation.Models\obj\Release\netcoreapp2.1\OfficeAutomation.Models.dll
+D:\项目\OfficeAutomation\OfficeAutomation.Models\obj\Release\netcoreapp2.1\OfficeAutomation.Models.pdb

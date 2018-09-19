@@ -10,3 +10,15 @@ C:\Users\DannyJiang\Desktop\OfficeAutomation\OfficeAutomation.DAL\obj\Release\ne
 C:\Users\DannyJiang\Desktop\OfficeAutomation\OfficeAutomation.DAL\obj\Release\netcoreapp2.1\OfficeAutomation.DAL.csproj.CopyComplete
 C:\Users\DannyJiang\Desktop\OfficeAutomation\OfficeAutomation.DAL\obj\Release\netcoreapp2.1\OfficeAutomation.DAL.dll
 C:\Users\DannyJiang\Desktop\OfficeAutomation\OfficeAutomation.DAL\obj\Release\netcoreapp2.1\OfficeAutomation.DAL.pdb
+D:\项目\OfficeAutomation\OfficeAutomation.DAL\bin\Release\netcoreapp2.1\OfficeAutomation.DAL.deps.json
+D:\项目\OfficeAutomation\OfficeAutomation.DAL\bin\Release\netcoreapp2.1\OfficeAutomation.DAL.dll
+D:\项目\OfficeAutomation\OfficeAutomation.DAL\bin\Release\netcoreapp2.1\OfficeAutomation.DAL.pdb
+D:\项目\OfficeAutomation\OfficeAutomation.DAL\bin\Release\netcoreapp2.1\OfficeAutomation.Models.dll
+D:\项目\OfficeAutomation\OfficeAutomation.DAL\bin\Release\netcoreapp2.1\OfficeAutomation.Models.pdb
+D:\项目\OfficeAutomation\OfficeAutomation.DAL\obj\Release\netcoreapp2.1\OfficeAutomation.DAL.csprojAssemblyReference.cache
+D:\项目\OfficeAutomation\OfficeAutomation.DAL\obj\Release\netcoreapp2.1\OfficeAutomation.DAL.csproj.CoreCompileInputs.cache
+D:\项目\OfficeAutomation\OfficeAutomation.DAL\obj\Release\netcoreapp2.1\OfficeAutomation.DAL.AssemblyInfoInputs.cache
+D:\项目\OfficeAutomation\OfficeAutomation.DAL\obj\Release\netcoreapp2.1\OfficeAutomation.DAL.AssemblyInfo.cs
+D:\项目\OfficeAutomation\OfficeAutomation.DAL\obj\Release\netcoreapp2.1\OfficeAutomation.DAL.csproj.CopyComplete
+D:\项目\OfficeAutomation\OfficeAutomation.DAL\obj\Release\netcoreapp2.1\OfficeAutomation.DAL.dll
+D:\项目\OfficeAutomation\OfficeAutomation.DAL\obj\Release\netcoreapp2.1\OfficeAutomation.DAL.pdb
