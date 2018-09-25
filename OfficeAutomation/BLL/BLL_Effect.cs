@@ -31,23 +31,31 @@ namespace OfficeAutomation.BLL
         public BaseResult Update(effect effect)
         {
             result.code = 0;
-            if (effect.id != 0)
+            if (dalEffect.Single(effect.name) == null)
             {
-                if (dalEffect.Update(effect) == 0)
+                if (effect.id != 0)
                 {
-                    result.code = -1;
-                    result.msg = "修改失败";
+                    if (dalEffect.Update(effect) == 0)
+                    {
+                        result.code = -1;
+                        result.msg = "修改失败";
+                    }
+                    else { }
                 }
-                else { }
+                else
+                {
+                    if (dalEffect.Add(effect) == 0)
+                    {
+                        result.code = -1;
+                        result.msg = "添加失败";
+                    }
+                    else { }
+                }
             }
             else
             {
-                if (dalEffect.Add(effect) == 0)
-                {
-                    result.code = -1;
-                    result.msg = "添加失败";
-                }
-                else { }
+                result.code = -2;
+                result.msg = "功能名称重复";
             }
 
             return result;

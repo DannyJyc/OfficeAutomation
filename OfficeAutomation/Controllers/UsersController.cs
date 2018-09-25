@@ -1,13 +1,17 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
 using OfficeAutomation.Authorize;
 using OfficeAutomation.BLL;
 using OfficeAutomation.DAL;
+using OfficeAutomation.DAL.Helper;
 using OfficeAutomation.Models;
 
 namespace OfficeAutomation.Controllers
 {
     public class UsersController : AuthorizeController
     {
+        private DAL.Helper.JsonUserConvert jsonUserConvert = new JsonUserConvert();
+
         private BLL.BLL_Users bllUsers = new BLL_Users();
         private BLL.BLL_College bllCollege = new BLL_College();
         private BLL.BLL_Effect bllEffect = new BLL_Effect();
@@ -39,7 +43,7 @@ namespace OfficeAutomation.Controllers
 
         public JsonResult GetUser(int page, int limit)
         {
-            return Json(bllUsers.List(page,limit));
+            return Json(bllUsers.List(jsonUserConvert.StringToObject(HttpContext.Session.GetString("users")),page,limit));
         }
         public JsonResult AddUser(users users)
         {

@@ -35,6 +35,10 @@ namespace OfficeAutomation.DAL
         {
             return dbContext.Query<effect>().Where(p => p.id == id).FirstOrDefault();
         }
+        public effect Single(string name)
+        {
+            return dbContext.Query<effect>().Where(p => p.name == name).FirstOrDefault();
+        }
         /// <summary>
         /// 新增
         /// </summary>

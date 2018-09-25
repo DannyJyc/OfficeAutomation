@@ -37,6 +37,12 @@ namespace OfficeAutomation.DAL
         {
             return dbContext.Query<dictionary>().Where(p => p.id == id).FirstOrDefault();
         }
+
+        public dictionary Single(string value)
+        {
+            return dbContext.Query<dictionary>().Where(p => p.value == value).FirstOrDefault();
+
+        }
         /// <summary>
         /// 删除角色
         /// </summary>

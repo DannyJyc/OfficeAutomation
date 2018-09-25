@@ -27,7 +27,7 @@ namespace OfficeAutomation.BLL
                 result.msg = "用户名或密码不正确";
             }
             result.data = user;
-            log.Info("用户:\t"+username+"\t登陆成功");
+            log.Info("用户:\t" + username + "\t登陆成功");
             return result;
         }
         /// <summary>
@@ -36,8 +36,16 @@ namespace OfficeAutomation.BLL
         /// <param name="page"></param>
         /// <param name="limit"></param>
         /// <returns></returns>
-        public BaseResult List(int page,int limit)
+        public BaseResult List(users users, int page, int limit)
         {
+            if (users.dicvalue != "0")
+            {
+                var single = dalUser.SingleUsers(users.id);
+                result.code = 0;
+                result.count = dalUser.Count((int)(1 + single.level));
+                result.data = dalUser.List((int)(1 + single.level), page, limit);
+                return result;
+            }
             result.code = 0;
             result.count = dalUser.Count();
             result.data = dalUser.List(page, limit);
@@ -85,23 +93,33 @@ namespace OfficeAutomation.BLL
         public BaseResult AddUser(users users)
         {
             result.code = 0;
-            if (users.id != 0)
+            var username = dalUser.SingleUsers(users.name);
+            var name = dalUser.SingleUsers(username.name);
+            if (username == null || name == null)
             {
-                if (dalUser.UpdateUsers(users) == 0)
+                if (users.id != 0)
                 {
-                    result.code = -1;
-                    result.msg = "修改失败";
+                    if (dalUser.UpdateUsers(users) == 0)
+                    {
+                        result.code = -1;
+                        result.msg = "修改失败";
+                    }
+                    else { }
                 }
-                else { }
+                else
+                {
+                    if (dalUser.AddUsers(users) == 0)
+                    {
+                        result.code = -1;
+                        result.msg = "添加失败";
+                    }
+                    else { }
+                }
             }
             else
             {
-                if (dalUser.AddUsers(users) == 0)
-                {
-                    result.code = -1;
-                    result.msg = "添加失败";
-                }
-                else { }
+                result.code = -2;
+                result.msg = "姓名或用户名重复";
             }
 
             return result;

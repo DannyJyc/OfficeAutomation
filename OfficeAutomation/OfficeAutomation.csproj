@@ -6,10 +6,12 @@
 
   <ItemGroup>
     <Content Remove="log4net.config" />
+    <Content Remove="wwwroot\area.js" />
   </ItemGroup>
 
   <ItemGroup>
     <None Include="log4net.config" />
+    <None Include="wwwroot\js\area.js" />
   </ItemGroup>
 
   <ItemGroup>

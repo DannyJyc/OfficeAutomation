@@ -203,3 +203,7 @@ D:\项目\OfficeAutomation\OfficeAutomation\obj\Debug\netcoreapp2.1\Razor\Views\
 D:\OfficeAutomation\OfficeAutomation\obj\Debug\netcoreapp2.1\Razor\Views\Classtime\Index.g.cshtml.cs
 D:\项目\OfficeAutomation\OfficeAutomation\obj\Debug\netcoreapp2.1\Razor\Views\Classtime\ByTeacher.g.cshtml.cs
 D:\项目\OfficeAutomation\OfficeAutomation\obj\Debug\netcoreapp2.1\Razor\Views\Login\Insufficient.g.cshtml.cs
+D:\项目\OfficeAutomation\OfficeAutomation\obj\Debug\netcoreapp2.1\Razor\Views\Yunyingxiangmudengji\Index.g.cshtml.cs
+D:\项目\OfficeAutomation\OfficeAutomation\obj\Debug\netcoreapp2.1\Razor\Views\Yunyingxiangmudengji\Add.g.cshtml.cs
+D:\项目\OfficeAutomation\OfficeAutomation\obj\Debug\netcoreapp2.1\Razor\Views\Operational\Index.g.cshtml.cs
+D:\项目\OfficeAutomation\OfficeAutomation\obj\Debug\netcoreapp2.1\Razor\Views\Operational\Update.g.cshtml.cs

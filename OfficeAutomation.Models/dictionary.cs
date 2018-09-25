@@ -1,4 +1,5 @@
-﻿using Chloe.Annotations;
+﻿using System;
+using Chloe.Annotations;
 namespace OfficeAutomation.Models
 {
     /// <summary>
@@ -13,6 +14,8 @@ namespace OfficeAutomation.Models
 
             key = "";
             value = "";
+            controllow = 0;
+            level = 0;
             reserve1 = "";
             reserve2 = "";
         }
@@ -32,6 +35,14 @@ namespace OfficeAutomation.Models
         /// 值
         /// </summary>
         public string value { get; set; }
+        /// <summary>
+        /// 允许控制下级
+        /// </summary>
+        public int? controllow { get; set; }
+        /// <summary>
+        /// 等级(1最高)
+        /// </summary>
+        public int? level { get; set; }
         /// <summary>
         /// 备用1
         /// </summary>

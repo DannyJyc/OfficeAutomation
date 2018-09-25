@@ -1,8 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 using Chloe.Annotations;
-
 namespace OfficeAutomation.Models
 {
     /// <summary>
@@ -14,7 +11,7 @@ namespace OfficeAutomation.Models
         #region 默认值
         public view_users_college()
         {
-
+            id = 0;
             name = "";
             collegeid = 0;
             username = "";
@@ -22,6 +19,10 @@ namespace OfficeAutomation.Models
             dicvalue = "";
             reserve1 = "";
             reserve2 = "";
+            college_name = "";
+            state = 0;
+            controllow = 0;
+            level = 0;
         }
         #endregion
 
@@ -37,7 +38,7 @@ namespace OfficeAutomation.Models
         /// <summary>
         /// 学院id
         /// </summary>
-        public int collegeid { get; set; }
+        public int? collegeid { get; set; }
         /// <summary>
         /// 用户名
         /// </summary>
@@ -46,10 +47,6 @@ namespace OfficeAutomation.Models
         /// 密码
         /// </summary>
         public string password { get; set; }
-        /// <summary>
-        /// 状态1可用
-        /// </summary>
-        public int state { get; set; }
         /// <summary>
         /// 角色
         /// </summary>
@@ -63,9 +60,22 @@ namespace OfficeAutomation.Models
         /// </summary>
         public string reserve2 { get; set; }
         /// <summary>
-        /// 学院
+        /// 学院名称
         /// </summary>
         public string college_name { get; set; }
+        /// <summary>
+        /// 状态1可用
+        /// </summary>
+        public int? state { get; set; }
+        /// <summary>
+        /// 允许控制下级
+        /// </summary>
+        public int? controllow { get; set; }
+        /// <summary>
+        /// 等级(1最高)
+        /// </summary>
+        public int? level { get; set; }
+
         /// <summary>
         /// 非SQL映射字段 
         /// </summary>

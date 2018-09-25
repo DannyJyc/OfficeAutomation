@@ -77,7 +77,7 @@
                 function (obj) {
                     var data = obj.data;
                     if (obj.event === 'del') {
-                        layer.confirm('您确认删除么',
+                        layer.confirm('注意:删除角色以后，对应用户也会随之删除!',
                             function (index) {
                                 $.ajax({
                                     type: "post",

@@ -100,3 +100,7 @@ D:\项目\OfficeAutomation\OfficeAutomation\obj\Release\netcoreapp2.1\OfficeAuto
 D:\项目\OfficeAutomation\OfficeAutomation\obj\Release\netcoreapp2.1\OfficeAutomation.csproj.CopyComplete
 D:\项目\OfficeAutomation\OfficeAutomation\obj\Release\netcoreapp2.1\OfficeAutomation.dll
 D:\项目\OfficeAutomation\OfficeAutomation\obj\Release\netcoreapp2.1\OfficeAutomation.pdb
+D:\项目\OfficeAutomation\OfficeAutomation\obj\Release\netcoreapp2.1\Razor\Views\Operational\Index.g.cshtml.cs
+D:\项目\OfficeAutomation\OfficeAutomation\obj\Release\netcoreapp2.1\Razor\Views\Operational\Update.g.cshtml.cs
+D:\项目\OfficeAutomation\OfficeAutomation\obj\Release\netcoreapp2.1\Razor\Views\Yunyingxiangmudengji\Add.g.cshtml.cs
+D:\项目\OfficeAutomation\OfficeAutomation\obj\Release\netcoreapp2.1\Razor\Views\Yunyingxiangmudengji\Index.g.cshtml.cs

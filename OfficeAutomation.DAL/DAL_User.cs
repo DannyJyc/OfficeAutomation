@@ -50,6 +50,10 @@ namespace OfficeAutomation.DAL
         {
             return dbContext.Query<view_users_college>().Where(p => p.id == id).FirstOrDefault();
         }
+        public view_users_college SingleUsers(string name)
+        {
+            return dbContext.Query<view_users_college>().Where(p => p.name == name||p.username==name).FirstOrDefault();
+        }
         /// <summary>
         /// 列出所有用户数据
         /// </summary>
@@ -61,9 +65,18 @@ namespace OfficeAutomation.DAL
             return dbContext.Query<view_users_college>().Where(p => p.id > 0).TakePage(page, limit).ToList();
         }
 
+        public List<view_users_college> List(int lowid, int page, int limit)
+        {
+            return dbContext.Query<view_users_college>().Where(p => p.level==lowid).TakePage(page, limit).ToList();
+        }
+
         public int Count()
         {
             return dbContext.Query<view_users_college>().Where(p => p.id > 0).Count();
+        }
+        public int Count(int lowid)
+        {
+            return dbContext.Query<view_users_college>().Where(p => p.level == lowid).Count();
         }
         /// <summary>
         /// 登录判断
@@ -97,6 +110,15 @@ namespace OfficeAutomation.DAL
         public int DelUser(int id)
         {
             return dbContext.Delete<users>(p => p.id == id);
+        }
+        /// <summary>
+        /// 根据角色名称删除对应用户
+        /// </summary>
+        /// <param name="dicvalue"></param>
+        /// <returns></returns>
+        public int DelUser(string dicvalue)
+        {
+            return dbContext.Delete<users>(p => p.dicvalue == dicvalue);
         }
         /// <summary>
         /// 新增用户
