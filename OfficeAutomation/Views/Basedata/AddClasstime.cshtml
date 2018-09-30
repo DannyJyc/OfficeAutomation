@@ -7,7 +7,7 @@
     <title>添加课表信息</title>
     <link href="~/css/s.css" rel="stylesheet" />
     <link href="~/css/extend.css" rel="stylesheet" />
-
+    <link href="~/css/cascader.css" rel="stylesheet" />
     <script src="~/plus/layui/layui.js"></script>
 </head>
 <body style="background-color: white">
@@ -18,7 +18,12 @@
                 <div style="margin-top: 3.5em; ">
 
                     <form class="layui-form">
-            
+                        <div class="layui-form-item">
+                            <label class="layui-form-label">选择框</label>
+                            <div class="layui-input-block">
+                                <input type="text" id="a" class="layui-input" readonly="readonly">
+                            </div>
+                        </div>
                         <div class="layui-form-item">
                             <label class="layui-form-label"><span class="text-red">*</span>选择学院：</label>
                             <div class="layui-input-block">
@@ -100,11 +105,11 @@
 
     var layui = layui.config({
         base: '/plus/' //静态资源所在路径
-    }).use(['layer', 'form', 'jquery','upload'], function () {
+    }).use(['layer', 'form', 'jquery', 'upload', "cascader"], function () {
         var form = layui.form;
         var $ = layui.jquery;
         var layer = layui.layer;
-
+        var cascader = layui.cascader;
         var week = $("#week").val();
         var lesson = $("#lesson").val();
         $("select[name='week']").val(week);
@@ -229,6 +234,95 @@
 
             return false;
         });
+        //***********************************************************************************************************************************
+
+        var data = [
+            {
+                value: 'A',
+                label: 'a',
+                children: [
+                    {
+                        value: 'AA1',
+                        label: 'aa1',
+                    },
+                    {
+                        value: 'BB1',
+                        label: 'bb1'
+                    }
+                ]
+            },
+            {
+                value: 'B',
+                label: 'b',
+                children: [
+                    {
+                        value: 'AA2',
+                        label: 'aa2',
+                        children: [
+                            {
+                                value: 'AAA3',
+                                label: 'aaa3',
+                                children: [
+                                    {
+                                        value: 'AAA3',
+                                        label: 'aaa3',
+                                        children: [
+                                            {
+                                                value: 'AAA3',
+                                                label: 'aaa3',
+                                            },
+                                            {
+                                                value: 'BBB3',
+                                                label: 'bbb3'
+                                            }
+                                        ]
+                                    }
+                                ]
+                            },
+                            {
+                                value: 'BBB3',
+                                label: 'bbb3'
+                            }
+                        ]
+                    },
+                    {
+                        value: 'BB2',
+                        label: 'bb2',
+                        children: [
+                            {
+                                value: 'AAA4',
+                                label: 'aaa4',
+                            },
+                            {
+                                value: 'BBB4',
+                                label: 'bbb4'
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                value: 'C',
+                label: 'c',
+            }
+        ]
+        cascader({
+            elem: "#a",
+            data: data,
+            // url: "/aa",
+            // type: "post",
+            triggerType: "change",
+            // showLastLevels: true,
+            // where: {
+            //     a: "aaa"
+            // },
+            value: ["B", "BB2", "BBB4"],
+            success: function (valData, labelData) {
+                console.log(valData);
+                console.log(labelData);
+            }
+        });
+        //***********************************************************************************************************************************
 
     });
     </script>

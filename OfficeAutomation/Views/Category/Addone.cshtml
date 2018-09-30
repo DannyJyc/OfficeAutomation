@@ -1,0 +1,101 @@
+﻿@model OfficeAutomation.Models.onelevel
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>添加类目</title>
+    <link href="~/css/s.css" rel="stylesheet" />
+    <link href="~/css/extend.css" rel="stylesheet" />
+
+    <script src="~/plus/layui/layui.js"></script>
+</head>
+<body style="background-color: white">
+    <div class="layui-container">
+        <div class="layui-row ">
+
+            <div class="layui-col-md12">
+                <div style="margin-top: 3.5em; ">
+
+                    <form class="layui-form">
+
+
+                        <div class="layui-form-item">
+                            <label class="layui-form-label"><span class="text-red">*</span>名称：</label>
+                            <div class="layui-input-block">
+
+                                @{
+                                    if (Model != null)
+                                    {
+                                        <input type="text" name="name" required lay-verify="required" placeholder="请输入名称" autocomplete="off" class="layui-input" value="@Model.name">
+                                    }
+                                    else
+                                    {
+                                        <input type="text" name="name" required lay-verify="required" placeholder="请输入名称" autocomplete="off" class="layui-input">
+                                    }
+                                }
+                            </div>
+                        </div>
+
+                        <div class="layui-form-item">
+                            <div class="layui-input-block">
+                                <button class="layui-btn" lay-submit lay-filter="formDemo">立即提交</button>
+                                <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+
+    var layui = layui.config({
+        base: '/plus/' //静态资源所在路径
+    }).use(['layer', 'form', 'jquery','upload'], function () {
+        var form = layui.form;
+        var $ = layui.jquery;
+        var layer = layui.layer;
+
+
+        form.on('submit(formDemo)', function (data) {
+            var index = layer.msg('数据提交中，请稍候', { icon: 16, shade: 0.01, time: 10 });
+            var upData = data.field;
+
+            $.ajax({
+                type: "post",
+                url: "../Category/Addone",
+                data: {
+                    id:@ViewData["id"],
+                    name: upData.name
+                },
+                dataType: "json",
+                success: function(data) {
+                    layer.close(index);
+                    if (data.code == "0" || data.code == 0) {
+                        layer.alert("操作成功", { icon: 6 },
+                        function(index) {
+                            var index = parent.layer.getFrameIndex(window.name); //先得到当前iframe层的索引
+                            parent.layer.close(index); //再执行关闭
+                            parent.location.reload(); // 刷新父级
+                        });
+
+                        //location.reload();
+                        return false;
+                    } else {
+                        layer.alert(data.msg, { icon: 5 });
+                    }
+                    console.log(data);
+
+                }
+            });
+
+            return false;
+        });
+
+    });
+    </script>
+</body>
+</html>

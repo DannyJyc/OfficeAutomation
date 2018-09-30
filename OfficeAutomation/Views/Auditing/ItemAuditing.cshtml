@@ -1,0 +1,106 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>课表管理</title>
+    <link href="~/css/s.css" rel="stylesheet" />
+    <link href="~/css/extend.css" rel="stylesheet" />
+    <link href="~/css/cascader.css" rel="stylesheet" />
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/plus/layui/layui.js"></script>
+    <style type="text/css">
+        #demo1 {
+            text-align: center;
+            margin-top: 60px;
+            /*position: fixed;*/
+            /*bottom: 0;*/
+        }
+
+        .layui-layer-shade {
+            z-index: 49 !important;
+        }
+
+        .layui-layer-page {
+            z-index: 50 !important;
+        }
+    </style>
+</head>
+
+<body>
+    <table class="layui-hide" id="LAY_table_user" lay-filter="user"></table>
+
+    <script type="text/html" id="addtime">
+        {{#
+    return d.addtime.replace('T',' ')
+        }}
+    </script>
+    <script type="text/html" id="endtime">
+        {{#
+    return d.endtime.replace('T',' ')
+        }}
+    </script>
+    <script type="text/html" id="state">
+        {{#
+    if(d.state == 1){
+    return '通过';
+    }
+    if(d.state == 2){
+    return '待审核';
+    }
+        }}
+    </script>
+    <script type="text/html" id="barDemo">
+        <a class="layui-btn layui-btn-sm" lay-event="look">审核</a>
+    </script>
+    <script>
+        var $;
+        layui.use(['table', 'layer', 'form'],
+            function () {
+                var layer = layui.layer,
+                    table = layui.table,
+                    form = layui.form;
+                //方法级渲染
+                table.render({
+                    elem: '#LAY_table_user',
+                    url: '../Auditing/GetItem',
+                    cols: [
+                        [
+                            { field: 'number', title: '协议编号', sort: true, fixed: true },
+                            { field: 'yunyingchanquan', title: '运营项目产权', sort: true, fixed: true },
+                            { field: 'addtime', title: '运营起始时间', sort: true, fixed: true, toolbar: '#addtime' },
+                            { field: 'endtime', title: '终止时间', sort: true, fixed: true, toolbar: '#endtime' },
+                            { field: 'type', title: '审核状态', toolbar: '#state', sort: true, fixed: true },
+                            //{ field: 'users', title: '提交者', toolbar: '#users', sort: true, fixed: true },
+                            { field: 'type', title: '操作', toolbar: '#barDemo', align: 'center' }
+                        ]
+                    ],
+                    id: 'testReload',
+                    page: true,
+                    height: 'full-100',
+                    limit: 20,
+                    limits: [20, 50, 100, 200, 300, 400, 500]
+                });
+
+                table.on('tool(user)',
+                    function (obj) {
+                        var data = obj.data;
+                        if (obj.event === 'look') {
+                            layer.msg('加载中', {
+                                icon: 16
+                                , shade: 0.01,
+                                time: 5
+                            });
+                            location.href = "http://www.baidu.com";
+                        }
+
+                    });
+
+                $('.demoTable .layui-btn').on('click',
+                    function () {
+                        var type = $(this).data('type');
+                        active[type] ? active[type].call(this) : '';
+                    });
+            });
+    </script>
+</body>
+</html>

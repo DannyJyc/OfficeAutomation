@@ -22,6 +22,7 @@ namespace OfficeAutomation.DAL
         /// 查询所有数据
         /// </summary>
         /// <returns></returns>
+        
         public List<yunyingxiangmudengji> List(int page,int limit)
         {
             return dbContext.Query<yunyingxiangmudengji>().Where(p => p.id > 0).TakePage(page,limit).ToList();
@@ -30,6 +31,16 @@ namespace OfficeAutomation.DAL
         public int Count()
         {
             return dbContext.Query<yunyingxiangmudengji>().Where(p => p.id > 0).Count();
+        }
+
+        public List<yunyingxiangmudengji> AuditingList(int page, int limit)
+        {
+            return dbContext.Query<yunyingxiangmudengji>().Where(p => p.state != 0).TakePage(page, limit).ToList();
+        }
+
+        public int AuditingCount()
+        {
+            return dbContext.Query<yunyingxiangmudengji>().Where(p => p.state != 0).Count();
         }
         /// <summary>
         /// 添加
@@ -40,9 +51,9 @@ namespace OfficeAutomation.DAL
         {
             return (int)dbContext.Insert<yunyingxiangmudengji>(()=>new yunyingxiangmudengji()
             {
-                s_province = yunyingxiangmudengji.s_province,
-                s_city = yunyingxiangmudengji.s_city,
-                s_county = yunyingxiangmudengji.s_county,
+                province = yunyingxiangmudengji.province,
+                city = yunyingxiangmudengji.city,
+                area = yunyingxiangmudengji.area,
                 address = yunyingxiangmudengji.address,
                 didian = yunyingxiangmudengji.didian,
                 lou = yunyingxiangmudengji.lou,

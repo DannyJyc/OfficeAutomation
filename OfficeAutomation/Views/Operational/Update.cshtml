@@ -10,10 +10,6 @@
 
     <script src="~/plus/layui/layui.js"></script>
 
-
-    <script src="~/js/area.js"></script>
-
-
 </head>
 <body style="background-color: white">
     <div class="layui-container">
@@ -25,199 +21,337 @@
                     <form class="layui-form">
                         @if (Model != null)
                         {
-
-                        }
-                        <div class="layui-form-item">
-                            <label class="layui-form-label"><span class="text-red">*</span>协议编号：</label>
-                            <div class="layui-input-inline">
-                                <input type="text" name="number" required lay-verify="required" placeholder="请输入" autocomplete="off" class="layui-input">
-                            </div>
-                        </div>
-
-                        <div class="layui-form-item">
-                            <label class="layui-form-label"><span class="text-red">*</span>运营项目名称(甲)：</label>
-                            <div class="layui-input-inline">
-                                <input type="text" name="yunyingmingcheng" required lay-verify="required" placeholder="请输入" autocomplete="off" class="layui-input">
-                            </div>
-
-                            <label class="layui-form-label"><span class="text-red">*</span>运营项目简称(甲)：</label>
-                            <div class="layui-input-inline">
-                                <input type="text" name="jiancheng" required lay-verify="required" placeholder="请输入" autocomplete="off" class="layui-input">
-                            </div>
-                        </div>
-                        <div class="layui-form-item">
-                            <label class="layui-form-label"><span class="text-red">*</span>运营项目名称(乙）：</label>
-                            <div class="layui-input-inline">
-                                <input type="text" name="yifang" required lay-verify="required" placeholder="请输入" autocomplete="off" class="layui-input">
-                            </div>
-
-                            <label class="layui-form-label"><span class="text-red">*</span>运营项目简称(乙)：</label>
-                            <div class="layui-input-inline">
-                                <input type="text" name="jianchngyi" required lay-verify="required" placeholder="请输入" autocomplete="off" class="layui-input">
-                            </div>
-                        </div>
-                        <div class="layui-form-item">
-                            <label class="layui-form-label"><span class="text-red">*</span>甲方联系人：</label>
-                            <div class="layui-input-inline">
-                                <input type="text" name="lianxirenjia" required lay-verify="required" placeholder="请输入" autocomplete="off" class="layui-input">
-                            </div>
-
-                            <label class="layui-form-label"><span class="text-red">*</span>甲方联系电话：</label>
-                            <div class="layui-input-inline">
-                                <input type="text" name="teljia" required lay-verify="required" placeholder="请输入" autocomplete="off" class="layui-input">
-                            </div>
-
-                            <label class="layui-form-label"><span class="text-red">*</span>甲方固定电话：</label>
-                            <div class="layui-input-inline">
-                                <input type="text" name="emailjia" required lay-verify="required" placeholder="请输入" autocomplete="off" class="layui-input">
-                            </div>
-                        </div>
-                        <div class="layui-form-item">
-                            <label class="layui-form-label"><span class="text-red">*</span>甲方邮箱：</label>
-                            <div class="layui-input-block">
-                                <input type="text" name="emailjia" required lay-verify="required" placeholder="请输入" autocomplete="off" class="layui-input">
-                            </div>
-                        </div>
-                        <div class="layui-form-item">
-                            <label class="layui-form-label"><span class="text-red">*</span>乙方联系人：</label>
-                            <div class="layui-input-inline">
-                                <input type="text" name="lianxirenyi" required lay-verify="required" placeholder="请输入" autocomplete="off" class="layui-input">
-                            </div>
-
-                            <label class="layui-form-label"><span class="text-red">*</span>乙方联系电话：</label>
-                            <div class="layui-input-inline">
-                                <input type="text" name="telyi" required lay-verify="required" placeholder="请输入" autocomplete="off" class="layui-input">
-                            </div>
-
-                            <label class="layui-form-label"><span class="text-red">*</span>乙方固定电话：</label>
-                            <div class="layui-input-inline">
-                                <input type="text" name="phoneyi" required lay-verify="required" placeholder="请输入" autocomplete="off" class="layui-input">
-                            </div>
-                        </div>
-                        <div class="layui-form-item">
-                            <label class="layui-form-label"><span class="text-red">*</span>乙方邮箱：</label>
-                            <div class="layui-input-block">
-                                <input type="text" name="emailyi" required lay-verify="required" placeholder="请输入" autocomplete="off" class="layui-input">
-                            </div>
-                        </div>
-                        <div class="layui-form-item">
-                            <label class="layui-form-label"><span class="text-red">*</span>运营项目产权：</label>
-                            <div class="layui-input-inline">
-                                <select name="yunyingchanquan" lay-filter="yunyingchanquan" lay-search="" lay-verify="required">
-                                    <option value="自有">自有</option>
-                                    <option value="合作">合作</option>
-                                    <option value="并购">并购</option>
-                                    <option value="代理">代理</option>
-                                </select>
-                            </div>
-                        </div>
-                        <div class="layui-form-item">
-                            <label class="layui-form-label"><span class="text-red">*</span>运营起始/终止时间：</label>
-                            <div class="layui-input-inline">
-                                <input type="text" name="addtime" id="addtime" placeholder="请输入" autocomplete="off" class="layui-input">
-                            </div>
-
-                            <div class="layui-form-mid">-</div>
-                            <div class="layui-input-inline">
-                                <input type="text" name="endtime" id="endtime" placeholder="请输入" autocomplete="off" class="layui-input">
-                            </div>
-                        </div>
-                        <div class="layui-form-item">
-                            <label class="layui-form-label"><span class="text-red">*</span>省/市/区：</label>
-                            <div class="layui-input-inline">
-                                <select id="s_province" name="s_province">
-                                    <option>辽宁省</option>
-                                </select>
-                            </div>
-
-                            <div class="layui-input-inline">
-                                <select id="s_city" name="s_city">
-                                    <option>沈阳市</option>
-
-                                </select>
-                            </div>
-
-                            <div class="layui-input-inline">
-                                <select id="s_county" name="s_county">
-                                    <option>浑南新区</option>
-
-                                </select>
-                            </div>
-                            @*<script type="text/javascript">_init_area();</script>
-
-
-                            <script type="text/javascript">
-
-
-
-                                var showArea = function () {
-
-
-                                    document.getElementById("s_city").value + " - 县/区" +  
-
-                                        document.getElementById("s_county").value + "</h3>"
-
-                                }
-
-                                document.getElementById("s_county").setAttribute('onchange', 'showArea()');
-
-                            </script>*@
-                        </div>
-                        <div class="layui-form-item">
-                            <label class="layui-form-label"><span class="text-red">*</span>运营地点产权：</label>
-                            <div class="layui-input-inline">
-                                <select name="didiancanquan" lay-filter="didiancanquan" lay-search="" lay-verify="required">
-                                    <option value="自有">自有</option>
-                                    <option value="租贷">租贷</option>
-                                    <option value="质押">质押</option>
-                                </select>
-                            </div>
-
-                            <label class="layui-form-label"><span class="text-red">*</span>运营地点期限：</label>
-                            <div class="layui-input-inline">
-                                <input type="text" name="didianendeetime" id="didianendeetime" required lay-verify="required" placeholder="请输入" autocomplete="off" class="layui-input">
-                            </div>
-                        </div>
-
-                        <div class="layui-form-item">
-                            <label class="layui-form-label"><span class="text-red">*</span>地点名称：</label>
-                            <div class="layui-input-block">
-                                <input type="text" name="didian" required lay-verify="required" placeholder="请输入" autocomplete="off" class="layui-input">
-                            </div>
-                        </div>
-                        <div class="layui-form-item">
-                            <label class="layui-form-label"><span class="text-red">*</span>楼宇名称：</label>
-                            <div class="layui-input-block">
-                                <input type="text" name="lou" required lay-verify="required" placeholder="请输入" autocomplete="off" class="layui-input">
-                            </div>
-                        </div>
-                        <div class="layui-form-item">
-                            <label class="layui-form-label"><span class="text-red">*</span>楼层及房间号：</label>
-                            <div class="layui-input-block">
-                                <input type="text" name="fangjianhao" required lay-verify="required" placeholder="请输入" autocomplete="off" class="layui-input">
-                            </div>
-                        </div>
-                        <div class="layui-form-item">
-                            <label class="layui-form-label"><span class="text-red">*</span>详细地址：</label>
-                            <div class="layui-input-block">
-                                <textarea placeholder="请输入内容" class="layui-textarea" name="address"></textarea>
-                            </div>
-                        </div>
-
-                        @*<div class="layui-form-item">
-                                <label class="layui-form-label"><span class="text-red">*</span>组织架构名称：</label>
-                                <div class="layui-input-block">
-                                    <input type="text" name="zhuzhijiagoumingcheng" required lay-verify="required" placeholder="请输入" autocomplete="off" class="layui-input">
+                            <div class="layui-form-item">
+                                <label class="layui-form-label"><span class="text-red">*</span>协议编号：</label>
+                                <div class="layui-input-inline">
+                                    <input type="text" name="number" required lay-verify="required" placeholder="请输入" autocomplete="off" class="layui-input" disabled="disabled" value="@Model.number">
                                 </div>
-                            </div>*@
-                        <div class="layui-form-item">
-                            <div class="layui-input-block">
-                                @*<button class="layui-btn layui-btn-warm" lay-submit lay-filter="formDemo">暂存</button>*@
-                                <button class="layui-btn" lay-submit lay-filter="formDemo">提交审核</button>
-                                <button type="reset" class="layui-btn layui-btn-primary">重置</button>
-                                <button class="layui-btn ghost-btn-blue" id="fanhui">返回上一页</button>
                             </div>
-                        </div>
+
+                            <div class="layui-form-item">
+                                <label class="layui-form-label"><span class="text-red">*</span>运营项目名称(甲)：</label>
+                                <div class="layui-input-inline">
+                                    <input type="text" name="yunyingmingcheng" required lay-verify="required" placeholder="请输入" autocomplete="off" class="layui-input" disabled="disabled" value="@Model.yunyingmingcheng">
+                                </div>
+
+                                <label class="layui-form-label"><span class="text-red">*</span>运营项目简称(甲)：</label>
+                                <div class="layui-input-inline">
+                                    <input type="text" name="jiancheng" required lay-verify="required" placeholder="请输入" autocomplete="off" class="layui-input" disabled="disabled" value="@Model.jiancheng">
+                                </div>
+                            </div>
+                            <div class="layui-form-item">
+                                <label class="layui-form-label"><span class="text-red">*</span>运营项目名称(乙）：</label>
+                                <div class="layui-input-inline">
+                                    <input type="text" name="yifang" required lay-verify="required" placeholder="请输入" autocomplete="off" class="layui-input" disabled="disabled" value="@Model.yifang">
+                                </div>
+
+                                <label class="layui-form-label"><span class="text-red">*</span>运营项目简称(乙)：</label>
+                                <div class="layui-input-inline">
+                                    <input type="text" name="jianchngyi" required lay-verify="required" placeholder="请输入" autocomplete="off" class="layui-input" disabled="disabled" value="@Model.jianchngyi">
+                                </div>
+                            </div>
+                            <div class="layui-form-item">
+                                <label class="layui-form-label"><span class="text-red">*</span>甲方联系人：</label>
+                                <div class="layui-input-inline">
+                                    <input type="text" name="lianxirenjia" required lay-verify="required" placeholder="请输入" autocomplete="off" class="layui-input" disabled="disabled" value="@Model.lianxirenjia">
+                                </div>
+
+                                <label class="layui-form-label"><span class="text-red">*</span>甲方联系电话：</label>
+                                <div class="layui-input-inline">
+                                    <input type="text" name="teljia" required lay-verify="required" placeholder="请输入" autocomplete="off" class="layui-input" disabled="disabled" value="@Model.phonejia">
+                                </div>
+
+                                <label class="layui-form-label"><span class="text-red">*</span>甲方固定电话：</label>
+                                <div class="layui-input-inline">
+                                    <input type="text" name="emailjia" required lay-verify="required" placeholder="请输入" autocomplete="off" class="layui-input" disabled="disabled" value="@Model.teljia">
+                                </div>
+                            </div>
+                            <div class="layui-form-item">
+                                <label class="layui-form-label"><span class="text-red">*</span>甲方邮箱：</label>
+                                <div class="layui-input-block">
+                                    <input type="text" name="emailjia" required lay-verify="required" placeholder="请输入" autocomplete="off" class="layui-input" disabled="disabled" value="@Model.emailjia">
+                                </div>
+                            </div>
+                            <div class="layui-form-item">
+                                <label class="layui-form-label"><span class="text-red">*</span>乙方联系人：</label>
+                                <div class="layui-input-inline">
+                                    <input type="text" name="lianxirenyi" required lay-verify="required" placeholder="请输入" autocomplete="off" class="layui-input" disabled="disabled" value="@Model.lianxirenyi">
+                                </div>
+
+                                <label class="layui-form-label"><span class="text-red">*</span>乙方联系电话：</label>
+                                <div class="layui-input-inline">
+                                    <input type="text" name="telyi" required lay-verify="required" placeholder="请输入" autocomplete="off" class="layui-input" disabled="disabled" value="@Model.phoneyi">
+                                </div>
+
+                                <label class="layui-form-label"><span class="text-red">*</span>乙方固定电话：</label>
+                                <div class="layui-input-inline">
+                                    <input type="text" name="phoneyi" required lay-verify="required" placeholder="请输入" autocomplete="off" class="layui-input" disabled="disabled" value="@Model.telyi">
+                                </div>
+                            </div>
+                            <div class="layui-form-item">
+                                <label class="layui-form-label"><span class="text-red">*</span>乙方邮箱：</label>
+                                <div class="layui-input-block">
+                                    <input type="text" name="emailyi" required lay-verify="required" placeholder="请输入" autocomplete="off" class="layui-input" disabled="disabled" value="@Model.emailyi">
+                                </div>
+                            </div>
+                            <div class="layui-form-item">
+                                <label class="layui-form-label"><span class="text-red">*</span>运营项目产权：</label>
+                                <div class="layui-input-inline">
+                                    <input type="text" name="yunyingchanquan" required lay-verify="required" placeholder="请输入" autocomplete="off" class="layui-input" disabled="disabled" value="@Model.yunyingchanquan">
+                                </div>
+                            </div>
+                            <div class="layui-form-item">
+                                <label class="layui-form-label"><span class="text-red">*</span>运营起始/终止时间：</label>
+                                <div class="layui-input-inline">
+                                    <input type="text" name="addtime" id="addtime" placeholder="请输入" autocomplete="off" class="layui-input" disabled="disabled" value="@Model.addtime">
+                                </div>
+
+                                <div class="layui-form-mid">-</div>
+                                <div class="layui-input-inline">
+                                    <input type="text" name="endtime" id="endtime" placeholder="请输入" autocomplete="off" class="layui-input" disabled="disabled" value="@Model.endtime">
+                                </div>
+                            </div>
+                            <div class="layui-form-item">
+                                <label class="layui-form-label"><span class="text-red">*</span>省/市/区：</label>
+                                <div class="layui-input-inline">
+                                    <input type="text" name="province" id="province" placeholder="请输入" autocomplete="off" class="layui-input" disabled="disabled" value="@Model.province">
+
+                                </div>
+
+                                <div class="layui-input-inline">
+                                    <input type="text" name="city" id="city" placeholder="请输入" autocomplete="off" class="layui-input" disabled="disabled" value="@Model.city">
+
+                                </div>
+
+                                <div class="layui-input-inline">
+                                    <input type="text" name="area" id="area" placeholder="请输入" autocomplete="off" class="layui-input" disabled="disabled" value="@Model.area">
+
+                                </div>
+                            </div>
+                            <div class="layui-form-item">
+                                <label class="layui-form-label"><span class="text-red">*</span>运营地点产权：</label>
+                                <div class="layui-input-inline">
+                                    <input type="text" name="didiancanquan" id="didiancanquan" placeholder="请输入" autocomplete="off" class="layui-input" disabled="disabled" value="@Model.didiancanquan">
+
+                                </div>
+
+                                <label class="layui-form-label"><span class="text-red">*</span>运营地点期限：</label>
+                                <div class="layui-input-inline">
+                                    <input type="text" name="didianendetime" id="didianendetime" required lay-verify="required" placeholder="请输入" autocomplete="off" class="layui-input" disabled="disabled" value="@Model.didianendetime">
+                                </div>
+                            </div>
+
+                            <div class="layui-form-item">
+                                <label class="layui-form-label"><span class="text-red">*</span>地点名称：</label>
+                                <div class="layui-input-block">
+                                    <input type="text" name="didian" required lay-verify="required" placeholder="请输入" autocomplete="off" class="layui-input" disabled="disabled" value="@Model.didian">
+                                </div>
+                            </div>
+                            <div class="layui-form-item">
+                                <label class="layui-form-label"><span class="text-red">*</span>楼宇名称：</label>
+                                <div class="layui-input-block">
+                                    <input type="text" name="lou" required lay-verify="required" placeholder="请输入" autocomplete="off" class="layui-input" disabled="disabled" value="@Model.lou">
+                                </div>
+                            </div>
+                            <div class="layui-form-item">
+                                <label class="layui-form-label"><span class="text-red">*</span>楼层及房间号：</label>
+                                <div class="layui-input-block">
+                                    <input type="text" name="fangjianhao" required lay-verify="required" placeholder="请输入" autocomplete="off" class="layui-input" disabled="disabled" value="@Model.fangjianhao">
+                                </div>
+                            </div>
+                            <div class="layui-form-item">
+                                <label class="layui-form-label"><span class="text-red">*</span>详细地址：</label>
+                                <div class="layui-input-block">
+                                    <textarea placeholder="请输入内容" class="layui-textarea" name="address" disabled="disabled">@Model.address</textarea>
+                                </div>
+                            </div>
+
+                            @*<div class="layui-form-item">
+                                    <label class="layui-form-label"><span class="text-red">*</span>组织架构名称：</label>
+                                    <div class="layui-input-block">
+                                        <input type="text" name="zhuzhijiagoumingcheng" required lay-verify="required" placeholder="请输入" autocomplete="off" class="layui-input">
+                                    </div>
+                                </div>*@
+                            <div class="layui-form-item">
+                                <div class="layui-input-block">
+                                    <button class="layui-btn ghost-btn-blue" id="fanhui">返回上一页</button>
+                                </div>
+                            </div>
+                        }
+                        else
+                        {
+                            <div class="layui-form-item">
+                                <label class="layui-form-label"><span class="text-red">*</span>协议编号：</label>
+                                <div class="layui-input-inline">
+                                    <input type="text" name="number" required lay-verify="required" placeholder="请输入" autocomplete="off" class="layui-input">
+                                </div>
+                            </div>
+
+                            <div class="layui-form-item">
+                                <label class="layui-form-label"><span class="text-red">*</span>运营项目名称(甲)：</label>
+                                <div class="layui-input-inline">
+                                    <input type="text" name="yunyingmingcheng" required lay-verify="required" placeholder="请输入" autocomplete="off" class="layui-input">
+                                </div>
+
+                                <label class="layui-form-label"><span class="text-red">*</span>运营项目简称(甲)：</label>
+                                <div class="layui-input-inline">
+                                    <input type="text" name="jiancheng" required lay-verify="required" placeholder="请输入" autocomplete="off" class="layui-input">
+                                </div>
+                            </div>
+                            <div class="layui-form-item">
+                                <label class="layui-form-label"><span class="text-red">*</span>运营项目名称(乙）：</label>
+                                <div class="layui-input-inline">
+                                    <input type="text" name="yifang" required lay-verify="required" placeholder="请输入" autocomplete="off" class="layui-input">
+                                </div>
+
+                                <label class="layui-form-label"><span class="text-red">*</span>运营项目简称(乙)：</label>
+                                <div class="layui-input-inline">
+                                    <input type="text" name="jianchngyi" required lay-verify="required" placeholder="请输入" autocomplete="off" class="layui-input">
+                                </div>
+                            </div>
+                            <div class="layui-form-item">
+                                <label class="layui-form-label"><span class="text-red">*</span>甲方联系人：</label>
+                                <div class="layui-input-inline">
+                                    <input type="text" name="lianxirenjia" required lay-verify="required" placeholder="请输入" autocomplete="off" class="layui-input">
+                                </div>
+
+                                <label class="layui-form-label"><span class="text-red">*</span>甲方联系电话：</label>
+                                <div class="layui-input-inline">
+                                    <input type="text" name="teljia" required lay-verify="required" placeholder="请输入" autocomplete="off" class="layui-input">
+                                </div>
+
+                                <label class="layui-form-label"><span class="text-red">*</span>甲方固定电话：</label>
+                                <div class="layui-input-inline">
+                                    <input type="text" name="emailjia" required lay-verify="required" placeholder="请输入" autocomplete="off" class="layui-input">
+                                </div>
+                            </div>
+                            <div class="layui-form-item">
+                                <label class="layui-form-label"><span class="text-red">*</span>甲方邮箱：</label>
+                                <div class="layui-input-block">
+                                    <input type="text" name="emailjia" required lay-verify="required" placeholder="请输入" autocomplete="off" class="layui-input">
+                                </div>
+                            </div>
+                            <div class="layui-form-item">
+                                <label class="layui-form-label"><span class="text-red">*</span>乙方联系人：</label>
+                                <div class="layui-input-inline">
+                                    <input type="text" name="lianxirenyi" required lay-verify="required" placeholder="请输入" autocomplete="off" class="layui-input">
+                                </div>
+
+                                <label class="layui-form-label"><span class="text-red">*</span>乙方联系电话：</label>
+                                <div class="layui-input-inline">
+                                    <input type="text" name="telyi" required lay-verify="required" placeholder="请输入" autocomplete="off" class="layui-input">
+                                </div>
+
+                                <label class="layui-form-label"><span class="text-red">*</span>乙方固定电话：</label>
+                                <div class="layui-input-inline">
+                                    <input type="text" name="phoneyi" required lay-verify="required" placeholder="请输入" autocomplete="off" class="layui-input">
+                                </div>
+                            </div>
+                            <div class="layui-form-item">
+                                <label class="layui-form-label"><span class="text-red">*</span>乙方邮箱：</label>
+                                <div class="layui-input-block">
+                                    <input type="text" name="emailyi" required lay-verify="required" placeholder="请输入" autocomplete="off" class="layui-input">
+                                </div>
+                            </div>
+                            <div class="layui-form-item">
+                                <label class="layui-form-label"><span class="text-red">*</span>运营项目产权：</label>
+                                <div class="layui-input-inline">
+                                    <select name="yunyingchanquan" lay-filter="yunyingchanquan" lay-search="" lay-verify="required">
+                                        <option value="自有">自有</option>
+                                        <option value="合作">合作</option>
+                                        <option value="并购">并购</option>
+                                        <option value="代理">代理</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="layui-form-item">
+                                <label class="layui-form-label"><span class="text-red">*</span>运营起始/终止时间：</label>
+                                <div class="layui-input-inline">
+                                    <input type="text" name="addtime" id="addtime" placeholder="请输入" autocomplete="off" class="layui-input">
+                                </div>
+
+                                <div class="layui-form-mid">-</div>
+                                <div class="layui-input-inline">
+                                    <input type="text" name="endtime" id="endtime" placeholder="请输入" autocomplete="off" class="layui-input">
+                                </div>
+                            </div>
+                            <div class="layui-form-item">
+                                <label class="layui-form-label"><span class="text-red">*</span>省/市/区：</label>
+                                <div class="layui-input-inline">
+                                    <select name="province" lay-filter="province" class="province">
+                                        <option>请选择省</option>
+                                    </select>
+                                </div>
+
+                                <div class="layui-input-inline">
+                                    <select name="city" lay-filter="city" disabled>
+                                        <option>请选择市</option>
+                                    </select>
+                                </div>
+
+                                <div class="layui-input-inline">
+                                    <select name="area" lay-filter="area" disabled>
+                                        <option>请选择县/区</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="layui-form-item">
+                                <label class="layui-form-label"><span class="text-red">*</span>运营地点产权：</label>
+                                <div class="layui-input-inline">
+                                    <select name="didiancanquan" lay-filter="didiancanquan" lay-search="" lay-verify="required">
+                                        <option value="自有">自有</option>
+                                        <option value="租贷">租贷</option>
+                                        <option value="质押">质押</option>
+                                    </select>
+                                </div>
+
+                                <label class="layui-form-label"><span class="text-red">*</span>运营地点期限：</label>
+                                <div class="layui-input-inline">
+                                    <input type="text" name="didianendetime" id="didianendetime" required lay-verify="required" placeholder="请输入" autocomplete="off" class="layui-input">
+                                </div>
+                            </div>
+
+                            <div class="layui-form-item">
+                                <label class="layui-form-label"><span class="text-red">*</span>地点名称：</label>
+                                <div class="layui-input-block">
+                                    <input type="text" name="didian" required lay-verify="required" placeholder="请输入" autocomplete="off" class="layui-input">
+                                </div>
+                            </div>
+                            <div class="layui-form-item">
+                                <label class="layui-form-label"><span class="text-red">*</span>楼宇名称：</label>
+                                <div class="layui-input-block">
+                                    <input type="text" name="lou" required lay-verify="required" placeholder="请输入" autocomplete="off" class="layui-input">
+                                </div>
+                            </div>
+                            <div class="layui-form-item">
+                                <label class="layui-form-label"><span class="text-red">*</span>楼层及房间号：</label>
+                                <div class="layui-input-block">
+                                    <input type="text" name="fangjianhao" required lay-verify="required" placeholder="请输入" autocomplete="off" class="layui-input">
+                                </div>
+                            </div>
+                            <div class="layui-form-item">
+                                <label class="layui-form-label"><span class="text-red">*</span>详细地址：</label>
+                                <div class="layui-input-block">
+                                    <textarea placeholder="请输入内容" class="layui-textarea" name="address"></textarea>
+                                </div>
+                            </div>
+
+                            @*<div class="layui-form-item">
+                                    <label class="layui-form-label"><span class="text-red">*</span>组织架构名称：</label>
+                                    <div class="layui-input-block">
+                                        <input type="text" name="zhuzhijiagoumingcheng" required lay-verify="required" placeholder="请输入" autocomplete="off" class="layui-input">
+                                    </div>
+                                </div>*@
+                            <div class="layui-form-item">
+                                <div class="layui-input-block">
+                                    @*<button class="layui-btn layui-btn-warm" lay-submit lay-filter="formDemo">暂存</button>*@
+                                    <button class="layui-btn" lay-submit lay-filter="formDemo">提交审核</button>
+                                    <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+                                    <button class="layui-btn ghost-btn-blue" id="fanhui">返回上一页</button>
+                                </div>
+                            </div>
+                        }
+
                     </form>
                 </div>
             </div>
@@ -228,11 +362,12 @@
 
         var layui = layui.config({
             base: '/plus/' //静态资源所在路径
-        }).use(['layer', 'form', 'jquery', 'upload', 'laydate'], function () {
+        }).use(['layer', 'form', 'jquery', 'upload', 'laydate', "address"], function () {
             var form = layui.form;
             var $ = layui.jquery;
             var layer = layui.layer;
             var laydate = layui.laydate;
+            var address = layui.address();
             $("#fanhui").click(function () {
                 location.href = "../Operational/";
                 return false;
@@ -261,9 +396,9 @@
                         yunyingchanquan: upData.yunyingchanquan,
                         addtime: upData.addtime,
                         endtime: upData.endtime,
-                        sheng: upData.sheng,
-                        shi: upData.shi,
-                        qu: upData.qu,
+                        province: upData.province,
+                        city: upData.city,
+                        area: upData.area,
                         address: upData.address,
                         didian: upData.didian,
                         lou: upData.lou,
@@ -288,7 +423,7 @@
                             layer.alert("操作成功", { icon: 6 },
                                 function (index) {
 
-                                       layer.close(index); //再执行关闭
+                                    layer.close(index); //再执行关闭
 
                                 });
 
@@ -301,13 +436,71 @@
 
                     }
                 });
-
                 return false;
             });
+            layui.define(["form", "jquery"], function (exports) {
+                var form = layui.form,
+                    $ = layui.jquery,
+                    Address = function () { };
 
+                Address.prototype.provinces = function () {
+                    //加载省数据
+                    var proHtml = '', that = this;
+                    $.get("~/js/address.json", function (data) {
+                        for (var i = 0; i < data.length; i++) {
+                            proHtml += '<option value="' + data[i].code + '">' + data[i].name + '</option>';
+                        }
+                        //初始化省数据
+                        $("select[name=province]").append(proHtml);
+                        form.render();
+                        form.on('select(province)', function (proData) {
+                            $("select[name=area]").html('<option value="">请选择县/区</option>');
+                            var value = proData.value;
+                            if (value > 0) {
+                                that.citys(data[$(this).index() - 1].childs);
+                            } else {
+                                $("select[name=city]").attr("disabled", "disabled");
+                            }
+                        });
+                    })
+                }
+
+                //加载市数据
+                Address.prototype.citys = function (citys) {
+                    var cityHtml = '<option value="">请选择市</option>', that = this;
+                    for (var i = 0; i < citys.length; i++) {
+                        cityHtml += '<option value="' + citys[i].code + '">' + citys[i].name + '</option>';
+                    }
+                    $("select[name=city]").html(cityHtml).removeAttr("disabled");
+                    form.render();
+                    form.on('select(city)', function (cityData) {
+                        var value = cityData.value;
+                        if (value > 0) {
+                            that.areas(citys[$(this).index() - 1].childs);
+                        } else {
+                            $("select[name=area]").attr("disabled", "disabled");
+                        }
+                    });
+                }
+
+                //加载县/区数据
+                Address.prototype.areas = function (areas) {
+                    var areaHtml = '<option value="">请选择县/区</option>';
+                    for (var i = 0; i < areas.length; i++) {
+                        areaHtml += '<option value="' + areas[i].code + '">' + areas[i].name + '</option>';
+                    }
+                    $("select[name=area]").html(areaHtml).removeAttr("disabled");
+                    form.render();
+                }
+
+                var address = new Address();
+                exports("address", function () {
+                    address.provinces();
+                });
+            });
         });
     </script>
- 
+
 </body>
 </html>
 

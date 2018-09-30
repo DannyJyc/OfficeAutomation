@@ -20,9 +20,9 @@ namespace OfficeAutomation.Models
             yunyingchanquan = "";
             addtime = System.DateTime.Now;
             endtime = System.DateTime.Now;
-            s_province = "";
-            s_city = "";
-            s_county = "";
+            province = "";
+            city = "";
+            area = "";
             address = "";
             didian = "";
             lou = "";
@@ -83,15 +83,15 @@ namespace OfficeAutomation.Models
         /// <summary>
         /// 省
         /// </summary>
-        public string s_province { get; set; }
+        public string province { get; set; }
         /// <summary>
         /// 市
         /// </summary>
-        public string s_city { get; set; }
+        public string city { get; set; }
         /// <summary>
         /// 区
         /// </summary>
-        public string s_county { get; set; }
+        public string area { get; set; }
         /// <summary>
         /// 详细地址
         /// </summary>

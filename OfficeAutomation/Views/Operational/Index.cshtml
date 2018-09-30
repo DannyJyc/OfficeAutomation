@@ -29,11 +29,21 @@
     <div class="layui-form">
         <div class="demoTable">
             <br> &nbsp;&nbsp;&nbsp;
-            <button class="layui-btn" data-type="add"><i class="layui-icon">&#xe608;</i> 添加课程</button>
+            <button class="layui-btn" data-type="add"><i class="layui-icon">&#xe608;</i> 新增运营项目</button>
         </div>
     </div>
     <table class="layui-hide" id="LAY_table_user" lay-filter="user"></table>
 
+    <script type="text/html" id="addtime">
+        {{#
+    return d.addtime.replace('T',' ')
+        }}
+    </script>
+    <script type="text/html" id="endtime">
+        {{#
+    return d.endtime.replace('T',' ')
+        }}
+    </script>
     <script type="text/html" id="state">
         {{#
     if(d.state == 0){
@@ -65,8 +75,8 @@
                         [
                             { field: 'number', title: '协议编号', sort: true, fixed: true },
                             { field: 'yunyingchanquan', title: '运营项目产权', sort: true, fixed: true },
-                            { field: 'addtime', title: '运营起始时间', sort: true, fixed: true },
-                            { field: 'endtime', title: '终止时间', sort: true, fixed: true },
+                            { field: 'addtime', title: '运营起始时间', sort: true, fixed: true, toolbar: '#addtime' },
+                            { field: 'endtime', title: '终止时间', sort: true, fixed: true, toolbar: '#endtime' },
                             { field: 'address', title: '详细地址', sort: true, fixed: true },
                             { field: 'didian', title: '地点名称', sort: true, fixed: true },
                             { field: 'lou', title: '楼宇名称', sort: true, fixed: true },
@@ -86,7 +96,7 @@
                         layer.msg('加载中', {
                             icon: 16
                             , shade: 0.01,
-                            time:5
+                            time: 5
                         });
                         location.href = "../Operational/Update";
                     }
@@ -98,7 +108,7 @@
                             layer.msg('加载中', {
                                 icon: 16
                                 , shade: 0.01,
-                                time:5
+                                time: 5
                             });
                             location.href = "../Operational/Update?id=" + data.id;
                         }

@@ -1,0 +1,180 @@
+﻿@model OfficeAutomation.Models.threelevel
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>添加类目</title>
+    <link href="~/css/s.css" rel="stylesheet" />
+    <link href="~/css/extend.css" rel="stylesheet" />
+
+    <script src="~/plus/layui/layui.js"></script>
+</head>
+<body style="background-color: white">
+    <div class="layui-container">
+        <div class="layui-row ">
+
+            <div class="layui-col-md12">
+
+                <div style="margin-top: 3.5em; ">
+
+                    <form class="layui-form">
+
+
+                        <div class="layui-form-item">
+                            <label class="layui-form-label"><span class="text-red">*</span>名称：</label>
+                            <div class="layui-input-block">
+
+                                @{
+                                    if (Model != null)
+                                    {
+                                        <input type="text" name="name" required lay-verify="required" placeholder="请输入名称" autocomplete="off" class="layui-input" value="@Model.name">
+                                        <input type="hidden" id="two" value="@Model.two_id" />
+
+                                    }
+                                    else
+                                    {
+                                        <input type="text" name="name" required lay-verify="required" placeholder="请输入名称" autocomplete="off" class="layui-input">
+                                    }
+                                }
+                            </div>
+                        </div>
+
+                        <div class="layui-form-item">
+                            <label class="layui-form-label"><span class="text-red">*</span>定义：</label>
+                            <div class="layui-input-block">
+
+                                @{
+                                    if (Model != null)
+                                    {
+                                        <input type="text" name="definition" required lay-verify="required" placeholder="请输入定义" autocomplete="off" class="layui-input" value="@Model.definition">
+                                    }
+                                    else
+                                    {
+                                        <input type="text" name="definition" required lay-verify="required" placeholder="请输入定义" autocomplete="off" class="layui-input">
+                                    }
+                                }
+                            </div>
+                        </div>
+                        <div class="layui-form-item">
+                            <label class="layui-form-label"><span class="text-red">*</span>依据：</label>
+                            <div class="layui-input-block">
+
+                                @{
+                                    if (Model != null)
+                                    {
+                                        <input type="text" name="according" required lay-verify="required" placeholder="请输入依据" autocomplete="off" class="layui-input" value="@Model.according">
+                                    }
+                                    else
+                                    {
+                                        <input type="text" name="according" required lay-verify="required" placeholder="请输入依据" autocomplete="off" class="layui-input">
+                                    }
+                                }
+                            </div>
+                        </div>
+                        <div class="layui-form-item">
+                            <label class="layui-form-label"><span class="text-red">*</span>来源：</label>
+                            <div class="layui-input-block">
+
+                                @{
+                                    if (Model != null)
+                                    {
+                                        <input type="text" name="origin" required lay-verify="required" placeholder="请输入来源" autocomplete="off" class="layui-input" value="@Model.origin">
+                                    }
+                                    else
+                                    {
+                                        <input type="text" name="origin" required lay-verify="required" placeholder="请输入来源" autocomplete="off" class="layui-input">
+                                    }
+                                }
+                            </div>
+                        </div>
+                        <div class="layui-form-item">
+                            <label class="layui-form-label"><span class="text-red">*</span>所属一级类目项：</label>
+                            <div class="layui-input-block">
+                                <select name="two" lay-filter="province" lay-search="" lay-verify="required"></select>
+                            </div>
+                        </div>
+
+
+                        <div class="layui-form-item">
+                            <div class="layui-input-block">
+                                <button class="layui-btn" lay-submit lay-filter="formDemo">立即提交</button>
+                                <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+
+    var layui = layui.config({
+        base: '/plus/' //静态资源所在路径
+    }).use(['layer', 'form', 'jquery','upload'], function () {
+        var form = layui.form;
+        var $ = layui.jquery;
+        var layer = layui.layer;
+
+
+        $("select[name='two']").empty();
+        $.get("../Category/TList", function (result) {
+
+            console.log(result);
+            var two = $("#two").val();
+            $("select[name='two']").append('<option></option>');
+            for (var i = 0; i < result.length; i++) {
+                if (two == result[i].name) {
+                    $("select[name='two']").append('<option selected = "selected" value="' + result[i].id + '">' + result[i].name + '</option>');
+                    continue;
+                }
+                $("select[name='two']").append('<option value="' + result[i].id + '">' + result[i].name + '</option>');
+            }
+
+            form.render('select'); //刷新select选择框渲染
+        });
+        form.on('submit(formDemo)', function (data) {
+            var index = layer.msg('数据提交中，请稍候', { icon: 16, shade: 0.01, time: 10 });
+            var upData = data.field;
+
+            $.ajax({
+                type: "post",
+                url: "../Category/Addthree",
+                data: {
+                    id:@ViewData["id"],
+                    name: upData.name,
+                    definition: upData.definition,
+                    according: upData.according,
+                    origin: upData.origin,
+                    two_id: upData.two
+                },
+                dataType: "json",
+                success: function(data) {
+                    layer.close(index);
+                    if (data.code == "0" || data.code == 0) {
+                        layer.alert("操作成功", { icon: 6 },
+                            function (index) {
+                                var index = parent.layer.getFrameIndex(window.name); //先得到当前iframe层的索引
+                                parent.layer.close(index); //再执行关闭
+                                parent.location.reload(); // 刷新父级
+                        });
+
+                        //location.reload();
+                        return false;
+                    } else {
+                        layer.alert(data.msg, { icon: 5 });
+                    }
+                    console.log(data);
+
+                }
+            });
+
+            return false;
+        });
+
+    });
+    </script>
+</body>
+</html>

@@ -79,7 +79,7 @@ namespace OfficeAutomation.Controllers
             
             if (id > 0)
             {
-                ViewData["value"] = dalDictionary.Single(id).value;
+                ViewData["value"] = dalDictionary.Single(id);
                 return View(dalEffect.List());
             }
             return View(dalEffect.List());

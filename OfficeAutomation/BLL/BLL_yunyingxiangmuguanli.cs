@@ -1,4 +1,5 @@
-﻿using OfficeAutomation.DAL;
+﻿using log4net;
+using OfficeAutomation.DAL;
 using OfficeAutomation.DAL.Helper;
 using OfficeAutomation.Models;
 
@@ -6,6 +7,8 @@ namespace OfficeAutomation.BLL
 {
     public class BLL_yunyingxiangmuguanli
     {
+        private static readonly ILog log = LogManager.GetLogger(SDKProperties.LogRepository.Name, typeof(Base));
+
         private DAL.DAL_yunyingxiangmudengji dalYunyingxiangmudengji = new DAL_yunyingxiangmudengji();
         BaseResult baseResult = new BaseResult();
         /// <summary>

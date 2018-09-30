@@ -1,5 +1,8 @@
 ﻿@using OfficeAutomation.DAL
 @model List<OfficeAutomation.Models.effect>
+@{
+    var dic = ViewData["value"] as OfficeAutomation.Models.dictionary;
+}
 <!DOCTYPE html>
 <html>
 <head>
@@ -27,9 +30,9 @@
                             <div class="layui-input-block">
 
                                 @{
-                                    if (ViewData["value"] != null)
+                                    if (dic != null)
                                     {
-                                        <input type="text" name="dicvalue" id="dicvalue" required lay-verify="required" placeholder="请输入角色" autocomplete="off" class="layui-input" value="@ViewData["value"]">
+                                        <input type="text" name="dicvalue" id="dicvalue" required lay-verify="required" placeholder="请输入角色" autocomplete="off" class="layui-input" value="@dic.value">
                                     }
                                     else
                                     {
@@ -50,7 +53,7 @@
                                             continue;
                                         }
                                     DAL_Dictionary dalDictionary = new DAL_Dictionary();
-                                    int count = dalDictionary.IfRelatedByRole(ViewData["value"].ToString(), item.id);
+                                    int count = dalDictionary.IfRelatedByRole(dic.value.ToString(), item.id);
                                     if (count > 0)
                                     {
                                         <input type="checkbox" name="effect" value="@item.id" title="@item.name" checked>
@@ -63,7 +66,22 @@
                                 }
                             </div>
                         </div>
-
+                        <div class="layui-form-item">
+                            <label class="layui-form-label">是否给予控制下级的权限</label>
+                            <div class="layui-input-block">
+                                @if (dic != null)
+                                {
+                                    if (dic.controllow == 1)
+                                    {
+                                        <input type="radio" name="controllow" value="1" title="是" checked>
+                                        <input type="radio" name="controllow" value="0" title="否">
+                                    }
+                                }
+                                <input type="radio" name="controllow" value="1" title="是">
+                                <input type="radio" name="controllow" value="0" title="否" checked>
+                            
+                            </div>
+                        </div>
                         <div class="layui-form-item">
                             <div class="layui-input-block">
                                 <button class="layui-btn" lay-submit lay-filter="formDemo">立即提交</button>
@@ -105,6 +123,7 @@
                     id:@ViewData["id"],
                     dicvalue : upData.dicvalue,
                     reserve1: effectid,
+                    controllow: upData.controllow,
                     NotMapped:once
                 },
                 dataType: "json",
