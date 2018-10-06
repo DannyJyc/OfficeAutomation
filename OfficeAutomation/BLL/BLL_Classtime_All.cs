@@ -118,8 +118,8 @@ namespace OfficeAutomation.BLL
                 return result;
             }
             result.code = 0;
-            result.count = dalClasstimeAll.List(users.collegeid).Count;
-            result.data = dalClasstimeAll.List(users.collegeid,page, limit);
+            result.count = dalClasstimeAll.List((int)users.collegeid).Count;
+            result.data = dalClasstimeAll.List((int)users.collegeid,page, limit);
             return result;
         }
         /// <summary>

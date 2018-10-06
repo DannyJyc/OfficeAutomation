@@ -27,7 +27,22 @@ namespace OfficeAutomation.DAL
             }
 
             return true;
-        } 
+        }
+        /// <summary>
+        /// 对应userid是否有控制下级权限
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        public bool IsHaveControl(int id)
+        {
+            var single = dbContext.Query<view_users_college>().Where(p => p.id == id).FirstOrDefault();
+            if (single.control != 1)
+            {
+                return false;
+            }
+
+            return true;
+        }
         /// <summary>
         /// 修改用户的角色名
         /// </summary>
@@ -67,7 +82,7 @@ namespace OfficeAutomation.DAL
 
         public List<view_users_college> List(int lowid, int page, int limit)
         {
-            return dbContext.Query<view_users_college>().Where(p => p.level==lowid).TakePage(page, limit).ToList();
+            return dbContext.Query<view_users_college>().Where(p => p.level>lowid).TakePage(page, limit).ToList();
         }
 
         public int Count()
@@ -76,7 +91,7 @@ namespace OfficeAutomation.DAL
         }
         public int Count(int lowid)
         {
-            return dbContext.Query<view_users_college>().Where(p => p.level == lowid).Count();
+            return dbContext.Query<view_users_college>().Where(p => p.level > lowid).Count();
         }
         /// <summary>
         /// 登录判断
@@ -100,6 +115,19 @@ namespace OfficeAutomation.DAL
             return dbContext.Update<users>(p => p.id == id, p => new users()
             {
                 state = type
+            });
+        }
+        /// <summary>
+        /// 是否能控制下级
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="type"></param>
+        /// <returns></returns>
+        public int EditControl(int id, int type)
+        {
+            return dbContext.Update<users>(p => p.id == id, p => new users()
+            {
+                control = type
             });
         }
         /// <summary>

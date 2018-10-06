@@ -21,8 +21,8 @@ namespace OfficeAutomation.Models
             reserve2 = "";
             college_name = "";
             state = 0;
-            controllow = 0;
             level = 0;
+            control = 0;
         }
         #endregion
 
@@ -68,13 +68,13 @@ namespace OfficeAutomation.Models
         /// </summary>
         public int? state { get; set; }
         /// <summary>
-        /// 允许控制下级
-        /// </summary>
-        public int? controllow { get; set; }
-        /// <summary>
         /// 等级(1最高)
         /// </summary>
         public int? level { get; set; }
+        /// <summary>
+        /// 允许控制下级
+        /// </summary>
+        public int? control { get; set; }
 
         /// <summary>
         /// 非SQL映射字段 

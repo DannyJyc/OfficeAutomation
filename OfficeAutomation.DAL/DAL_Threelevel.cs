@@ -33,7 +33,10 @@ namespace OfficeAutomation.DAL
         {
             return dbContext.Query<threelevel>().Where(p => p.id > 0).TakePage(page, limit).ToList();
         }
-
+        public List<threelevel> List(int id)
+        {
+            return dbContext.Query<threelevel>().Where(p => p.two_id==id).ToList();
+        }
         public int Count()
         {
             return dbContext.Query<threelevel>().Where(p => p.id > 0).Count();

@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System.Collections.Generic;
+using System.Linq;
 using Chloe.MySql;
 using log4net;
 using OfficeAutomation.DAL;
@@ -15,6 +16,45 @@ namespace OfficeAutomation.BLL
         private DAL.DAL_Twolevel dalTwolevel = new DAL_Twolevel();
         private DAL.DAL_Threelevel dalThreelevel = new DAL_Threelevel();
         BaseResult result = new BaseResult();
+        /// <summary>
+        /// 返回选择框数据
+        /// </summary>
+        /// <returns></returns>
+        public List<Cascaders> CascadersList()
+        {
+            List<Cascaders> oneCascaderses = new List<Cascaders>();
+            var once = dalOnelevel.List();
+            foreach (var one in once)
+            {
+                List<Cascaders> twoCascaderses = new List<Cascaders>();
+                var twice = dalTwolevel.List(one.id);
+                Cascaders cascaders = new Cascaders();
+
+                foreach (var two in twice)
+                {
+                    List<Cascader> threeCascaderses = new List<Cascader>();
+                    var thrice = dalThreelevel.List(two.id);
+                    Cascaders twocascaders = new Cascaders();
+                    foreach (var three in thrice)
+                    {
+                        Cascader threecascaders = new Cascader();
+                        threecascaders.value = three.id.ToString();
+                        threecascaders.label = three.name;
+                        threeCascaderses.Add(threecascaders);
+                    }
+                    twocascaders.value = two.id.ToString();
+                    twocascaders.label = two.name;
+                    twocascaders.children = threeCascaderses;
+                    twoCascaderses.Add(twocascaders);
+                }
+                cascaders.value = one.id.ToString();
+                cascaders.label = one.name;
+                cascaders.children = twoCascaderses;
+                oneCascaderses.Add(cascaders);
+            }
+
+            return oneCascaderses;
+        }
         /// <summary>
         /// 所有数据
         /// </summary>

@@ -1,4 +1,5 @@
-﻿using Chloe.Annotations;
+﻿using System;
+using Chloe.Annotations;
 namespace OfficeAutomation.Models
 {
     /// <summary>
@@ -15,8 +16,9 @@ namespace OfficeAutomation.Models
             collegeid = 0;
             username = "";
             password = "";
+            state = 0;
+            control = 0;
             dicvalue = "";
-            state = 1;
             reserve1 = "";
             reserve2 = "";
         }
@@ -35,7 +37,7 @@ namespace OfficeAutomation.Models
         /// <summary>
         /// 学院id
         /// </summary>
-        public int collegeid { get; set; }
+        public int? collegeid { get; set; }
         /// <summary>
         /// 用户名
         /// </summary>
@@ -47,7 +49,11 @@ namespace OfficeAutomation.Models
         /// <summary>
         /// 状态1可用
         /// </summary>
-        public int state { get; set; }
+        public int? state { get; set; }
+        /// <summary>
+        /// 允许控制下级
+        /// </summary>
+        public int? control { get; set; }
         /// <summary>
         /// 角色
         /// </summary>

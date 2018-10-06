@@ -46,13 +46,16 @@ namespace OfficeAutomation.Authorize
 
                         if (!dalUser.IsHaveEffect(ObjUser.id, controller))
                         {
+                            if (!dalUser.IsHaveControl(ObjUser.id))
+                            {
+                                filterContext.Result = new RedirectResult("/Login/Insufficient", false);
+                                return;
+                            }
                             filterContext.Result = new RedirectResult("/Login/Insufficient", false);
                             return;
                         }
                     }
                 }
-
-                
             }
         }
     }

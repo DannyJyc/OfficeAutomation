@@ -214,3 +214,4 @@ D:\项目\OfficeAutomation\OfficeAutomation\obj\Debug\netcoreapp2.1\Razor\Views\
 D:\项目\OfficeAutomation\OfficeAutomation\obj\Debug\netcoreapp2.1\Razor\Views\Category\Addone.g.cshtml.cs
 D:\项目\OfficeAutomation\OfficeAutomation\obj\Debug\netcoreapp2.1\Razor\Views\Category\Addtwo.g.cshtml.cs
 D:\项目\OfficeAutomation\OfficeAutomation\obj\Debug\netcoreapp2.1\Razor\Views\Category\Addthree.g.cshtml.cs
+D:\项目\OfficeAutomation\OfficeAutomation\obj\Debug\netcoreapp2.1\Razor\Views\Category\Level.g.cshtml.cs

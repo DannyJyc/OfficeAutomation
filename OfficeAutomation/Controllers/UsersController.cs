@@ -58,6 +58,10 @@ namespace OfficeAutomation.Controllers
         {
             return Json(bllUsers.EditState(id,type));
         }
+        public JsonResult EditControl(int id, int type)
+        {
+            return Json(bllUsers.EditControl(id, type));
+        }
         ///*******************************************************************************************************
         ///*******************************************************************************************************
         /// <summary>

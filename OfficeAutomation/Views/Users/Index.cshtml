@@ -34,12 +34,15 @@
     </div>
     <table class="layui-hide" id="LAY_table_user" lay-filter="user"></table>
 
-    <script type="text/html" id="role">
-        {{#
+<script type="text/html" id="role">
+    {{#
     if(d.dicvalue==0){return '超级管理员'}else{
     return d.dicvalue}
-        }}
-    </script>
+    }}
+</script>
+<script type="text/html" id="control">
+    <input type="checkbox" name="{{d.value}}" value="{{d.id}}" lay-skin="switch" lay-text="是|否" lay-filter="state_con" {{ d.control== 1 ? 'checked' : '' }}>
+</script>
     <script type="text/html" id="barDemo">
         <input type="checkbox" name="{{d.value}}" value="{{d.id}}" lay-skin="switch" lay-text="启用|禁用" lay-filter="state_sw" {{ d.state== 1 ? 'checked' : '' }}>
     </script>
@@ -64,6 +67,7 @@
                             { field: 'college_name', title: '所属' },
                             { field: 'username', title: '用户名' },
                             { field: 'dicvalue', title: '角色', toolbar: '#role', sort: true },
+                            { field: 'control', title: '是否允许控制下级', toolbar: '#control', align: 'center' },
                             { field: 'state', title: '状态', toolbar: '#barDemo', align: 'center' },
                             { field: 'type', title: '操作', toolbar: '#barDemo1', align: 'center' }
                         ]
@@ -99,6 +103,33 @@
                         $.ajax({
                             type: "post",
                             url: "../Users/EditState",
+                            data: { id: this.value, type: state },
+                            dataType: "json",
+                            success: function (data) {
+                                if (data.code == 0) {
+
+                                    layer.msg('修改成功');
+                                } else {
+                                    layer.msg('修改失败');
+                                    e.prop("checked", !obj.elem.checked);
+                                    return;
+                                }
+                            }
+                        });
+                    });
+                form.on('switch(state_con)',
+                    function (obj) {
+                        var state;
+                        if (obj.elem.checked) {
+                            state = 1;
+                        } else {
+                            state = 0;
+                        }
+                        //console.log(obj);
+                        var e = $(obj.elem);
+                        $.ajax({
+                            type: "post",
+                            url: "../Users/EditControl",
                             data: { id: this.value, type: state },
                             dataType: "json",
                             success: function (data) {

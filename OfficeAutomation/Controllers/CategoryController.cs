@@ -17,6 +17,18 @@ namespace OfficeAutomation.Controllers
         private DAL.DAL_Twolevel dalTwolevel = new DAL_Twolevel();
         private BLL.BLL_Threelevel bllThreelevel = new BLL_Threelevel();
         private DAL.DAL_Threelevel dalThreelevel = new DAL_Threelevel();
+
+        public IActionResult Level()
+        {
+            return View();
+        }
+        [HttpGet]
+        public JsonResult GetCascader()
+        {
+            var i = bllOnelevel.CascadersList();
+            return Json(bllOnelevel.CascadersList());
+        }
+
         public IActionResult One()
         {
             return View();

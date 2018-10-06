@@ -42,8 +42,8 @@ namespace OfficeAutomation.BLL
             {
                 var single = dalUser.SingleUsers(users.id);
                 result.code = 0;
-                result.count = dalUser.Count((int)(1 + single.level));
-                result.data = dalUser.List((int)(1 + single.level), page, limit);
+                result.count = dalUser.Count((int)(single.level));
+                result.data = dalUser.List((int)(single.level), page, limit);
                 return result;
             }
             result.code = 0;
@@ -61,6 +61,23 @@ namespace OfficeAutomation.BLL
         {
             result.code = 0;
             if (dalUser.EditState(id, type) == 0)
+            {
+                result.code = -1;
+            }
+            else { }
+
+            return result;
+        }
+        /// <summary>
+        /// 是否控制下级用户修改
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="type"></param>
+        /// <returns></returns>
+        public BaseResult EditControl(int id, int type)
+        {
+            result.code = 0;
+            if (dalUser.EditControl(id, type) == 0)
             {
                 result.code = -1;
             }

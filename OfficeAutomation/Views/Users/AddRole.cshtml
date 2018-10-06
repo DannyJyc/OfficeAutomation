@@ -67,22 +67,6 @@
                             </div>
                         </div>
                         <div class="layui-form-item">
-                            <label class="layui-form-label">是否给予控制下级的权限</label>
-                            <div class="layui-input-block">
-                                @if (dic != null)
-                                {
-                                    if (dic.controllow == 1)
-                                    {
-                                        <input type="radio" name="controllow" value="1" title="是" checked>
-                                        <input type="radio" name="controllow" value="0" title="否">
-                                    }
-                                }
-                                <input type="radio" name="controllow" value="1" title="是">
-                                <input type="radio" name="controllow" value="0" title="否" checked>
-                            
-                            </div>
-                        </div>
-                        <div class="layui-form-item">
                             <div class="layui-input-block">
                                 <button class="layui-btn" lay-submit lay-filter="formDemo">立即提交</button>
                                 <button type="reset" class="layui-btn layui-btn-primary">重置</button>
@@ -123,7 +107,6 @@
                     id:@ViewData["id"],
                     dicvalue : upData.dicvalue,
                     reserve1: effectid,
-                    controllow: upData.controllow,
                     NotMapped:once
                 },
                 dataType: "json",
