@@ -111,3 +111,4 @@ D:\项目\OfficeAutomation\OfficeAutomation\obj\Release\netcoreapp2.1\Razor\View
 D:\项目\OfficeAutomation\OfficeAutomation\obj\Release\netcoreapp2.1\Razor\Views\Category\One.g.cshtml.cs
 D:\项目\OfficeAutomation\OfficeAutomation\obj\Release\netcoreapp2.1\Razor\Views\Category\Three.g.cshtml.cs
 D:\项目\OfficeAutomation\OfficeAutomation\obj\Release\netcoreapp2.1\Razor\Views\Category\Two.g.cshtml.cs
+D:\项目\OfficeAutomation\OfficeAutomation\obj\Release\netcoreapp2.1\Razor\Views\Category\Level.g.cshtml.cs
