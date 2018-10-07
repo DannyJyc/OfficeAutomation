@@ -1,4 +1,4 @@
-﻿@model OfficeAutomation.Models.college
+﻿@model OfficeAutomation.Models.view_college_bu
 
 <!DOCTYPE html>
 <html>
@@ -29,6 +29,7 @@
                                     if (Model != null)
                                     {
                                         <input type="text" name="name" required lay-verify="required" placeholder="请输入名称" autocomplete="off" class="layui-input" value="@Model.name">
+                                        <input type="hidden" name="buid" id="buid" value="@Model.buid" />
                                     }
                                     else
                                     {
@@ -37,7 +38,14 @@
                                 }
                             </div>
                         </div>
+                        <div class="layui-form-item">
+                            <label class="layui-form-label"><span class="text-red">*</span>选择事业部：</label>
+                            <div class="layui-input-block">
+                                <select name="type" lay-filter="province" lay-search="" lay-verify="required">
 
+                                </select>
+                            </div>
+                        </div>
                         <div class="layui-form-item">
                             <div class="layui-input-block">
                                 <button class="layui-btn" lay-submit lay-filter="formDemo">立即提交</button>
@@ -59,6 +67,24 @@
         var $ = layui.jquery;
         var layer = layui.layer;
 
+        $("select[name='type']").empty();
+        $.get("../Dictionary/Get", function (result) {
+
+            console.log(result);
+            var role = $("#buid").val();
+            $("select[name='type']").append('<option></option>');
+
+            for (var i = 0; i < result.length; i++) {
+                if (role == result[i].id) {
+                    $("select[name='type']").append('<option selected = "selected" value="' + result[i].id + '">' + result[i].type + '</option>');
+                    continue;
+                }
+                $("select[name='type']").append('<option value="' + result[i].id + '">' + result[i].type+'</option>');
+            }
+
+            form.render('select'); //刷新select选择框渲染
+        });
+
         form.on('submit(formDemo)', function (data) {
             var index = layer.msg('数据提交中，请稍候', { icon: 16, shade: 0.01, time: 10 });
             var upData = data.field;
@@ -68,7 +94,8 @@
                 url: "../Users/UpdateCollege",
                 data: {
                     id:@ViewData["id"],
-                    name: upData.name
+                    name: upData.name,
+                    buid: upData.type
                 },
                 dataType: "json",
                 success: function(data) {

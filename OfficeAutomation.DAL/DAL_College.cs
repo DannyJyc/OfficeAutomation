@@ -16,17 +16,17 @@ namespace OfficeAutomation.DAL
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
-        public college Single(int id)
+        public view_college_bu Single(int id)
         {
-            return dbContext.Query<college>().Where(p => p.id == id).FirstOrDefault();
+            return dbContext.Query<view_college_bu>().Where(p => p.id == id).FirstOrDefault();
         }
         /// <summary>
         /// 所有学院
         /// </summary>
         /// <returns></returns>
-        public List<college> List()
+        public List<view_college_bu> List()
         {
-            return dbContext.Query<college>().Where(p => p.id > 0).ToList();
+            return dbContext.Query<view_college_bu>().Where(p => p.id > 0).ToList();
         }
         /// <summary>
         /// 所有学院
@@ -34,9 +34,9 @@ namespace OfficeAutomation.DAL
         /// <param name="page"></param>
         /// <param name="limit"></param>
         /// <returns></returns>
-        public List<college> List(int page, int limit)
+        public List<view_college_bu> List(int page, int limit)
         {
-            return dbContext.Query<college>().Where(p => p.id > 0).TakePage(page, limit).ToList();
+            return dbContext.Query<view_college_bu>().Where(p => p.id > 0).TakePage(page, limit).ToList();
         }
         /// <summary>
         /// 添加学院
@@ -47,7 +47,8 @@ namespace OfficeAutomation.DAL
         {
             return (int)dbContext.Insert<college>(() => new college()
             {
-                name = college.name
+                name = college.name,
+                buid = college.buid
             });
         }
         /// <summary>
@@ -59,7 +60,8 @@ namespace OfficeAutomation.DAL
         {
             return dbContext.Update<college>(p => p.id == college.id, p => new college()
             {
-                name = college.name
+                name = college.name,
+                buid = college.buid
             });
         }
         /// <summary>

@@ -60,7 +60,7 @@ using OfficeAutomation.DAL.Helper;
             WriteLiteral("\r\n<html>\r\n");
             EndContext();
             BeginContext(37, 88, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("head", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "42b43dab564d418484408c09e68f5948", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("head", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "d3a9b021ea4b484bb92438ea97709ba7", async() => {
                 BeginContext(43, 75, true);
                 WriteLiteral("\r\n    <meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\">\r\n");
                 EndContext();
@@ -80,7 +80,7 @@ using OfficeAutomation.DAL.Helper;
             WriteLiteral("\r\n");
             EndContext();
             BeginContext(127, 501, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("body", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "a59389c19d4149f5a9889ba313fa5473", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("body", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "8d23d5aeebe547d0b6ba83231c1003d3", async() => {
                 BeginContext(133, 488, true);
                 WriteLiteral(@"
     <div class=""layui-card-header"">Details</div>

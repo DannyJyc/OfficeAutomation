@@ -1,4 +1,5 @@
-﻿<!DOCTYPE html>
+﻿@model List<OfficeAutomation.Models.bu_dictionary>
+<!DOCTYPE html>
 <html>
 
 <head>
@@ -83,6 +84,20 @@
                                     <i class="layui-icon layui-icon-console"></i>
                                     <a lay-href="../Home/Console">控制台</a>
                                 </dd>
+                            </dl>
+                        </li>
+                        <li data-name="BusinessUnit" class="layui-nav-item">
+                            <a href="javascript:;" lay-tips="事业部" lay-direction="2">
+                                <i class="layui-icon layui-icon-flag"></i>
+                                <cite>&nbsp;事&nbsp;业&nbsp;部&nbsp;</cite>
+                            </a>
+                            <dl class="layui-nav-child">
+                                @foreach (var row in Model)
+                                {
+                                    <dd>
+                                        <a lay-href="..//@row.id">@row.type</a>
+                                    </dd>
+                                }
                             </dl>
                         </li>
                         <li data-name="category" class="layui-nav-item">

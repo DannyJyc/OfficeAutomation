@@ -5,15 +5,15 @@ namespace OfficeAutomation.Models
     /// <summary>
     /// 实体类。(属性说明自动提取数据库字段的描述信息)
     /// </summary>
-    [Table("college")]
-    public partial class college
+    [Table("bu_dictionary")]
+    public partial class bu_dictionary
     {
         #region 默认值
-        public college()
+        public bu_dictionary()
         {
 
-            name = "";
-            buid = 0;
+            type = "";
+            remark = "";
         }
         #endregion
 
@@ -24,13 +24,13 @@ namespace OfficeAutomation.Models
         [Column(IsPrimaryKey = true)]
         public int id { get; set; }
         /// <summary>
-        /// 学院名称
+        /// 事业部类型
         /// </summary>
-        public string name { get; set; }
+        public string type { get; set; }
         /// <summary>
-        /// 所属事业部
+        /// 备注
         /// </summary>
-        public int? buid { get; set; }
+        public string remark { get; set; }
 
         /// <summary>
         /// 非SQL映射字段 
