@@ -95,6 +95,7 @@ namespace OfficeAutomation.DAL
                 title = knowledge.title,
                 content = knowledge.content,
                 urlstr = knowledge.urlstr,
+                userid = knowledge.userid,
                 state = 1,
                 typeid = knowledge.typeid
             });
