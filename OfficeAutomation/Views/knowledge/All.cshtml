@@ -1,0 +1,119 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>管理</title>
+    <link href="~/css/s.css" rel="stylesheet" />
+    <link href="~/css/extend.css" rel="stylesheet" />
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/plus/layui/layui.js"></script>
+    <style type="text/css">
+
+        #demo1 {
+            text-align: center;
+            margin-top: 60px;
+            /*position: fixed;*/
+            /*bottom: 0;*/
+        }
+
+        .layui-layer-shade {
+            z-index: 49 !important;
+        }
+
+        .layui-layer-page {
+            z-index: 50 !important;
+        }
+    </style>
+</head>
+<body>
+    <div class="demoTable">
+        <br> &nbsp;&nbsp;&nbsp;
+        请输入标题/类别：
+        <div class="layui-inline layui-form">
+            <input type="tel" name="type" autocomplete="off" class="layui-input">
+        </div>
+
+        <button class="layui-btn" data-type="query"><i class="layui-icon">&#xe615;</i> 查询</button> <button class="layui-btn" data-type="reload"><i class="layui-icon">&#x1002;</i> 复位</button>
+        <button class="layui-btn" data-type="guanli"><i class="layui-icon">&#xe608;</i> 个人管理</button>
+
+    </div>
+
+    <table class="layui-hide" id="LAY_table_user" lay-filter="user"></table>
+
+
+    <script type="text/html" id="barDemo1">
+        <a class="layui-btn layui-btn-sm" lay-event="look">查看</a>
+    </script>
+    <script>
+        var $;
+        layui.use(['table', 'layer', 'form'],
+            function () {
+                var layer = layui.layer,
+                    table = layui.table,
+                    form = layui.form;
+                //方法级渲染
+                table.render({
+                    elem: '#LAY_table_user',
+                    url: '../knowledge/Get',
+                    cols: [
+                        [
+                            { field: 'title', title: '标题', sort: true, fixed: true },
+                            { field: 'name', title: '类别', sort: true, fixed: true },
+                            { field: 'type', title: '操作', toolbar: '#barDemo1', align: 'center' }
+                        ]
+                    ],
+                    id: 'testReload',
+                    page: true,
+                    height: 'full-100',
+                    limit: 20,
+                    limits: [20, 50, 100, 200, 300, 400, 500]
+                });
+                var active = {
+                    query: function () {
+                        var type = $("input[name=type]");
+
+                        //执行重载
+                        table.reload('testReload', {
+                            page: {
+                                curr: 1 //重新从第 1 页开始
+                            }
+                            , where: {
+                                type: type.val()
+                            }
+                        });
+                    },
+                    //修改时间 2018-9-19 22:14:00
+                    reload: function () {
+                        var type = $("input[name=type]")
+                        type.val("");
+                        //执行重载
+                        table.reload('testReload', {
+                            page: {
+                                curr: 1 //重新从第 1 页开始
+                            }, where: {
+                                type: ""
+                            }
+                        });
+                    },
+                    guanli: function () {
+                        location.href = "../knowledge/Admin";
+
+                    }
+                };
+                table.on('tool(user)',
+                    function (obj) {
+                        var data = obj.data;
+                        if (obj.event === 'look') {
+                            location.href = "../knowledge/Content?id=" + data.id;
+                        }
+
+                    });
+                $('.demoTable .layui-btn').on('click',
+                    function () {
+                        var type = $(this).data('type');
+                        active[type] ? active[type].call(this) : '';
+                    });
+            });
+    </script>
+</body>
+</html>

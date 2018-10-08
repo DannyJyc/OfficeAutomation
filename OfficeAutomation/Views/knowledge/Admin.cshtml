@@ -1,0 +1,130 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>管理</title>
+    <link href="~/css/s.css" rel="stylesheet" />
+    <link href="~/css/extend.css" rel="stylesheet" />
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/plus/layui/layui.js"></script>
+    <style type="text/css">
+
+        #demo1 {
+            text-align: center;
+            margin-top: 60px;
+            /*position: fixed;*/
+            /*bottom: 0;*/
+        }
+
+        .layui-layer-shade {
+            z-index: 49 !important;
+        }
+
+        .layui-layer-page {
+            z-index: 50 !important;
+        }
+    </style>
+</head>
+<body>
+<div class="layui-form">
+    <div class="demoTable">
+        <br> &nbsp;&nbsp;&nbsp;
+        <button class="layui-btn" data-type="add"><i class="layui-icon">&#xe608;</i> 添加</button>
+        <button class="layui-btn ghost-btn-blue" id="fanhui">返回上一页</button>
+
+    </div>
+</div>
+    <table class="layui-hide" id="LAY_table_user" lay-filter="user"></table>
+
+
+<script type="text/html" id="barDemo1">
+    <a class="layui-btn layui-btn-sm" lay-event="look">查看</a>
+</script>
+<script type="text/html" id="barDemo">
+    <input type="checkbox" name="{{d.value}}" value="{{d.id}}" lay-skin="switch" lay-text="公开|私有" lay-filter="state_sw" {{ d.state== 1 ? 'checked' : '' }}>
+</script>
+    <script>
+        var $;
+        layui.use(['table', 'layer', 'form'],
+            function () {
+                var layer = layui.layer,
+                    table = layui.table,
+                    form = layui.form;
+                //方法级渲染
+                table.render({
+                    elem: '#LAY_table_user',
+                    url: '../knowledge/GetAdmin',
+                    cols: [
+                        [
+                            { field: 'title', title: '标题', sort: true, fixed: true },
+                            { field: 'name', title: '类别', sort: true, fixed: true },
+                            { field: 'state', title: '公开/私有', toolbar: '#barDemo', sort: true, fixed: true },
+                            { field: 'type', title: '操作', toolbar: '#barDemo1', align: 'center' }
+                        ]
+                    ],
+                    id: 'testReload',
+                    page: true,
+                    height: 'full-100',
+                    limit: 20,
+                    limits: [20, 50, 100, 200, 300, 400, 500]
+                });
+                $("#fanhui").click(function () {
+                    location.href = "../knowledge/All";
+                    return false;
+                });
+                form.on('switch(state_sw)',
+                    function (obj) {
+                        var state;
+                        if (obj.elem.checked) {
+                            state = 1;
+                        } else {
+                            state = 0;
+                        }
+                        //console.log(obj);
+                        var e = $(obj.elem);
+                        $.ajax({
+                            type: "post",
+                            url: "../knowledge/UpdateState",
+                            data: { id: this.value, state: state },
+                            dataType: "json",
+                            success: function (data) {
+                                if (data.code == 0) {
+
+                                    layer.msg('修改成功');
+                                } else {
+                                    layer.msg('修改失败');
+                                    e.prop("checked", !obj.elem.checked);
+                                    return;
+                                }
+                            }
+                        });
+                    });
+                var active = {
+                    add: function () {
+                        var index = layui.layer.open({
+                            title: "添加",
+                            anim: 3,
+                            maxmin: true,
+                            type: 2,
+                            content: "../knowledge/AdminAdd",
+                            area: ["999px", "663px"]
+                        });
+                    }
+                };
+                table.on('tool(user)',
+                    function (obj) {
+                        var data = obj.data;
+                        if (obj.event === 'look') {
+                            location.href = "../knowledge/Content?id=" + data.id;
+                        }
+
+                    });
+                $('.demoTable .layui-btn').on('click',
+                    function () {
+                        var type = $(this).data('type');
+                        active[type] ? active[type].call(this) : '';
+                    });
+            });
+    </script>
+</body>
+</html>

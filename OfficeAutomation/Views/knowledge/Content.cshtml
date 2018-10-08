@@ -1,0 +1,96 @@
+﻿@model OfficeAutomation.Models.view_knowledge_user
+@using OfficeAutomation.DAL;
+@{
+    DAL_knowledge dalKnowledge = new DAL_knowledge();
+}
+<!DOCTYPE HTML>
+<html>
+<head>
+    <title>Home</title>
+    <link href="~/css/style.css" rel="stylesheet" />
+    <link href="~/css/css.css" rel="stylesheet" />
+    <link href="~/css/css1.css" rel="stylesheet" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <!-- jQuery -->
+    <script src="~/js/jquery.min.js"></script>
+    <script src="~/js/jquery-hover-effect.js"></script>
+    <script src="~/plus/layui/layui.js"></script>
+    <script type="text/javascript">
+        //Image Hover
+        jQuery(document).ready(function () {
+            jQuery(function () {
+                jQuery('ul.da-thumbs > li').hoverdir();
+            });
+        });
+
+
+
+
+    </script>
+</head>
+<body>
+    <div class="adcenter">
+        <script src="~/js/ggad2_728x90.js"></script>
+
+    </div>
+    <!-----start-header------>
+    <!---main--->
+    <div class="main">
+        <div class="wrap">
+            <div class="blog-cont">
+                <div class="blog-grid">
+                    <h3>@Model.title</h3>
+                    <h6><img src="~/images/clock.png" title="" alt="">时间 @Model.addtime</h6>
+                    <h6><img src="~/images/author.png" title="" alt="">发布者 @Model.name</h6>
+                    <h6><img src="~/images/comment.png" title="" alt="">@dalKnowledge.Reply(Model.id).Count 评论</h6>
+                    <div class="clear">
+
+                    </div>
+                </div>
+                <div>
+                    <a href="../knowledge/Reply?reply=@Model.id"> 回复主贴</a>
+                </div>
+                <div class="blog-grid1">
+                    <h6>下 载  :<a href="@Model.urlstr" download=""><span>  点击下载文件</span></a></h6>
+                    <p>@Model.content</p>
+
+                </div>
+                <div class="bottom-blog">
+                    <h2>@dalKnowledge.Reply(Model.id).Count 评论</h2>
+                    @foreach (var reply in dalKnowledge.Reply(Model.id))
+                    {
+                        <div class="bottom-grid">
+                            <div class="bottom-grid2">
+                                <ul>
+                                    <li><h4>@reply.name</h4></li>
+                                    <li><h6><img src="~/images/border.jpg" title="" alt="">@reply.addtime</h6></li>
+                                    <li><p>@reply.content</p></li>
+                                    <li><a href="../knowledge/Reply?reply=@Model.id&rereply=@reply.id"> 引用回复</a></li>
+                                </ul>
+                            </div>
+                            <div class="clear"> </div>
+                        </div>
+                        foreach (var rereply in dalKnowledge.reReply(reply.id))
+                        {
+                            <div class="bottom2-grid hide">
+                                <div class="bottom2-grid2">
+
+                                    <ul>
+                                        <li><a href="contact.html"><h4>@rereply.name</h4></a></li>
+                                        <li><h6><img src="~/images/border.jpg" title="" alt="">@rereply.addtime</h6></li>
+                                        <li><p>@rereply.content</p></li>
+                                    </ul>
+                                </div>
+                                <div class="clear"> </div>
+                            </div>
+                        }
+                    }
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

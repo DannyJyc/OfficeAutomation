@@ -1,0 +1,94 @@
+﻿@model List<OfficeAutomation.Models.knowledgetype>
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>回复</title>
+    <link href="~/css/s.css" rel="stylesheet" />
+    <link href="~/css/extend.css" rel="stylesheet" />
+    <script src="~/plus/layui/layui.js"></script>
+</head>
+<body style="background-color: white">
+    <div class="layui-container">
+        <div class="layui-row ">
+            <div class="layui-col-md12">
+                <div style="margin-top: 3.5em; ">
+                    <form class="layui-form">
+
+                        <input type="hidden" name="reply" id="reply" value="@ViewBag.reply"/>
+                        <input type="hidden" name="rereply" id="rereply" value="@ViewBag.rereply"/>
+
+                        <div class="layui-form-item layui-form-text">
+                            <label class="layui-form-label">回复内容</label>
+                            <div class="layui-input-block">
+                                <textarea placeholder="请输入内容" name="content" id="content" class="layui-textarea"></textarea>
+                            </div>
+                        </div>
+
+                        <div class="layui-form-item">
+                            <div class="layui-input-block">
+                                <button class="layui-btn" lay-submit lay-filter="formDemo">回复</button>
+
+                                <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+                                <button class="layui-btn ghost-btn-blue" id="fanhui">返回上一页</button>
+
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+
+    var layui = layui.config({
+        base: '/plus/' //静态资源所在路径
+    }).use(['layer', 'form', 'jquery','upload'], function () {
+        var form = layui.form;
+        var $ = layui.jquery;
+        var layer = layui.layer;
+        var upload = layui.upload;
+        $("#fanhui").click(function () {
+            location.href = "../knowledge/All";
+            return false;
+        });
+
+        form.on('submit(formDemo)', function (data) {
+            var index = layer.msg('数据提交中，请稍候', { icon: 16, shade: 0.01, time: 10 });
+            var upData = data.field;
+            console.log(upData.content);
+            $.ajax({
+                type: "post",
+                url: "../knowledge/Reply",
+                data: {
+                    content: upData.content,
+                    reply: upData.reply,
+                    reReply:upData.rereply
+                },
+                dataType: "json",
+                success: function(data) {
+                    layer.close(index);
+                    if (data.code == "0" || data.code == 0) {
+                        layer.alert("回复成功", { icon: 6 },
+                            function (index) {
+                                location.href = "../knowledge/All";
+                        });
+
+                        //location.reload();
+                        return false;
+                    } else {
+                        layer.alert(data.msg, { icon: 5 });
+                    }
+                    console.log(data);
+
+                }
+            });
+
+            return false;
+        });
+
+    });
+    </script>
+</body>
+</html>

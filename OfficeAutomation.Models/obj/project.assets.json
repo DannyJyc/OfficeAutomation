@@ -3341,11 +3341,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\项目\\OfficeAutomation\\OfficeAutomation.Models\\OfficeAutomation.Models.csproj",
+      "projectUniqueName": "C:\\Users\\DannyJiang\\Desktop\\OfficeAutomation-master\\OfficeAutomation.Models\\OfficeAutomation.Models.csproj",
       "projectName": "OfficeAutomation.Models",
-      "projectPath": "D:\\项目\\OfficeAutomation\\OfficeAutomation.Models\\OfficeAutomation.Models.csproj",
+      "projectPath": "C:\\Users\\DannyJiang\\Desktop\\OfficeAutomation-master\\OfficeAutomation.Models\\OfficeAutomation.Models.csproj",
       "packagesPath": "C:\\Users\\DannyJiang\\.nuget\\packages\\",
-      "outputPath": "D:\\项目\\OfficeAutomation\\OfficeAutomation.Models\\obj\\",
+      "outputPath": "C:\\Users\\DannyJiang\\Desktop\\OfficeAutomation-master\\OfficeAutomation.Models\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"

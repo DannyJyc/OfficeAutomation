@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>课表管理</title>
+    <link href="~/css/s.css" rel="stylesheet" />
+    <link href="~/css/extend.css" rel="stylesheet" />
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/plus/layui/layui.js"></script>
+    <style type="text/css">
+        #demo1 {
+            text-align: center;
+            margin-top: 60px;
+            /*position: fixed;*/
+            /*bottom: 0;*/
+        }
+
+        .layui-layer-shade {
+            z-index: 49 !important;
+        }
+
+        .layui-layer-page {
+            z-index: 50 !important;
+        }
+    </style>
+</head>
+
+<body>
+    
+    <div class="demoTable">
+        <br> &nbsp;&nbsp;&nbsp;
+        学院：
+        <div class="layui-inline layui-form">
+            <select name="demoReload" lay-filter="test">
+                <option></option>
+
+            </select>
+        </div>
+        专业：
+        <div class="layui-inline layui-form">
+            <select name="demoReload1"></select>
+        </div>
+        选择周：
+        <div class="layui-inline layui-form">
+            <select name="demoReload2"></select>
+        </div>
+        <button class="layui-btn" data-type="query"><i class="layui-icon">&#xe615;</i> 查询</button> <button class="layui-btn" data-type="reload"><i class="layui-icon">&#x1002;</i> 复位</button>
+    </div>
+<table class="layui-hide" id="LAY_table_user" lay-filter="user"></table>
+
+
+    <script>
+    var $;
+    layui.use(['table', 'layer', 'form'],
+        function() {
+            var layer = layui.layer,
+                table = layui.table,
+                form = layui.form;
+            //方法级渲染
+            table.render({
+                elem: '#LAY_table_user',
+                url: '../Classtime/Get',
+                cols: [
+                    [
+                        { field: 'lesson', width: 160, title: '--', sort: true, fixed: 'left' },
+                        { field: 'Mon', title: '星期一', sort: true, fixed: true },
+                        { field: 'Tues', title: '星期二', sort: true, fixed: true },
+                        { field: 'Wednes', title: '星期三', sort: true, fixed: true },
+                        { field: 'Thurs', title: '星期四', sort: true, fixed: true },
+                        { field: 'Fri', title: '星期五', sort: true, fixed: true },
+                        { field: 'Sat', title: '星期六', sort: true, fixed: true },
+                        { field: 'Sun', title: '星期日', sort: true, fixed: true }
+                    ]
+                ],
+                id: 'testReload',
+                page: false,
+                height: 'full-100',
+                limit: 20,
+                limits: [20, 50, 100, 200, 300, 400, 500]
+            });
+            var active = {
+                query: function () {
+                    var college = $("select[name=demoReload]");
+                    var classes = $("select[name=demoReload1]");
+                    var week = $("select[name=demoReload2]");
+                    //执行重载
+                    table.reload('testReload', {
+                        page: {
+                            curr: 1 //重新从第 1 页开始
+                        }
+                        , where: {
+                            collegeid: college.val(),
+                            classesid: classes.val(),
+                            week:week.val()
+                        }
+                    });
+                }
+                ,
+                reload: function () {
+                    var classical = $("select[name=demoReload]");
+                    var num = $("select[name=demoReload1]");
+                    $("select[name=demoReload1]").children().remove();
+                    classical.val("");
+                    num.val("");
+                    form.render('select')
+                    //执行重载
+                    table.reload('testReload', {
+                        page: {
+                            curr: 1 //重新从第 1 页开始
+                        }, where: {
+                            classical: "",
+                            num: ""
+                        }
+                    });
+                }
+            };
+            form.on('select(test)', function (data) {
+                $.ajax({
+                    type: "get",
+                    url: "../SecondItem/GetSelect",
+                    data: { id: data.value },
+                    dataType: "json",
+                    success: function (data) {
+                        var op = "<option></option>";
+                        for (var a = 0; a < data.length; a++) {
+                            op = op + '<option value="' + data[a].classesid + '">' + data[a].classes_name + '</option>'
+                        }
+                        $("select[name=demoReload1]").children().remove();
+                        $("select[name=demoReload1]").append(op);
+                        form.render('select');
+                    }
+                });
+            });
+            $('.demoTable .layui-btn').on('click',
+                function() {
+                    var type = $(this).data('type');
+                    active[type] ? active[type].call(this) : '';
+                });
+        });
+    </script>
+</body>
+</html>
